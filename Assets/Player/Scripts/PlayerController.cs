@@ -5,7 +5,7 @@ using Zenject;
 
 public class PlayerController : MonoBehaviour
 {
-    private Player player;
+    private SmoothJump player;
 
     [SerializeField]
     private float powerAccumulationSpeed;
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
     }
 
     [Inject]
-    private void Init(Player player)
+    private void Init(SmoothJump player)
     {
         this.player = player;
     }

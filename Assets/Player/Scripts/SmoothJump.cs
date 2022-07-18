@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Zenject;
 
-public class Player : MonoBehaviour
+public class SmoothJump : MonoBehaviour
 {
     private PlayerController playerController;
 

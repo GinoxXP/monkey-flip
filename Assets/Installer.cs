@@ -4,7 +4,7 @@ public class Installer : MonoInstaller
 {
     public override void InstallBindings()
     {
-        Container.Bind<Player>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<SmoothJump>().FromComponentInHierarchy().AsSingle();
         Container.Bind<PlayerController>().FromComponentInHierarchy().AsSingle();
     }
 }

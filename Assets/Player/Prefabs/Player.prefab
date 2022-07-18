@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5186264338671181221}
   - component: {fileID: 4865855327069776841}
   - component: {fileID: 5913898967338381026}
-  - component: {fileID: 8478186934075340156}
+  - component: {fileID: 1426432184264260036}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -114,7 +114,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8478186934075340156
+--- !u!114 &1426432184264260036
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1933906534280961523}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2002891560fa6e4e923b53b6e70a041, type: 3}
+  m_Script: {fileID: 11500000, guid: ac235083f01d1af4d8bdb067de5322a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   jumpCurve:
@@ -132,26 +132,26 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
+      inSlope: 1.9972676
+      outSlope: 1.9972676
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.5
+      time: 0.500684
       value: 1
-      inSlope: -0.06965495
-      outSlope: -0.06965495
-      tangentMode: 0
+      inSlope: -0.0027361512
+      outSlope: -0.0027361512
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0.34139282
-      outWeight: 0.23896393
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -2
-      outSlope: -2
+      inSlope: -2.00274
+      outSlope: -2.00274
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
