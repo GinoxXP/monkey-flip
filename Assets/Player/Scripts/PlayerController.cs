@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float maxPower;
 
+    public float MaxPower => maxPower;
+
     private float power;
     private IEnumerator clickTimer;
     private bool isAccumulationing;
