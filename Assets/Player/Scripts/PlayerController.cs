@@ -5,7 +5,8 @@ using Zenject;
 
 public class PlayerController : MonoBehaviour
 {
-    private SmoothJump player;
+    private SmoothJump smoothJump;
+    private MoveLevel moveLevel;
 
     [SerializeField]
     private float powerAccumulationSpeed;
@@ -67,12 +68,14 @@ public class PlayerController : MonoBehaviour
 
     private void TransmitPower()
     {
-        player.Jump(power);
+        smoothJump.Jump(power);
+        moveLevel.Move(power);
     }
 
     [Inject]
-    private void Init(SmoothJump player)
+    private void Init(SmoothJump smoothJump, MoveLevel moveLevel)
     {
-        this.player = player;
+        this.smoothJump = smoothJump;
+        this.moveLevel = moveLevel;
     }
 }
