@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private float powerAccumulationSpeed;
     [SerializeField]
     private float maxPower;
+    [SerializeField]
+    private float minPower;
 
     public float MaxPower => maxPower;
 
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnStartClick()
     {
+        power = minPower;
         isAccumulationing = true;
         clickTimer = ClickTimer();
         StartCoroutine(clickTimer);

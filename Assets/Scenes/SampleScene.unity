@@ -155,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerAccumulationSpeed: 8
   maxPower: 10
+  minPower: 2
 --- !u!114 &358982763
 MonoBehaviour:
   m_ObjectHideFlags: 0
