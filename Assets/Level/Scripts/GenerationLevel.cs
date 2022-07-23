@@ -14,7 +14,7 @@ public class GenerationLevel : MonoBehaviour
         var randomIndex = Random.Range(0, branches.Count - 1);
         var branch = Instantiate(branches[randomIndex]);
 
-        branch.GetComponent<Branch>().GenerationLevel = this;
+        branch.GetComponentInChildren<Branch>().GenerationLevel = this;
 
         var newPosition = new Vector3(-5, branch.transform.position.y, branch.transform.position.z);
         branch.transform.position = newPosition;
