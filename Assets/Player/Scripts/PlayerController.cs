@@ -9,10 +9,13 @@ public class PlayerController : MonoBehaviour
     private MoveLevel moveLevel;
 
     [SerializeField]
+    [Range(0,1)]
     private float powerAccumulationSpeed;
     [SerializeField]
+    [Range(0, 1)]
     private float maxPower;
     [SerializeField]
+    [Range(0, 1)]
     private float minPower;
 
     public float MaxPower => maxPower;

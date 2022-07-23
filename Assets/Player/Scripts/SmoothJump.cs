@@ -7,6 +7,8 @@ public class SmoothJump : MonoBehaviour
     private PlayerController playerController;
 
     [SerializeField]
+    private float maxHeight;
+    [SerializeField]
     private AnimationCurve jumpCurve;
 
     public void Jump(float power)
@@ -21,7 +23,7 @@ public class SmoothJump : MonoBehaviour
 
         while (duration < curveTime)
         {
-            var y = jumpCurve.Evaluate(duration) * power;
+            var y = jumpCurve.Evaluate(duration) * power * maxHeight;
 
             transform.position = new Vector3(0, y, 0);
 

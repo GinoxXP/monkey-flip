@@ -90,6 +90,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b23050d600d54149ba4da4d9716adae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerAccumulationSpeed: 8
-  maxPower: 10
-  minPower: 2
+  powerAccumulationSpeed: 0.8
+  maxPower: 1
+  minPower: 0.2
