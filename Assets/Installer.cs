@@ -7,5 +7,6 @@ public class Installer : MonoInstaller
         Container.Bind<SmoothJump>().FromComponentInHierarchy().AsSingle();
         Container.Bind<PlayerController>().FromComponentInHierarchy().AsSingle();
         Container.Bind<MoveLevel>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<GenerationLevel>().FromComponentInHierarchy().AsSingle();
     }
 }

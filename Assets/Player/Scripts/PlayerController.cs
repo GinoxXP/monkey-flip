@@ -20,12 +20,17 @@ public class PlayerController : MonoBehaviour
 
     public float MaxPower => maxPower;
 
+    public bool IsCanJump { get; set; } = true;
+
     private float power;
     private IEnumerator clickTimer;
     private bool isAccumulationing;
 
     public void OnClick(InputAction.CallbackContext context)
     {
+        if (!IsCanJump)
+            return;
+
         if (context.started)
         {
             OnStartClick();

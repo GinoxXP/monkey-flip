@@ -1,8 +1,11 @@
 using UnityEngine;
+using Zenject;
 
 public class Branch : MonoBehaviour
 {
-    public GenerationLevel GenerationLevel { get; set; }
+    private GenerationLevel generationLevel;
+    private PlayerController playerController;
+    private SmoothJump smoothJump;
 
     private bool isPlayerStanded;
 
@@ -10,8 +13,26 @@ public class Branch : MonoBehaviour
     {
         if(other.tag == "Player" && !isPlayerStanded)
         {
+            smoothJump.StopJump();
             isPlayerStanded = true;
-            GenerationLevel?.Generate();
+            generationLevel?.Generate();
+            playerController.IsCanJump = true;
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            playerController.IsCanJump = false;
+        }
+    }
+
+    [Inject]
+    private void Init(GenerationLevel generationLevel, PlayerController playerController, SmoothJump smoothJump)
+    {
+        this.generationLevel = generationLevel;
+        this.playerController = playerController;
+        this.smoothJump = smoothJump;
     }
 }

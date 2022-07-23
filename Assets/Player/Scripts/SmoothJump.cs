@@ -11,13 +11,26 @@ public class SmoothJump : MonoBehaviour
     [SerializeField]
     private AnimationCurve jumpCurve;
 
+    private IEnumerator jumpCoroutine;
+
     public void Jump(float power)
     {
-        StartCoroutine(AnimationByTime(power));
+        jumpCoroutine = AnimationByTime(power);
+        StartCoroutine(jumpCoroutine);
+    }
+
+    public void StopJump()
+    {
+        if (jumpCoroutine == null)
+            return;
+            
+        StopCoroutine(jumpCoroutine);
     }
 
     private IEnumerator AnimationByTime(float power)
     {
+        var startPosition = transform.position;
+
         var duration = 0f;
         var curveTime = jumpCurve.keys[jumpCurve.keys.Length - 1].time;
 
@@ -25,7 +38,7 @@ public class SmoothJump : MonoBehaviour
         {
             var y = jumpCurve.Evaluate(duration) * power * maxHeight;
 
-            transform.position = new Vector3(0, y, 0);
+            transform.position = startPosition + new Vector3(0, y, 0);
 
             duration += Time.deltaTime / (power / playerController.MaxPower);
             yield return null;
