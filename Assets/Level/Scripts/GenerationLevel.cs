@@ -5,13 +5,14 @@ using Zenject;
 public class GenerationLevel : MonoBehaviour
 {
     private MoveLevel moveLevel;
+    private System.Random random;
 
     [SerializeField]
     private List<GameObject> branches = new List<GameObject>();
 
     public void Generate()
     {
-        var randomIndex = Random.Range(0, branches.Count - 1);
+        var randomIndex = random.Next(branches.Count);
         var branch = Instantiate(branches[randomIndex]);
 
         branch.GetComponentInChildren<Branch>().GenerationLevel = this;
@@ -25,6 +26,7 @@ public class GenerationLevel : MonoBehaviour
 
     private void Start()
     {
+        random = new System.Random();
         Generate();
     }
 

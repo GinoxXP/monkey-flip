@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
-  branches: []
 --- !u!114 &8097952541771659910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,6 +60,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   branches:
   - {fileID: 8584151658253474444}
+  - {fileID: 369147725529232146, guid: 9ef479097ba521e418badd66075e0089, type: 3}
+  - {fileID: 6502537572464768584, guid: 4f96eb38c4e80254b9df9c5462dd48c3, type: 3}
 --- !u!1001 &8097952542903473772
 PrefabInstance:
   m_ObjectHideFlags: 0
