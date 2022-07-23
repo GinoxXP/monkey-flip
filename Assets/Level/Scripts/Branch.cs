@@ -7,6 +7,7 @@ public class Branch : MonoBehaviour
     private PlayerController playerController;
     private SmoothJump smoothJump;
     private MoveLevel moveLevel;
+    private RotateCamera rotateCamera;
 
     private bool isPlayerStanded;
 
@@ -19,6 +20,7 @@ public class Branch : MonoBehaviour
             isPlayerStanded = true;
             generationLevel?.Generate();
             playerController.IsCanJump = true;
+            rotateCamera.CameraBack();
         }
     }
 
@@ -31,11 +33,17 @@ public class Branch : MonoBehaviour
     }
 
     [Inject]
-    private void Init(GenerationLevel generationLevel, PlayerController playerController, SmoothJump smoothJump, MoveLevel moveLevel)
+    private void Init(
+        GenerationLevel generationLevel,
+        PlayerController playerController,
+        SmoothJump smoothJump,
+        MoveLevel moveLevel,
+        RotateCamera rotateCamera)
     {
         this.generationLevel = generationLevel;
         this.playerController = playerController;
         this.smoothJump = smoothJump;
         this.moveLevel = moveLevel;
+        this.rotateCamera = rotateCamera;
     }
 }

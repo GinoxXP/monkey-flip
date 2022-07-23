@@ -8,5 +8,6 @@ public class Installer : MonoInstaller
         Container.Bind<PlayerController>().FromComponentInHierarchy().AsSingle();
         Container.Bind<MoveLevel>().FromComponentInHierarchy().AsSingle();
         Container.Bind<GenerationLevel>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<RotateCamera>().FromComponentInHierarchy().AsSingle();
     }
 }
