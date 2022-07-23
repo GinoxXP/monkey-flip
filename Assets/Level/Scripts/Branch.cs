@@ -6,6 +6,7 @@ public class Branch : MonoBehaviour
     private GenerationLevel generationLevel;
     private PlayerController playerController;
     private SmoothJump smoothJump;
+    private MoveLevel moveLevel;
 
     private bool isPlayerStanded;
 
@@ -13,6 +14,7 @@ public class Branch : MonoBehaviour
     {
         if(other.tag == "Player" && !isPlayerStanded)
         {
+            moveLevel.StopMove();
             smoothJump.StopJump();
             isPlayerStanded = true;
             generationLevel?.Generate();
@@ -29,10 +31,11 @@ public class Branch : MonoBehaviour
     }
 
     [Inject]
-    private void Init(GenerationLevel generationLevel, PlayerController playerController, SmoothJump smoothJump)
+    private void Init(GenerationLevel generationLevel, PlayerController playerController, SmoothJump smoothJump, MoveLevel moveLevel)
     {
         this.generationLevel = generationLevel;
         this.playerController = playerController;
         this.smoothJump = smoothJump;
+        this.moveLevel = moveLevel;
     }
 }
