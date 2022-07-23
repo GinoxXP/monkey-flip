@@ -9,13 +9,18 @@ public class PlayerController : MonoBehaviour
     private MoveLevel moveLevel;
 
     [SerializeField]
+    [Range(0,1)]
     private float powerAccumulationSpeed;
     [SerializeField]
+    [Range(0, 1)]
     private float maxPower;
     [SerializeField]
+    [Range(0, 1)]
     private float minPower;
 
     public float MaxPower => maxPower;
+
+    public bool IsCanJump { get; set; } = true;
 
     private float power;
     private IEnumerator clickTimer;
@@ -23,6 +28,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnClick(InputAction.CallbackContext context)
     {
+        if (!IsCanJump)
+            return;
+
         if (context.started)
         {
             OnStartClick();
