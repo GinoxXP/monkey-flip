@@ -15,13 +15,13 @@ public class GenerationLevel : MonoBehaviour
     [SerializeField]
     private AnimationCurve maxRandomOffsetCurve;
 
-    public void Generate()
+    public void Generate(int generationDistance = -10)
     {
         var randomIndex = random.Next(branches.Count);
         var branch = container.InstantiatePrefab(branches[randomIndex], transform);
 
         var randomOffset = (float) (random.NextDouble() - 0.5f) * maxRandomOffsetCurve.Evaluate(difficultyManager.Difficulty);
-        var newPosition = new Vector3(-5 + randomOffset, branch.transform.position.y, branch.transform.position.z);
+        var newPosition = new Vector3(generationDistance + randomOffset, branch.transform.position.y, branch.transform.position.z);
         branch.transform.position = newPosition;
 
         moveLevel.Branches.Add(branch.transform);
@@ -30,6 +30,7 @@ public class GenerationLevel : MonoBehaviour
     private void Start()
     {
         random = new System.Random();
+        Generate(-5);
     }
 
     [Inject]
