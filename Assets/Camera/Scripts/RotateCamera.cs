@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 [RequireComponent(typeof(Animator))]
 public class RotateCamera : MonoBehaviour
 {
+    private DifficultyManager difficultyManager;
+
     [SerializeField]
     private AnimationCurve speedMultiplicatorCurve;
 
@@ -31,7 +34,7 @@ public class RotateCamera : MonoBehaviour
         var maxDuration = speedMultiplicatorCurve.keys.LastOrDefault().time;
         while (duration < maxDuration)
         {
-            animator.speed = speedMultiplicatorCurve.Evaluate(duration);
+            animator.speed = speedMultiplicatorCurve.Evaluate(duration) * difficultyManager.Difficulty;
 
             duration += Time.deltaTime;
         }
@@ -52,5 +55,11 @@ public class RotateCamera : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         StartSpeedMultiplicatorByTime();
+    }
+
+    [Inject]
+    private void Init(DifficultyManager difficultyManager)
+    {
+        this.difficultyManager = difficultyManager;
     }
 }

@@ -9,5 +9,6 @@ public class Installer : MonoInstaller
         Container.Bind<MoveLevel>().FromComponentInHierarchy().AsSingle();
         Container.Bind<GenerationLevel>().FromComponentInHierarchy().AsSingle();
         Container.Bind<RotateCamera>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<DifficultyManager>().FromComponentInHierarchy().AsSingle();
     }
 }
