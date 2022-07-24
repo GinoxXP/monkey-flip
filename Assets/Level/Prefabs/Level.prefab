@@ -62,6 +62,30 @@ MonoBehaviour:
   - {fileID: 8584151658253474444}
   - {fileID: 369147725529232146, guid: 9ef479097ba521e418badd66075e0089, type: 3}
   - {fileID: 6502537572464768584, guid: 4f96eb38c4e80254b9df9c5462dd48c3, type: 3}
+  maxRandomOffsetCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -0.04016705
+      outSlope: -0.04016705
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.5926067
+    - serializedVersion: 3
+      time: 1
+      value: 3
+      inSlope: -0.0717442
+      outSlope: -0.0717442
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.5168934
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &8097952542903473772
 PrefabInstance:
   m_ObjectHideFlags: 0
