@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnStartClick()
     {
+        smoothJump.Animator.SetTrigger("PrepareJump");
         power = minPower;
         isAccumulationing = true;
         clickTimer = ClickTimer();
@@ -53,6 +54,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnStopClick()
     {
+        smoothJump.Animator.SetTrigger("Flip");
         isAccumulationing = false;
         StopCoroutine(clickTimer);
         TransmitPower();

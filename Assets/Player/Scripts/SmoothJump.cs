@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Zenject;
 
+[RequireComponent(typeof(Animator))]
 public class SmoothJump : MonoBehaviour
 {
     private PlayerController playerController;
@@ -11,10 +12,13 @@ public class SmoothJump : MonoBehaviour
     [SerializeField]
     private AnimationCurve jumpCurve;
 
+    public Animator Animator { get; private set; }
+
     private IEnumerator jumpCoroutine;
 
     public void Jump(float power)
     {
+        Animator.SetTrigger("Flip");
         jumpCoroutine = AnimationByTime(power);
         StartCoroutine(jumpCoroutine);
     }
@@ -23,7 +27,8 @@ public class SmoothJump : MonoBehaviour
     {
         if (jumpCoroutine == null)
             return;
-            
+
+        Animator.SetTrigger("Idle");
         StopCoroutine(jumpCoroutine);
     }
 
@@ -45,6 +50,11 @@ public class SmoothJump : MonoBehaviour
         }
 
         yield return null;
+    }
+
+    private void Start()
+    {
+        Animator = GetComponent<Animator>();
     }
 
     [Inject]
