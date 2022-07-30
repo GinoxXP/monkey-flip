@@ -16,6 +16,8 @@ public class GenerationLevel : MonoBehaviour
     private int generationDistance;
     [SerializeField]
     private AnimationCurve maxRandomOffsetCurve;
+    [SerializeField]
+    private Transform branchesParent;
 
     public void Generate(int? distance = null)
     {
@@ -28,7 +30,7 @@ public class GenerationLevel : MonoBehaviour
     private void CreateBranch(int distance)
     {
         var randomIndex = random.Next(branches.Count);
-        var branch = container.InstantiatePrefab(branches[randomIndex], transform);
+        var branch = container.InstantiatePrefab(branches[randomIndex], branchesParent);
 
         var randomOffset = (float)(random.NextDouble() - 0.5f) * maxRandomOffsetCurve.Evaluate(difficultyManager.Difficulty);
         var newPosition = new Vector3(-distance + randomOffset, branch.transform.position.y, branch.transform.position.z);

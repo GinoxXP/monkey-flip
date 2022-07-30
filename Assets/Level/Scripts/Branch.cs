@@ -3,7 +3,6 @@ using Zenject;
 
 public class Branch : MonoBehaviour
 {
-    private GenerationLevel generationLevel;
     private PlayerController playerController;
     private SmoothJump smoothJump;
     private MoveLevel moveLevel;
@@ -18,7 +17,6 @@ public class Branch : MonoBehaviour
             moveLevel.StopMove();
             smoothJump.StopJump();
             isPlayerStanded = true;
-            generationLevel?.Generate();
             playerController.IsCanJump = true;
             rotateCamera.CameraBack();
         }
@@ -34,13 +32,11 @@ public class Branch : MonoBehaviour
 
     [Inject]
     private void Init(
-        GenerationLevel generationLevel,
         PlayerController playerController,
         SmoothJump smoothJump,
         MoveLevel moveLevel,
         RotateCamera rotateCamera)
     {
-        this.generationLevel = generationLevel;
         this.playerController = playerController;
         this.smoothJump = smoothJump;
         this.moveLevel = moveLevel;
