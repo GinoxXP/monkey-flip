@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fedc2ba764d3df47981fb1fdbbafb50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 4
 --- !u!114 &8097952541771659910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,6 +62,7 @@ MonoBehaviour:
   - {fileID: 8584151658253474444}
   - {fileID: 369147725529232146, guid: 9ef479097ba521e418badd66075e0089, type: 3}
   - {fileID: 6502537572464768584, guid: 4f96eb38c4e80254b9df9c5462dd48c3, type: 3}
+  generationDistance: 3
   maxRandomOffsetCurve:
     serializedVersion: 2
     m_Curve:
