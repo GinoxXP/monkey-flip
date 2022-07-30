@@ -91,8 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec4febd4bfba5e4cbb62250c74ed13c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  branches:
-  - {fileID: 8584151658253474444}
+  branchPrefabs:
+  - {fileID: 522624939404872928, guid: b5555e305e87acc48bffbb90696078b4, type: 3}
   - {fileID: 369147725529232146, guid: 9ef479097ba521e418badd66075e0089, type: 3}
   - {fileID: 6502537572464768584, guid: 4f96eb38c4e80254b9df9c5462dd48c3, type: 3}
   generationDistance: 3
@@ -232,11 +232,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5555e305e87acc48bffbb90696078b4, type: 3}
---- !u!1 &8584151658253474444 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 522624939404872928, guid: b5555e305e87acc48bffbb90696078b4, type: 3}
-  m_PrefabInstance: {fileID: 8097952542903473772}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &917619727292010208 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8997557265420130444, guid: b5555e305e87acc48bffbb90696078b4, type: 3}
