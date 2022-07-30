@@ -6,6 +6,8 @@ public class MoveLevel : MonoBehaviour
 {
     [SerializeField]
     private float speed;
+    [SerializeField]
+    private Transform startBranch;
 
     private IEnumerator moveCoroutine;
 
@@ -45,6 +47,6 @@ public class MoveLevel : MonoBehaviour
 
     private void Start()
     {
-        Branches.Add(transform.GetChild(0));
+        Branches.Add(startBranch);
     }
 }
