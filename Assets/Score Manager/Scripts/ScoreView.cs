@@ -11,10 +11,33 @@ public class ScoreView : MonoBehaviour
     [SerializeField]
     private TMP_Text bestScoreText;
 
-    private void Update()
+    private void Start()
+    {
+        UpdateText();
+
+        if (scoreManager.BestScore == 0)
+            DisableBestScoreText();
+
+        scoreManager.NewScoreAvailable += UpdateText;
+        scoreManager.NewBestScoreAvailable += DisableBestScoreText;
+    }
+
+    private void UpdateText()
     {
         scoreText.text = scoreManager.Score.ToString();
         bestScoreText.text = scoreManager.BestScore.ToString();
+    }
+
+    private void DisableBestScoreText()
+    {
+        if(bestScoreText.gameObject.activeSelf)
+            bestScoreText.gameObject.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        scoreManager.NewScoreAvailable -= UpdateText;
+        scoreManager.NewBestScoreAvailable -= DisableBestScoreText;
     }
 
     [Inject]

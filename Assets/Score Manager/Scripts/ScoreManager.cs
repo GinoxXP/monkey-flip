@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
@@ -12,10 +13,12 @@ public class ScoreManager : MonoBehaviour
         set
         {
             score = value;
-            if(score > BestScore)
+            NewScoreAvailable?.Invoke();
+
+            if (score > BestScore)
             {
                 BestScore = value;
-                IsNewRecord = true;
+                NewBestScoreAvailable?.Invoke();
             }
         }
     }
@@ -26,5 +29,6 @@ public class ScoreManager : MonoBehaviour
         set => PlayerPrefs.SetInt(BEST_SCORE_KEY, value);
     }
 
-    public bool IsNewRecord { get; private set; }
+    public event Action NewBestScoreAvailable;
+    public event Action NewScoreAvailable;
 }
