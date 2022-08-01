@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
 {
     private SmoothJump smoothJump;
     private MoveLevel moveLevel;
-    private DifficultyManager difficultyManager;
 
     [SerializeField]
     [Range(0,1)]
@@ -59,7 +58,6 @@ public class PlayerController : MonoBehaviour
         StopCoroutine(clickTimer);
         TransmitPower();
         power = 0;
-        difficultyManager.AddDifficulty();
     }
 
     private IEnumerator ClickTimer()
@@ -85,10 +83,9 @@ public class PlayerController : MonoBehaviour
     }
 
     [Inject]
-    private void Init(SmoothJump smoothJump, MoveLevel moveLevel, DifficultyManager difficultyManager)
+    private void Init(SmoothJump smoothJump, MoveLevel moveLevel)
     {
         this.smoothJump = smoothJump;
         this.moveLevel = moveLevel;
-        this.difficultyManager = difficultyManager;
     }
 }
