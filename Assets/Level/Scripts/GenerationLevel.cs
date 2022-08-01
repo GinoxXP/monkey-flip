@@ -43,7 +43,6 @@ public class GenerationLevel : MonoBehaviour
     {
         random = new System.Random();
         Generate(generationDistance);
-        Generate(generationDistance * 2);
     }
 
     [Inject]
