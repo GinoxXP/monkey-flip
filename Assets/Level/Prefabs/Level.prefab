@@ -96,7 +96,7 @@ MonoBehaviour:
   - {fileID: 522624939404872928, guid: b5555e305e87acc48bffbb90696078b4, type: 3}
   - {fileID: 369147725529232146, guid: 9ef479097ba521e418badd66075e0089, type: 3}
   - {fileID: 6502537572464768584, guid: 4f96eb38c4e80254b9df9c5462dd48c3, type: 3}
-  generationDistance: 3
+  generationDistance: 3.5
   maxRandomOffsetCurve:
     serializedVersion: 2
     m_Curve:

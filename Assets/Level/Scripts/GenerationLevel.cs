@@ -13,13 +13,13 @@ public class GenerationLevel : MonoBehaviour
     [SerializeField]
     private List<GameObject> branchPrefabs = new List<GameObject>();
     [SerializeField]
-    private int generationDistance;
+    private float generationDistance;
     [SerializeField]
     private AnimationCurve maxRandomOffsetCurve;
     [SerializeField]
     private Transform branchesParent;
 
-    public void Generate(int? distance = null)
+    public void Generate(float? distance = null)
     {
         if(distance.HasValue)
             CreateBranch(distance.Value);
@@ -27,7 +27,7 @@ public class GenerationLevel : MonoBehaviour
             CreateBranch(generationDistance * 2);
     }
 
-    private void CreateBranch(int distance)
+    private void CreateBranch(float distance)
     {
         var randomIndex = random.Next(branchPrefabs.Count);
         var branch = container.InstantiatePrefab(branchPrefabs[randomIndex], branchesParent);

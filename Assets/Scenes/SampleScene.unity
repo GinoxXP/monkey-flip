@@ -644,11 +644,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1537053874056593936, guid: 6f270c567c7487a418a8a089835292b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 1537053874056593936, guid: 6f270c567c7487a418a8a089835292b8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 1537053874056593936, guid: 6f270c567c7487a418a8a089835292b8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -954,6 +954,18 @@ PrefabInstance:
     - target: {fileID: 8097952541771659909, guid: fbd88ea12ae900844983f04133f6e53b, type: 3}
       propertyPath: m_Name
       value: Level
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097952541771659910, guid: fbd88ea12ae900844983f04133f6e53b, type: 3}
+      propertyPath: generationDistance
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097952541771659910, guid: fbd88ea12ae900844983f04133f6e53b, type: 3}
+      propertyPath: maxRandomOffsetCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097952541771659910, guid: fbd88ea12ae900844983f04133f6e53b, type: 3}
+      propertyPath: maxRandomOffsetCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbd88ea12ae900844983f04133f6e53b, type: 3}
