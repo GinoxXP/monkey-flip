@@ -110,6 +110,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  isFlyMode: 0
+  flyPosition: {x: 0, y: 5, z: 0}
 --- !u!95 &7981650197425764204
 Animator:
   serializedVersion: 3

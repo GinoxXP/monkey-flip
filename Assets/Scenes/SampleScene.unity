@@ -955,17 +955,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level
       objectReference: {fileID: 0}
-    - target: {fileID: 8097952541771659910, guid: fbd88ea12ae900844983f04133f6e53b, type: 3}
-      propertyPath: generationDistance
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8097952541771659910, guid: fbd88ea12ae900844983f04133f6e53b, type: 3}
-      propertyPath: maxRandomOffsetCurve.m_Curve.Array.data[0].time
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8097952541771659910, guid: fbd88ea12ae900844983f04133f6e53b, type: 3}
-      propertyPath: maxRandomOffsetCurve.m_Curve.Array.data[0].value
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbd88ea12ae900844983f04133f6e53b, type: 3}
