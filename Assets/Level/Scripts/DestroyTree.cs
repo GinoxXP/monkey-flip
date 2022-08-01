@@ -8,7 +8,7 @@ public class DestroyTree : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<Tree>(out _))
+        if (other.TryGetComponent<Segment>(out _))
         {
             generationLevel?.Generate();
             moveLevel.Branches.Remove(other.transform);
