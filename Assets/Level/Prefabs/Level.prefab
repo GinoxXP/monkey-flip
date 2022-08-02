@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  startBranch: {fileID: 917619727292010208}
+  startSegment: {fileID: 917619727292010208}
 --- !u!114 &8097952541771659910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec4febd4bfba5e4cbb62250c74ed13c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  branchPrefabs:
+  segmentsPrefab:
   - {fileID: 522624939404872928, guid: b5555e305e87acc48bffbb90696078b4, type: 3}
   - {fileID: 369147725529232146, guid: 9ef479097ba521e418badd66075e0089, type: 3}
   - {fileID: 6502537572464768584, guid: 4f96eb38c4e80254b9df9c5462dd48c3, type: 3}
@@ -259,7 +259,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 522624939404872928, guid: b5555e305e87acc48bffbb90696078b4, type: 3}
       propertyPath: m_Name
-      value: Branch
+      value: Segment
       objectReference: {fileID: 0}
     - target: {fileID: 8997557265420130444, guid: b5555e305e87acc48bffbb90696078b4, type: 3}
       propertyPath: m_RootOrder

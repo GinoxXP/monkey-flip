@@ -9,7 +9,7 @@ public class DestroyTree : MonoBehaviour
     {
         if (other.TryGetComponent<Segment>(out _))
         {
-            moveLevel.Branches.Remove(other.transform);
+            moveLevel.Segments.Remove(other.transform);
             Destroy(other.gameObject);
         }
     }
