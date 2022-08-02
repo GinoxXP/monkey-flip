@@ -47,8 +47,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 5, z: 4}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3.5, y: 12, z: 6}
+  m_Center: {x: 0, y: 0, z: 1}
 --- !u!54 &2750148871287308264
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -131,14 +131,6 @@ PrefabInstance:
     - target: {fileID: 2074369109305952407, guid: 3417fb41bdc27194789d0689bd9fb335, type: 3}
       propertyPath: m_Name
       value: CreateNewSegmentZone
-      objectReference: {fileID: 0}
-    - target: {fileID: 5663032188174820784, guid: 3417fb41bdc27194789d0689bd9fb335, type: 3}
-      propertyPath: m_Size.y
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5663032188174820784, guid: 3417fb41bdc27194789d0689bd9fb335, type: 3}
-      propertyPath: m_Size.z
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3417fb41bdc27194789d0689bd9fb335, type: 3}
