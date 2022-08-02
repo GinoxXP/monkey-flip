@@ -18,6 +18,8 @@ public class GenerationLevel : MonoBehaviour
     private AnimationCurve maxRandomOffsetCurve;
     [SerializeField]
     private Transform branchesParent;
+    [SerializeField]
+    private Transform lastCreatedSegment;
 
     public void Generate(float? distance = null)
     {
@@ -32,17 +34,20 @@ public class GenerationLevel : MonoBehaviour
         var randomIndex = random.Next(segmentsPrefab.Count);
         var branch = container.InstantiatePrefab(segmentsPrefab[randomIndex], branchesParent);
 
-        var randomOffset = (float)(random.NextDouble() - 0.5f) * maxRandomOffsetCurve.Evaluate(difficultyManager.Difficulty);
-        var newPosition = new Vector3(-distance + randomOffset, branch.transform.position.y, branch.transform.position.z);
+        //var randomOffset = (float)(random.NextDouble() - 0.5f) * maxRandomOffsetCurve.Evaluate(difficultyManager.Difficulty);
+        var lastPosition = lastCreatedSegment.position;
+        var randomOffset = 0;
+        var newPosition = new Vector3(lastPosition.x - distance + randomOffset, branch.transform.position.y, branch.transform.position.z);
         branch.transform.position = newPosition;
 
         moveLevel.Segments.Add(branch.transform);
+        lastCreatedSegment = branch.transform;
     }
 
     private void Start()
     {
         random = new System.Random();
-        Generate(generationDistance);
+        Generate();
     }
 
     [Inject]
