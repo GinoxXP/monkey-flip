@@ -3,6 +3,7 @@ using UnityEngine;
 using Zenject;
 
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody))]
 public class SmoothJump : MonoBehaviour
 {
     private PlayerController playerController;
@@ -11,16 +12,28 @@ public class SmoothJump : MonoBehaviour
     private float maxHeight;
     [SerializeField]
     private AnimationCurve jumpCurve;
+    [SerializeField]
+    private bool isFlyMode;
+    [SerializeField]
+    private Vector3 flyPosition;
 
     public Animator Animator { get; private set; }
 
+    private Rigidbody rigidbody;
     private IEnumerator jumpCoroutine;
 
     public void Jump(float power)
     {
         Animator.SetTrigger("Flip");
-        jumpCoroutine = AnimationByTime(power);
-        StartCoroutine(jumpCoroutine);
+        if (isFlyMode)
+        {
+            Fly();
+        }
+        else
+        {
+            jumpCoroutine = AnimationByTime(power);
+            StartCoroutine(jumpCoroutine);
+        }
     }
 
     public void StopJump()
@@ -52,9 +65,16 @@ public class SmoothJump : MonoBehaviour
         yield return null;
     }
 
+    private void Fly()
+    {
+        rigidbody.useGravity = false;
+        transform.position = flyPosition;
+    }
+
     private void Start()
     {
         Animator = GetComponent<Animator>();
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     [Inject]

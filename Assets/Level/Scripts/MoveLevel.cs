@@ -10,12 +10,12 @@ public class MoveLevel : MonoBehaviour
     [SerializeField]
     private float speed;
     [SerializeField]
-    private Transform startBranch;
+    private Transform startSegment;
 
     private IEnumerator moveCoroutine;
     private float trail;
 
-    public List<Transform> Branches { get; set; } = new List<Transform>();
+    public List<Transform> Segments { get; set; } = new List<Transform>();
 
     public void Move(float power)
     {
@@ -37,7 +37,7 @@ public class MoveLevel : MonoBehaviour
     {
         while (true)
         {
-            foreach(var branch in Branches)
+            foreach(var branch in Segments)
             {
                 trail += speed * Time.deltaTime;
 
@@ -55,7 +55,7 @@ public class MoveLevel : MonoBehaviour
 
     private void Start()
     {
-        Branches.Add(startBranch);
+        Segments.Add(startSegment);
     }
 
     [Inject]

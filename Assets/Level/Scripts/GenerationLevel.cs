@@ -11,39 +11,40 @@ public class GenerationLevel : MonoBehaviour
     private System.Random random;
 
     [SerializeField]
-    private List<GameObject> branchPrefabs = new List<GameObject>();
+    private List<GameObject> segmentsPrefab = new List<GameObject>();
     [SerializeField]
-    private int generationDistance;
+    private float generationDistance;
     [SerializeField]
     private AnimationCurve maxRandomOffsetCurve;
     [SerializeField]
     private Transform branchesParent;
+    [SerializeField]
+    private Transform lastCreatedSegment;
 
-    public void Generate(int? distance = null)
+    public void Generate()
     {
-        if(distance.HasValue)
-            CreateBranch(distance.Value);
-        else
-            CreateBranch(generationDistance * 2);
+        CreateBranch(generationDistance);
     }
 
-    private void CreateBranch(int distance)
+    private void CreateBranch(float distance)
     {
-        var randomIndex = random.Next(branchPrefabs.Count);
-        var branch = container.InstantiatePrefab(branchPrefabs[randomIndex], branchesParent);
+        var randomIndex = random.Next(segmentsPrefab.Count);
+        var branch = container.InstantiatePrefab(segmentsPrefab[randomIndex], branchesParent);
 
-        var randomOffset = (float)(random.NextDouble() - 0.5f) * maxRandomOffsetCurve.Evaluate(difficultyManager.Difficulty);
-        var newPosition = new Vector3(-distance + randomOffset, branch.transform.position.y, branch.transform.position.z);
+        var randomOffset = (float)random.NextDouble() * maxRandomOffsetCurve.Evaluate(difficultyManager.Difficulty);
+        var lastPosition = lastCreatedSegment.position;
+
+        var newPosition = new Vector3(lastPosition.x - distance - randomOffset, branch.transform.position.y, branch.transform.position.z);
         branch.transform.position = newPosition;
 
-        moveLevel.Branches.Add(branch.transform);
+        moveLevel.Segments.Add(branch.transform);
+        lastCreatedSegment = branch.transform;
     }
 
     private void Start()
     {
         random = new System.Random();
-        Generate(generationDistance);
-        Generate(generationDistance * 2);
+        Generate();
     }
 
     [Inject]
