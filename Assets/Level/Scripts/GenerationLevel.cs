@@ -21,12 +21,9 @@ public class GenerationLevel : MonoBehaviour
     [SerializeField]
     private Transform lastCreatedSegment;
 
-    public void Generate(float? distance = null)
+    public void Generate()
     {
-        if(distance.HasValue)
-            CreateBranch(distance.Value);
-        else
-            CreateBranch(generationDistance * 2);
+        CreateBranch(generationDistance);
     }
 
     private void CreateBranch(float distance)
@@ -34,10 +31,10 @@ public class GenerationLevel : MonoBehaviour
         var randomIndex = random.Next(segmentsPrefab.Count);
         var branch = container.InstantiatePrefab(segmentsPrefab[randomIndex], branchesParent);
 
-        //var randomOffset = (float)(random.NextDouble() - 0.5f) * maxRandomOffsetCurve.Evaluate(difficultyManager.Difficulty);
+        var randomOffset = (float)random.NextDouble() * maxRandomOffsetCurve.Evaluate(difficultyManager.Difficulty);
         var lastPosition = lastCreatedSegment.position;
-        var randomOffset = 0;
-        var newPosition = new Vector3(lastPosition.x - distance + randomOffset, branch.transform.position.y, branch.transform.position.z);
+
+        var newPosition = new Vector3(lastPosition.x - distance - randomOffset, branch.transform.position.y, branch.transform.position.z);
         branch.transform.position = newPosition;
 
         moveLevel.Segments.Add(branch.transform);
