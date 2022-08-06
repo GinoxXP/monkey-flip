@@ -6,7 +6,6 @@ public class Branch : MonoBehaviour
     private PlayerController playerController;
     private SmoothJump smoothJump;
     private MoveLevel moveLevel;
-    private RotateCamera rotateCamera;
 
     private bool isPlayerStanded;
 
@@ -18,7 +17,6 @@ public class Branch : MonoBehaviour
             smoothJump.StopJump();
             isPlayerStanded = true;
             playerController.IsCanJump = true;
-            rotateCamera.CameraBack();
         }
     }
 
@@ -34,12 +32,10 @@ public class Branch : MonoBehaviour
     private void Init(
         PlayerController playerController,
         SmoothJump smoothJump,
-        MoveLevel moveLevel,
-        RotateCamera rotateCamera)
+        MoveLevel moveLevel)
     {
         this.playerController = playerController;
         this.smoothJump = smoothJump;
         this.moveLevel = moveLevel;
-        this.rotateCamera = rotateCamera;
     }
 }
