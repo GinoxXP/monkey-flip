@@ -10,5 +10,6 @@ public class Installer : MonoInstaller
         Container.Bind<GenerationLevel>().FromComponentInHierarchy().AsSingle();
         Container.Bind<DifficultyManager>().FromComponentInHierarchy().AsSingle();
         Container.Bind<ScoreManager>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<MoveCamera>().FromComponentInHierarchy().AsSingle();
     }
 }
