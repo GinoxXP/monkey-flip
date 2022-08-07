@@ -5,7 +5,7 @@ using Zenject;
 
 public class MoveCamera : MonoBehaviour
 {
-    private readonly float MIN_TRESHOLD = 0.2f;
+    private readonly float MIN_TRESHOLD = 0.01f;
 
     private DifficultyManager difficultyManager;
 
@@ -55,7 +55,9 @@ public class MoveCamera : MonoBehaviour
                 break;
 
             var completenessCoef = 1 - Mathf.Clamp(distanceToEnd, 0, distanceBetweenPoints) / distanceBetweenPoints;
-            var speed = speedCurve.Evaluate(completenessCoef) * speedByDifficultyCurve.Evaluate(difficultyManager.Difficulty);
+            var a = speedCurve.Evaluate(completenessCoef);
+            var b = speedByDifficultyCurve.Evaluate(difficultyManager.Difficulty);
+            var speed =  a *b ;
 
             var newPosition = Vector3.MoveTowards(transform.position, endPosition, speed);
             transform.position = newPosition;

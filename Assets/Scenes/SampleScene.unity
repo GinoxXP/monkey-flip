@@ -670,54 +670,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3522050999170539348, guid: 6f270c567c7487a418a8a089835292b8, type: 3}
-      propertyPath: speedByDifficultyCurve.m_Curve.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3522050999170539348, guid: 6f270c567c7487a418a8a089835292b8, type: 3}
-      propertyPath: speedByDifficultyCurve.m_Curve.Array.data[1].time
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3522050999170539348, guid: 6f270c567c7487a418a8a089835292b8, type: 3}
-      propertyPath: speedByDifficultyCurve.m_Curve.Array.data[0].value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3522050999170539348, guid: 6f270c567c7487a418a8a089835292b8, type: 3}
-      propertyPath: speedByDifficultyCurve.m_Curve.Array.data[1].value
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 3522050999170539348, guid: 6f270c567c7487a418a8a089835292b8, type: 3}
-      propertyPath: speedByDifficultyCurve.m_Curve.Array.data[0].inSlope
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 3522050999170539348, guid: 6f270c567c7487a418a8a089835292b8, type: 3}
-      propertyPath: speedByDifficultyCurve.m_Curve.Array.data[1].inSlope
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 3522050999170539348, guid: 6f270c567c7487a418a8a089835292b8, type: 3}
-      propertyPath: speedByDifficultyCurve.m_Curve.Array.data[0].outSlope
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 3522050999170539348, guid: 6f270c567c7487a418a8a089835292b8, type: 3}
-      propertyPath: speedByDifficultyCurve.m_Curve.Array.data[1].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 3522050999170539348, guid: 6f270c567c7487a418a8a089835292b8, type: 3}
-      propertyPath: speedByDifficultyCurve.m_Curve.Array.data[1].outSlope
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 3522050999170539348, guid: 6f270c567c7487a418a8a089835292b8, type: 3}
-      propertyPath: speedByDifficultyCurve.m_Curve.Array.data[0].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 3522050999170539348, guid: 6f270c567c7487a418a8a089835292b8, type: 3}
-      propertyPath: speedByDifficultyCurve.m_Curve.Array.data[0].tangentMode
-      value: 34
-      objectReference: {fileID: 0}
-    - target: {fileID: 3522050999170539348, guid: 6f270c567c7487a418a8a089835292b8, type: 3}
-      propertyPath: speedByDifficultyCurve.m_Curve.Array.data[1].tangentMode
-      value: 34
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f270c567c7487a418a8a089835292b8, type: 3}
 --- !u!1001 &3709142917665145671
