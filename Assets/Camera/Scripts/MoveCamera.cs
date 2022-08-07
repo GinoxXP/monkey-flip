@@ -1,22 +1,24 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 public class MoveCamera : MonoBehaviour
 {
     private readonly float MIN_TRESHOLD = 0.2f;
 
+    private DifficultyManager difficultyManager;
+
     [SerializeField]
     private AnimationCurve speedCurve;
-    [SerializeField]
-    private float speed;
     [SerializeField]
     private float returnSpeed;
     [SerializeField]
     private Vector3 startPosition;
     [SerializeField]
     private Vector3 endPosition;
+    [SerializeField]
+    private AnimationCurve speedByDifficultyCurve;
 
     private IEnumerator moveCoroutine;
     private IEnumerator returnCoroutine;
@@ -53,8 +55,9 @@ public class MoveCamera : MonoBehaviour
                 break;
 
             var completenessCoef = 1 - Mathf.Clamp(distanceToEnd, 0, distanceBetweenPoints) / distanceBetweenPoints;
+            var speed = speedCurve.Evaluate(completenessCoef) * speedByDifficultyCurve.Evaluate(difficultyManager.Difficulty);
 
-            var newPosition = Vector3.MoveTowards(transform.position, endPosition, speed * speedCurve.Evaluate(completenessCoef));
+            var newPosition = Vector3.MoveTowards(transform.position, endPosition, speed);
             transform.position = newPosition;
 
             yield return null;
@@ -82,5 +85,11 @@ public class MoveCamera : MonoBehaviour
     {
         var currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
+    }
+
+    [Inject]
+    private void Init(DifficultyManager difficultyManager)
+    {
+        this.difficultyManager = difficultyManager;
     }
 }
