@@ -25,6 +25,7 @@ public class SmoothJump : MonoBehaviour
     public void Jump(float power)
     {
         Animator.SetTrigger("Flip");
+        Animator.speed = playerController.MaxPower / power;
         if (isFlyMode)
         {
             Fly();
