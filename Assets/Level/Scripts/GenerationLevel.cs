@@ -37,6 +37,9 @@ public class GenerationLevel : MonoBehaviour
         var newPosition = new Vector3(lastPosition.x - distance - randomOffset, branch.transform.position.y, branch.transform.position.z);
         branch.transform.position = newPosition;
 
+        var segment = branch.GetComponent<Segment>();
+        segment.RandomValue = random.NextDouble();
+
         moveLevel.Segments.Add(branch.transform);
         lastCreatedSegment = branch.transform;
     }
