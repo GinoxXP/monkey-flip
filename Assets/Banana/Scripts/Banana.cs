@@ -10,6 +10,7 @@ public class Banana : MonoBehaviour
         if (other.tag == "Player")
         {
             PickUp();
+            Destroy(gameObject);
         }
     }
 
