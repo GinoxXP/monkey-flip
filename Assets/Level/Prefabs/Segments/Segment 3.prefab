@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 189600493165845319, guid: b5555e305e87acc48bffbb90696078b4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 522624939404872928, guid: b5555e305e87acc48bffbb90696078b4, type: 3}
       propertyPath: m_Name
-      value: Branch 3
+      value: Segment 3
       objectReference: {fileID: 0}
     - target: {fileID: 1837310774139831729, guid: b5555e305e87acc48bffbb90696078b4, type: 3}
       propertyPath: m_LocalPosition.y
