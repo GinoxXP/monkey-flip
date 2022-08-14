@@ -3,9 +3,7 @@ using Zenject;
 
 public class Banana : MonoBehaviour
 {
-    public const string BANANA_COUNTER_KEY = "BananaCounter";
-
-    private BananaView bananaView;
+    private BananaBalanceManager bananaBalanceManager;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,16 +15,12 @@ public class Banana : MonoBehaviour
 
     private void PickUp()
     {
-        int bananas = PlayerPrefs.GetInt(BANANA_COUNTER_KEY, 0);
-        bananas++;
-        PlayerPrefs.SetInt(BANANA_COUNTER_KEY, bananas);
-
-        bananaView.BananaCounterChanged?.Invoke();
+        bananaBalanceManager.Add();
     }
 
     [Inject]
-    private void Init(BananaView bananaView)
+    private void Init(BananaBalanceManager bananaBalanceManager)
     {
-        this.bananaView = bananaView;
+        this.bananaBalanceManager = bananaBalanceManager;
     }
 }

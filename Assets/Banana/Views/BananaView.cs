@@ -1,24 +1,25 @@
 using UnityEngine;
 using TMPro;
 using System;
+using Zenject;
 
 public class BananaView : MonoBehaviour
 {
+    private BananaBalanceManager bananaBalanceManager;
+
     [SerializeField]
     private TMP_Text counter;
 
-    public Action BananaCounterChanged;
-
     private void Start()
     {
-        BananaCounterChanged += SetCounter;
+        bananaBalanceManager.BalanceChanged += SetCounter;
 
         SetCounter();
     }
 
     private void SetCounter()
     {
-        int bananas = PlayerPrefs.GetInt(Banana.BANANA_COUNTER_KEY, 0);
+        var bananas = bananaBalanceManager.Balance;
 
         var bananasText = string.Empty;
 
@@ -30,5 +31,11 @@ public class BananaView : MonoBehaviour
             bananasText = $"{bananas / 1000000}M";
 
         counter.text = bananasText;
+    }
+
+    [Inject]
+    private void Init(BananaBalanceManager bananaBalanceManager)
+    {
+        this.bananaBalanceManager = bananaBalanceManager;
     }
 }
