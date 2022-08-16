@@ -24,12 +24,16 @@ public class MoveLevel : MonoBehaviour
         StartCoroutine(moveCoroutine);
     }
 
-    public void StopMove()
+    public void StopMove(bool ignoreScore = false)
     {
         if (moveCoroutine == null)
             return;
 
         StopCoroutine(moveCoroutine);
+
+        if (ignoreScore)
+            return;
+
         scoreManager.Score += (int)trail;
     }
 
