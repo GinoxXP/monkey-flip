@@ -36,9 +36,12 @@ public class BackgroundManager : MonoBehaviour
                     bg.transform.position.y,
                     bg.transform.position.z);
 
-                    if(newPosition.x >= bgSection.background.MaxPosition.x)
+                    if(newPosition.x >= bgSection.background.XMax)
                     {
-                        newPosition -= bgSection.background.MaxPosition;
+                        newPosition = new Vector3(
+                            bgSection.background.XMin + (newPosition.x - bgSection.background.XMax),
+                            newPosition.y,
+                            newPosition.z);
                     }
 
                     bg.transform.position = newPosition;

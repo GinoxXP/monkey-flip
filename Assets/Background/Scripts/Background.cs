@@ -6,12 +6,12 @@ public class Background : MonoBehaviour
     [SerializeField]
     private List<Transform> transforms;
     [SerializeField]
-    private Vector3 maxPosition;
+    private float xMax;
     [SerializeField]
-    private Vector3 minPosition;
+    private float xMin;
 
     public List<Transform> Transforms => transforms;
-    public Vector3 MaxPosition => maxPosition;
-    public Vector3 MinPosition => minPosition;
+    public float XMax => xMax;
+    public float XMin => xMin;
 
 }

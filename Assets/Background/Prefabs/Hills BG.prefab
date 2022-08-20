@@ -49,8 +49,8 @@ MonoBehaviour:
   transforms:
   - {fileID: 2729428916708605634}
   - {fileID: 5226997746022490852}
-  maxPosition: {x: 38.5, y: 0, z: 0}
-  minPosition: {x: -38.5, y: 0, z: 0}
+  xMax: 38.5
+  xMin: -38.5
 --- !u!1 &5919390150218808502
 GameObject:
   m_ObjectHideFlags: 0
