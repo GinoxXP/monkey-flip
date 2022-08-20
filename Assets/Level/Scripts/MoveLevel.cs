@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
+[RequireComponent(typeof(BackgroundManager))]
 public class MoveLevel : MonoBehaviour
 {
     private ScoreManager scoreManager;
+    private BackgroundManager backgroundManager;
 
     [SerializeField]
     private float speed;
@@ -17,10 +19,11 @@ public class MoveLevel : MonoBehaviour
 
     public List<Transform> Segments { get; set; } = new List<Transform>();
 
-    public void Move(float power)
+    public void Move()
     {
         trail = 0;
-        moveCoroutine = AnimationByTime(power);
+        backgroundManager.Move();
+        moveCoroutine = AnimationByTime();
         StartCoroutine(moveCoroutine);
     }
 
@@ -28,6 +31,8 @@ public class MoveLevel : MonoBehaviour
     {
         if (moveCoroutine == null)
             return;
+
+        backgroundManager.StopMove();
 
         StopCoroutine(moveCoroutine);
 
@@ -37,7 +42,7 @@ public class MoveLevel : MonoBehaviour
         scoreManager.Score += (int)trail;
     }
 
-    private IEnumerator AnimationByTime(float power)
+    private IEnumerator AnimationByTime()
     {
         while (true)
         {
@@ -60,6 +65,7 @@ public class MoveLevel : MonoBehaviour
     private void Start()
     {
         Segments.Add(startSegment);
+        backgroundManager = GetComponent<BackgroundManager>();
     }
 
     [Inject]

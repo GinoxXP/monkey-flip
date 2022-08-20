@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -119,12 +119,12 @@ TextureImporter:
       name: Trees_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 588
-        width: 437
-        height: 492
+        x: 13
+        y: 591
+        width: 421
+        height: 480
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -140,12 +140,12 @@ TextureImporter:
       name: Trees_1
       rect:
         serializedVersion: 2
-        x: 448
-        y: 563
-        width: 420
-        height: 517
+        x: 473
+        y: 569
+        width: 393
+        height: 499
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -161,12 +161,12 @@ TextureImporter:
       name: Trees_2
       rect:
         serializedVersion: 2
-        x: 1119
-        y: 514
-        width: 437
-        height: 566
+        x: 1128
+        y: 523
+        width: 421
+        height: 546
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -179,15 +179,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Trees_3
+      name: Plug
       rect:
         serializedVersion: 2
-        x: 1637
-        y: 635
-        width: 283
-        height: 164
+        x: 1697
+        y: 955
+        width: 98
+        height: 98
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -200,15 +200,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Trees_4
+      name: Trees_3
       rect:
         serializedVersion: 2
-        x: 1522
-        y: 404
-        width: 342
-        height: 176
+        x: 1662
+        y: 639
+        width: 224
+        height: 154
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -224,12 +224,12 @@ TextureImporter:
       name: Trees_5
       rect:
         serializedVersion: 2
-        x: 1419
-        y: 44
-        width: 421
-        height: 320
+        x: 76
+        y: 7
+        width: 465
+        height: 485
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -245,12 +245,12 @@ TextureImporter:
       name: Trees_6
       rect:
         serializedVersion: 2
-        x: 59
-        y: 0
-        width: 508
-        height: 525
+        x: 772
+        y: 13
+        width: 361
+        height: 496
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -263,15 +263,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Trees_7
+      name: Trees_4
       rect:
         serializedVersion: 2
-        x: 747
-        y: 6
-        width: 412
-        height: 544
+        x: 1528
+        y: 407
+        width: 312
+        height: 166
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -279,6 +279,27 @@ TextureImporter:
       bones: []
       spriteID: ae90cc511cc0d3349a80b01d0a1bea48
       internalID: 689644470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trees_8
+      rect:
+        serializedVersion: 2
+        x: 1423
+        y: 51
+        width: 370
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52911c67a444d5b449405a46fa451dba
+      internalID: -1650909232
       vertices: []
       indices: 
       edges: []
@@ -297,11 +318,12 @@ TextureImporter:
       Trees_2: 1516192299
       Trees_1: -820328544
       Trees_6: 40457337
-      Trees_4: 1195517994
+      Trees_4: 689644470
+      Trees_8: -1650909232
       Trees_0: 1826679551
-      Trees_3: 674989419
+      Trees_3: 1195517994
+      Plug: 674989419
       Trees_5: -1290142893
-      Trees_7: 689644470
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

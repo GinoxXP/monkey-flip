@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
     private void TransmitPower()
     {
         smoothJump.Jump(power);
-        moveLevel.Move(power);
+        moveLevel.Move();
     }
 
     [Inject]
