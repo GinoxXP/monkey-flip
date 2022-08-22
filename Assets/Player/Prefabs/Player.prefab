@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac235083f01d1af4d8bdb067de5322a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHeight: 4
+  maxHeight: 5
   jumpCurve:
     serializedVersion: 2
     m_Curve:
@@ -113,6 +113,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   isFlyMode: 0
   flyPosition: {x: 0, y: 5, z: 0}
+  speedMultiplier: 0.9
 --- !u!95 &7981650197425764204
 Animator:
   serializedVersion: 4

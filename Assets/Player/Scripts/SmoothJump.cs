@@ -16,6 +16,8 @@ public class SmoothJump : MonoBehaviour
     private bool isFlyMode;
     [SerializeField]
     private Vector3 flyPosition;
+    [SerializeField]
+    private float speedMultiplier;
 
     public Animator Animator { get; private set; }
 
@@ -51,7 +53,9 @@ public class SmoothJump : MonoBehaviour
         var startPosition = transform.position;
 
         var duration = 0f;
-        var curveTime = jumpCurve.keys[jumpCurve.keys.Length - 1].time;
+        var curveTime = jumpCurve.keys[jumpCurve.keys.Length - 1].time * speedMultiplier;
+
+        Animator.speed = speedMultiplier;
 
         while (duration < curveTime)
         {
