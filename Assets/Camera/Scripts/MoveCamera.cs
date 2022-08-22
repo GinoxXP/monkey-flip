@@ -72,7 +72,7 @@ public class MoveCamera : MonoBehaviour
     {
         while (Vector3.Distance(transform.position, startPosition) > MIN_TRESHOLD)
         {
-            var newPosition = Vector3.MoveTowards(transform.position, startPosition, returnSpeed);
+            var newPosition = Vector3.MoveTowards(transform.position, startPosition, returnSpeed * Time.deltaTime);
             transform.position = newPosition;
 
             yield return null;
