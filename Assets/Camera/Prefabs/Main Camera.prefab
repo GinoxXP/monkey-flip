@@ -139,7 +139,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  returnSpeed: 0.01
+  returnSpeed: 2
   startPosition: {x: -4, y: 0, z: -8}
   endPosition: {x: -6, y: 0, z: -8}
   speedByDifficultyCurve:
