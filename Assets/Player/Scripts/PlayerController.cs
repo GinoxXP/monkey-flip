@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using Zenject;
 
@@ -29,6 +30,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnClick(InputAction.CallbackContext context)
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         if (pauseController.CurrentPauseState)
             pauseController.SetPause(false);
 

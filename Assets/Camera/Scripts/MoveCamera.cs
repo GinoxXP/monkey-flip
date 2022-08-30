@@ -98,12 +98,12 @@ public class MoveCamera : MonoBehaviour
         SceneManager.LoadScene(currentScene.name);
     }
 
-    private void SetPause(bool isPause)
+    private void OnPauseChanged(bool isPause)
         => this.isPause = isPause;
 
     private void OnDestroy()
     {
-        pauseController.PauseChanged -= SetPause;
+        pauseController.PauseChanged -= OnPauseChanged;
     }
 
     [Inject]
@@ -112,6 +112,6 @@ public class MoveCamera : MonoBehaviour
         this.difficultyManager = difficultyManager;
         this.pauseController = pauseController;
 
-        this.pauseController.PauseChanged += SetPause;
+        this.pauseController.PauseChanged += OnPauseChanged;
     }
 }
