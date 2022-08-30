@@ -13,5 +13,6 @@ public class Installer : MonoInstaller
         Container.Bind<MoveCamera>().FromComponentInHierarchy().AsSingle();
         Container.Bind<BananaView>().FromComponentInHierarchy().AsSingle();
         Container.Bind<BananaBalanceManager>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<PauseController>().FromComponentInHierarchy().AsSingle();
     }
 }
