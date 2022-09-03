@@ -15,12 +15,13 @@ public class Pallete : MonoBehaviour
     {
         palleteTitle.text = colorPalettes.Name;
 
-        foreach (var colorPalette in colorPalettes.Colors)
+        foreach (var colorSet in colorPalettes.Colors)
         {
             var colorButton = Instantiate(colorButtonPrefab, colorsParent);
             var colorButtonComponent = colorButton.GetComponent<ColorButton>();
 
-            colorButtonComponent.Color = colorPalette.Color;
+            colorButtonComponent.Color = colorSet.Color;
+            colorButtonComponent.TargetMaterial = colorPalettes.TargetMaterial;
         }
     }
 }

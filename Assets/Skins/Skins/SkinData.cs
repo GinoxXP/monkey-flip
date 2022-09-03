@@ -29,13 +29,16 @@ public class SkinData : ScriptableObject
     {
         [SerializeField]
         private string name;
-
         [SerializeField]
         private List<ColorSet> colors;
+        [SerializeField]
+        private Material targetMaterial;
 
         public string Name => name;
 
         public List<ColorSet> Colors => colors;
+
+        public Material TargetMaterial => targetMaterial;
     }
 
     [System.Serializable]
@@ -43,10 +46,8 @@ public class SkinData : ScriptableObject
     {
         [SerializeField]
         private string key;
-
         [SerializeField]
         private Color color;
-
         [SerializeField]
         private int cost;
 

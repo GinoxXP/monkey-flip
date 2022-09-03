@@ -33,6 +33,7 @@ MonoBehaviour:
       - key: Color5
         color: {r: 1, g: 0, b: 0.20784314, a: 1}
         cost: 20
+      targetMaterial: {fileID: 2100000, guid: ce43b242828957642b5342c7922db650, type: 2}
     - name: Secondary color
       colors:
       - key: Color1
@@ -50,3 +51,4 @@ MonoBehaviour:
       - key: Color5
         color: {r: 0.84705883, g: 0.84705883, b: 0.9647059, a: 1}
         cost: 20
+      targetMaterial: {fileID: 2100000, guid: 1899e88ef78e85f448c355cb9c0b0e43, type: 2}
