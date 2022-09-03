@@ -12,26 +12,34 @@ public class SkinData : ScriptableObject
     {
         [SerializeField]
         private string name;
-
         [SerializeField]
         private string key;
-
         [SerializeField]
-        private List<ColorPalettes> colorPalettes;
+        private List<ColorPalette> colorPalettes;
+
+        public string Name => name;
+
+        public string Key => key;
+
+        public List<ColorPalette> ColorPalettes => colorPalettes;
     }
 
     [System.Serializable]
-    public class ColorPalettes
+    public class ColorPalette
     {
         [SerializeField]
         private string name;
 
         [SerializeField]
-        private List<ColorPalette> colorPalettes;
+        private List<ColorSet> colors;
+
+        public string Name => name;
+
+        public List<ColorSet> Colors => colors;
     }
 
     [System.Serializable]
-    public class ColorPalette
+    public class ColorSet
     {
         [SerializeField]
         private string key;
@@ -41,5 +49,11 @@ public class SkinData : ScriptableObject
 
         [SerializeField]
         private int cost;
+
+        public string Key => key;
+
+        public Color Color => color;
+
+        public int Cost => cost;
     }
 }
