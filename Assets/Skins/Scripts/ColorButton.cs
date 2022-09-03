@@ -2,17 +2,12 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Image))]
 public class ColorButton : MonoBehaviour
 {
+    [SerializeField]
     private Image image;
 
-    public event Action ColorChanged;
-
-    void Start()
-    {
-        image = GetComponent<Image>();
-    }
+    public Color Color { get => image.color; set => image.color = value; }
 
     public void Click()
     {

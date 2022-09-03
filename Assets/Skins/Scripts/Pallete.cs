@@ -18,6 +18,9 @@ public class Pallete : MonoBehaviour
         foreach (var colorPalette in colorPalettes.Colors)
         {
             var colorButton = Instantiate(colorButtonPrefab, colorsParent);
+            var colorButtonComponent = colorButton.GetComponent<ColorButton>();
+
+            colorButtonComponent.Color = colorPalette.Color;
         }
     }
 }
