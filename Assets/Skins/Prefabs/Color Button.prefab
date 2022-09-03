@@ -301,3 +301,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 2179108210964234593}
+  selectIcon: {fileID: 40194575333868659}
+  lockIcon: {fileID: 753710424806326587}

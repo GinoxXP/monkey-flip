@@ -24,5 +24,7 @@ public class ColorButton : MonoBehaviour
     public void Click()
     {
         TargetMaterial.color = Color;
+        Select?.Invoke();
+        IsSelected = true;
     }
 }
