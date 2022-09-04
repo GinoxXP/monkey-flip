@@ -12,7 +12,7 @@ public class Branch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player" && !isPlayerStanded)
+        if(other.CompareTag("Player") && !isPlayerStanded)
         {
             moveLevel.StopMove();
             smoothJump.StopJump();
@@ -24,7 +24,7 @@ public class Branch : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             playerController.IsCanJump = false;
             moveCamera.StopMove();
