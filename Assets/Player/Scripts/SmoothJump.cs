@@ -21,7 +21,7 @@ public class SmoothJump : MonoBehaviour
 
     public Animator Animator { get; private set; }
 
-    private Rigidbody rigidbody;
+    private new Rigidbody rigidbody;
     private IEnumerator jumpCoroutine;
 
     public void Jump(float power)

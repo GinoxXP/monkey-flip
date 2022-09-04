@@ -11,7 +11,7 @@ public class GenerationLevel : MonoBehaviour
     private System.Random random;
 
     [SerializeField]
-    private List<GameObject> segmentsPrefab = new List<GameObject>();
+    private List<GameObject> segmentsPrefab = new();
     [SerializeField]
     private float generationDistance;
     [SerializeField]
