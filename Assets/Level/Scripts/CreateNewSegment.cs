@@ -10,7 +10,7 @@ public class CreateNewSegment : MonoBehaviour
     {
         if (other.TryGetComponent<SmoothJump>(out _))
         {
-            generationLevel?.Generate();
+            generationLevel.Generate();
             difficultyManager.AddDifficulty();
         }
     }

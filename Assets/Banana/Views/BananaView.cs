@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using System;
 using Zenject;
 
 public class BananaView : MonoBehaviour
