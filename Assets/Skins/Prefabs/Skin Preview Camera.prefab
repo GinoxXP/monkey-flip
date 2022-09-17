@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6831929169235114856}
   - component: {fileID: 6831929169235114859}
-  - component: {fileID: 6831929169235114858}
   - component: {fileID: 4325600408476882819}
   m_Layer: 0
   m_Name: Skin Preview Camera
@@ -77,14 +76,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &6831929169235114858
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6831929169235114861}
-  m_Enabled: 1
 --- !u!114 &4325600408476882819
 MonoBehaviour:
   m_ObjectHideFlags: 0
