@@ -13,15 +13,19 @@ public class SkinData : ScriptableObject
         [SerializeField]
         private string name;
         [SerializeField]
-        private string key;
-        [SerializeField]
         private List<ColorPalette> colorPalettes;
+        [SerializeField]
+        private bool isBought;
+        [SerializeField]
+        private bool isSelected;
 
         public string Name => name;
 
-        public string Key => key;
-
         public List<ColorPalette> ColorPalettes => colorPalettes;
+
+        public bool IsBought => isBought;
+
+        public bool IsSelected => isSelected;
     }
 
     [System.Serializable]
@@ -30,13 +34,13 @@ public class SkinData : ScriptableObject
         [SerializeField]
         private string name;
         [SerializeField]
-        private List<ColorSet> colors;
+        private List<ColorSet> colorSets;
         [SerializeField]
         private Material targetMaterial;
 
         public string Name => name;
 
-        public List<ColorSet> Colors => colors;
+        public List<ColorSet> ColorSets => colorSets;
 
         public Material TargetMaterial => targetMaterial;
     }
@@ -45,16 +49,20 @@ public class SkinData : ScriptableObject
     public class ColorSet
     {
         [SerializeField]
-        private string key;
-        [SerializeField]
         private Color color;
         [SerializeField]
         private int cost;
-
-        public string Key => key;
+        [SerializeField]
+        private bool isBought;
+        [SerializeField]
+        private bool isSelected;
 
         public Color Color => color;
 
         public int Cost => cost;
+
+        public bool IsBought { get => isBought; set => isBought = value; }
+
+        public bool IsSelected { get => isSelected; set => isSelected = value; }
     }
 }

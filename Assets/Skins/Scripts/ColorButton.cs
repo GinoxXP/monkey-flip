@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using static SkinData;
 
 public class ColorButton : MonoBehaviour
 {
@@ -17,14 +18,14 @@ public class ColorButton : MonoBehaviour
 
     public bool IsLocked { get => lockIcon.activeSelf; set => lockIcon.SetActive(value); }
 
+    public ColorSet ColorSet { get; set; }
+
     public Material TargetMaterial { get; set; }
 
-    public event Action Select;
+    public event Action<ColorSet, Material> Select;
 
     public void Click()
     {
-        TargetMaterial.color = Color;
-        Select?.Invoke();
-        IsSelected = true;
+        Select?.Invoke(ColorSet, TargetMaterial);
     }
 }

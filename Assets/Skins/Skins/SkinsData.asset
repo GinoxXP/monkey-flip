@@ -14,41 +14,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skins:
   - name: Chimpanzee
-    key: Chimpanzee
     colorPalettes:
     - name: Primary color
-      colors:
-      - key: Color1
-        color: {r: 0.27450982, g: 0.11372549, b: 0, a: 1}
+      colorSets:
+      - color: {r: 0.27450982, g: 0.11372549, b: 0, a: 1}
         cost: 0
-      - key: Color2
-        color: {r: 0.21960784, g: 0.2509804, b: 0.37254903, a: 1}
-        cost: 5
-      - key: Color3
-        color: {r: 0.54509807, g: 0.5764706, b: 0.6117647, a: 1}
+        isBought: 1
+        isSelected: 1
+      - color: {r: 0.9411765, g: 0.63529414, b: 0.007843138, a: 1}
         cost: 10
-      - key: Color4
-        color: {r: 0.5058824, g: 0.96862745, b: 0.8980392, a: 1}
-        cost: 15
-      - key: Color5
-        color: {r: 1, g: 0, b: 0.20784314, a: 1}
+        isBought: 0
+        isSelected: 0
+      - color: {r: 0.94509804, g: 0.53333336, b: 0.019607844, a: 1}
         cost: 20
+        isBought: 0
+        isSelected: 0
+      - color: {r: 0.8509804, g: 0.3647059, b: 0.22352941, a: 1}
+        cost: 35
+        isBought: 0
+        isSelected: 0
+      - color: {r: 0.1254902, g: 0.17254902, b: 0.34901962, a: 1}
+        cost: 50
+        isBought: 0
+        isSelected: 0
       targetMaterial: {fileID: 2100000, guid: ce43b242828957642b5342c7922db650, type: 2}
     - name: Secondary color
-      colors:
-      - key: Color1
-        color: {r: 1, g: 0.8156863, b: 0.5254902, a: 1}
+      colorSets:
+      - color: {r: 1, g: 0.8156863, b: 0.5254902, a: 1}
         cost: 0
-      - key: Color2
-        color: {r: 0.078431375, g: 0.03137255, b: 0.05490196, a: 1}
-        cost: 5
-      - key: Color3
-        color: {r: 0.28627452, g: 0.2784314, b: 0.35686275, a: 1}
+        isBought: 1
+        isSelected: 1
+      - color: {r: 0.34901962, g: 0.34901962, b: 0.34901962, a: 1}
         cost: 10
-      - key: Color4
-        color: {r: 0.4745098, g: 0.5803922, b: 0.5882353, a: 1}
+        isBought: 0
+        isSelected: 0
+      - color: {r: 0.49803922, g: 0.49803922, b: 0.49803922, a: 1}
         cost: 15
-      - key: Color5
-        color: {r: 0.84705883, g: 0.84705883, b: 0.9647059, a: 1}
-        cost: 20
+        isBought: 0
+        isSelected: 0
+      - color: {r: 0.33333334, g: 0.8666667, b: 0.8784314, a: 1}
+        cost: 35
+        isBought: 0
+        isSelected: 0
+      - color: {r: 0.4, g: 0.0627451, b: 0.9490196, a: 1}
+        cost: 50
+        isBought: 0
+        isSelected: 0
       targetMaterial: {fileID: 2100000, guid: 1899e88ef78e85f448c355cb9c0b0e43, type: 2}
+    isBought: 1
+    isSelected: 0

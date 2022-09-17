@@ -15,7 +15,7 @@ public class WardrobeView : MonoBehaviour
     private void SelectSkin(int index)
     {
         var skin = skinData.skins[index];
-
+        skinData.skins.Add(new SkinData.Skin());
         skinNameText.text = skin.Name;
 
         foreach (var palette in skin.ColorPalettes)

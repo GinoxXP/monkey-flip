@@ -5,7 +5,7 @@ using static SkinData;
 
 public class Pallete : MonoBehaviour
 {
-    private List<ColorButton> colorButtons = new List<ColorButton>();
+    private List<(ColorButton, ColorSet)> colorButtons = new ();
 
     [SerializeField]
     private TMP_Text palleteTitle;
@@ -20,24 +20,53 @@ public class Pallete : MonoBehaviour
 
         palleteTitle.text = colorPalettes.Name;
 
-        foreach (var colorSet in colorPalettes.Colors)
+        foreach (var colorSet in colorPalettes.ColorSets)
         {
             var colorButton = Instantiate(colorButtonPrefab, colorsParent);
             var colorButtonComponent = colorButton.GetComponent<ColorButton>();
 
             colorButtonComponent.Color = colorSet.Color;
+            colorButtonComponent.ColorSet = colorSet;
             colorButtonComponent.TargetMaterial = colorPalettes.TargetMaterial;
-            colorButtonComponent.Select += UnselectAll;
 
-            colorButtons.Add(colorButtonComponent);
+            colorButtonComponent.Select += OnColorButtonClicked;
+
+            colorButtons.Add((colorButtonComponent, colorSet));
         }
     }
 
-    private void UnselectAll()
+    private void OnColorButtonClicked(ColorSet colorSet, Material targetMaterial)
     {
-        foreach (var colorButton in colorButtons)
+        if (colorSet.IsBought)
         {
-            colorButton.IsSelected = false;
+            SetColor(colorSet, targetMaterial);
+            UpdateColorButtons();
+        }
+        else
+        {
+
+        }
+    }
+
+    private void SetColor(ColorSet colorSet, Material targetMaterial)
+    {
+        DeselectAll();
+        targetMaterial.color = colorSet.Color;
+        colorSet.IsSelected = true;
+    }
+
+    private void DeselectAll()
+    {
+        foreach (var (colorButton, colorSet) in colorButtons)
+            colorSet.IsSelected = false;
+    }
+
+    private void UpdateColorButtons()
+    {
+        foreach (var (colorButton, colorSet) in colorButtons)
+        {
+            colorButton.IsLocked = !colorSet.IsBought;
+            colorButton.IsSelected = colorSet.IsSelected;
         }
     }
 
@@ -45,10 +74,16 @@ public class Pallete : MonoBehaviour
     {
         for (int i = 0; i < colorButtons.Count; i++)
         {
-            colorButtons[i].Select -= UnselectAll;
-            Destroy(colorButtons[i].gameObject);
+            var (colorButton, colorSet) = colorButtons[i];
+            colorButton.Select -= OnColorButtonClicked;
+            Destroy(colorButton.gameObject);
         }
 
         colorButtons.Clear();
+    }
+
+    private void Start()
+    {
+        UpdateColorButtons();
     }
 }

@@ -14,5 +14,6 @@ public class Installer : MonoInstaller
         Container.Bind<BananaView>().FromComponentInHierarchy().AsSingle();
         Container.Bind<BananaBalanceManager>().FromComponentInHierarchy().AsSingle();
         Container.Bind<PauseController>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<SkinManager>().FromComponentInHierarchy().AsSingle();
     }
 }
