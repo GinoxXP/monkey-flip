@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class Pallete : MonoBehaviour
     private Transform colorsParent;
     [SerializeField]
     private GameObject colorButtonPrefab;
+
+    public event Action<ColorSet> OnBuyColor;
 
     public void Fill(ColorPalette colorPalettes)
     {
@@ -44,7 +47,7 @@ public class Pallete : MonoBehaviour
         }
         else
         {
-
+            OnBuyColor?.Invoke(colorSet);
         }
     }
 

@@ -20,14 +20,16 @@ public class BananaBalanceManager : MonoBehaviour
     public bool CanRemove(int value)
        => Balance >= value;
 
-    private void Remove(int value)
+    public bool Remove(int value)
     {
         if (!CanRemove(value))
-            return;
+            return false;
 
         var balance = Balance - value;
         PlayerPrefs.SetInt(BANANA_COUNTER_KEY, balance);
 
         BalanceChanged?.Invoke();
+
+        return true;
     }
 }
