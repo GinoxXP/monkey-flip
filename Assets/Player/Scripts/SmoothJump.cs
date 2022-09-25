@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using Zenject;
 
-[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody))]
 public class SmoothJump : MonoBehaviour
 {
@@ -19,7 +18,7 @@ public class SmoothJump : MonoBehaviour
     [SerializeField]
     private float speedMultiplier;
 
-    public Animator Animator { get; private set; }
+    public Animator Animator { get; set; }
 
     private Rigidbody rigidbody;
     private IEnumerator jumpCoroutine;
@@ -78,7 +77,6 @@ public class SmoothJump : MonoBehaviour
 
     private void Start()
     {
-        Animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
     }
 
