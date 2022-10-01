@@ -1,7 +1,11 @@
+using UnityEngine;
 using Zenject;
 
 public class Installer : MonoInstaller
 {
+    [SerializeField]
+    private SkinData skinData;
+
     public override void InstallBindings()
     {
         Container.Bind<SmoothJump>().FromComponentInHierarchy().AsSingle();
@@ -16,5 +20,7 @@ public class Installer : MonoInstaller
         Container.Bind<PauseController>().FromComponentInHierarchy().AsSingle();
         Container.Bind<SkinManager>().FromComponentInHierarchy().AsSingle();
         Container.Bind<PlayerModelController>().FromComponentInHierarchy().AsSingle();
+
+        Container.Bind<SkinData>().FromScriptableObject(skinData).AsSingle();
     }
 }

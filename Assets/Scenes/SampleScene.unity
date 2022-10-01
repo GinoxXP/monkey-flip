@@ -503,6 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84733dd6c19f7fe42bb9bf19e590e1e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skinData: {fileID: 11400000, guid: 76fa6dd507301b342a4fdbd5e66242ba, type: 2}
 --- !u!4 &1465338705
 Transform:
   m_ObjectHideFlags: 0

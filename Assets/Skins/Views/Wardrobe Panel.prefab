@@ -648,8 +648,10 @@ MonoBehaviour:
   skinData: {fileID: 11400000, guid: 76fa6dd507301b342a4fdbd5e66242ba, type: 2}
   skinNameText: {fileID: 1338059520626269318}
   palettesParent: {fileID: 1338059518869474899}
+  monkeysParent: {fileID: 1338059518933316633}
   palettePanelPrefab: {fileID: 3382194459158209969, guid: 7e20187abd109714f861ca8c524c9b83, type: 3}
   buySkinColorViewPrefab: {fileID: 4333536471843287881, guid: 90d5f774d8f0eaa43b80b3c9222dd493, type: 3}
+  monkeyButtonPrefab: {fileID: 2808369293721025924, guid: 99ebd7cd8612eaa4eb4c9e750837cb1d, type: 3}
 --- !u!114 &1338059520344374724
 MonoBehaviour:
   m_ObjectHideFlags: 0

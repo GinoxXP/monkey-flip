@@ -5,6 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/SkinScriptableObject", order = 1)]
 public class SkinData : ScriptableObject
 {
+    public static readonly string CHIMPANZE_NAME = "Chimpanzee";
+    public static readonly string GORILLA_NAME = "Gorilla";
+
     public List<Skin> skins = new List<Skin>();
 
     [System.Serializable]
@@ -18,6 +21,8 @@ public class SkinData : ScriptableObject
         private bool isBought;
         [SerializeField]
         private bool isSelected;
+        [SerializeField]
+        private GameObject model;
 
         public string Name => name;
 
@@ -26,6 +31,8 @@ public class SkinData : ScriptableObject
         public bool IsBought => isBought;
 
         public bool IsSelected => isSelected;
+
+        public GameObject Model { get => model; set => model = value; }
     }
 
     [System.Serializable]

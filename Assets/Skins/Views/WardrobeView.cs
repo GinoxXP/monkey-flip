@@ -16,11 +16,15 @@ public class WardrobeView : MonoBehaviour
     [SerializeField]
     private Transform palettesParent;
     [SerializeField]
+    private Transform monkeysParent;
+    [SerializeField]
     private GameObject palettePanelPrefab;
     [SerializeField]
     private GameObject buySkinColorViewPrefab;
+    [SerializeField]
+    private GameObject monkeyButtonPrefab;
 
-    private void SelectSkin(int index)
+    private void SelectColor(int index)
     {
         var skin = skinData.skins[index];
         skinData.skins.Add(new SkinData.Skin());
@@ -35,6 +39,14 @@ public class WardrobeView : MonoBehaviour
         }
     }
 
+    private void SelectSkin(int index)
+    {
+        foreach (var monkeySkin in skinData.skins)
+        {
+            var skinButton = Instantiate(monkeyButtonPrefab, monkeysParent);
+        }
+    }
+
     private void OnColorBought(SkinData.ColorSet colorSet)
     {
         var buySkinColorView = container.InstantiatePrefab(buySkinColorViewPrefab, canvas);
@@ -45,6 +57,7 @@ public class WardrobeView : MonoBehaviour
     private void Start()
     {
         SelectSkin(0);
+        SelectColor(0);
     }
 
     [Inject]

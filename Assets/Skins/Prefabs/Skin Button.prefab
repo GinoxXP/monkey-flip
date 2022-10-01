@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 625671923932648823}
   - component: {fileID: 8822493256839934172}
   - component: {fileID: 6283603671386902388}
-  - component: {fileID: 4093571945576707064}
+  - component: {fileID: -3743881656373643938}
   m_Layer: 5
-  m_Name: Monkey Button
+  m_Name: Skin Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,8 +123,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8822493256839934172}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &4093571945576707064
+      m_Calls:
+      - m_Target: {fileID: -3743881656373643938}
+        m_TargetAssemblyTypeName: SkinButton, Assembly-CSharp
+        m_MethodName: Click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-3743881656373643938
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,23 +145,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2808369293721025924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Script: {fileID: 11500000, guid: 6191c6a879b12b445960ec9097ecbd53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 20
-    m_Right: 20
-    m_Top: 20
-    m_Bottom: 20
-  m_ChildAlignment: 1
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!1 &5049767197637044878
 GameObject:
   m_ObjectHideFlags: 0
