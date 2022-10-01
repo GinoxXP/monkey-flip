@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/SkinScriptableObject", order = 1)]
 public class SkinData : ScriptableObject
@@ -23,6 +24,8 @@ public class SkinData : ScriptableObject
         private bool isSelected;
         [SerializeField]
         private GameObject model;
+        [SerializeField]
+        private Sprite icon;
 
         public string Name => name;
 
@@ -32,7 +35,9 @@ public class SkinData : ScriptableObject
 
         public bool IsSelected => isSelected;
 
-        public GameObject Model { get => model; set => model = value; }
+        public GameObject Model => model;
+
+        public Sprite Icon => icon;
     }
 
     [System.Serializable]

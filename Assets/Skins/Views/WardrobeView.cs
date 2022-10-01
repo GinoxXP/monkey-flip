@@ -1,36 +1,33 @@
 using TMPro;
 using UnityEngine;
 using Zenject;
+using static SkinData;
 
 public class WardrobeView : MonoBehaviour
 {
     private DiContainer container;
+    private SkinController skinController;
+    private SkinData skinData;
 
     [SerializeField]
     private Transform canvas;
     [Space]
     [SerializeField]
-    private SkinData skinData;
-    [SerializeField]
     private TMP_Text skinNameText;
     [SerializeField]
     private Transform palettesParent;
     [SerializeField]
-    private Transform monkeysParent;
+    private Transform skinsParent;
     [SerializeField]
     private GameObject palettePanelPrefab;
     [SerializeField]
     private GameObject buySkinColorViewPrefab;
     [SerializeField]
-    private GameObject monkeyButtonPrefab;
+    private GameObject skinButtonPrefab;
 
-    private void SelectColor(int index)
+    private void FillPalettes()
     {
-        var skin = skinData.skins[index];
-        skinData.skins.Add(new SkinData.Skin());
-        skinNameText.text = skin.Name;
-
-        foreach (var palette in skin.ColorPalettes)
+        foreach (var palette in skinController.SelectedSkin.ColorPalettes)
         {
             var palettePanel = Instantiate(palettePanelPrefab, palettesParent);
             var paletteComponent = palettePanel.GetComponent<Pallete>();
@@ -39,15 +36,17 @@ public class WardrobeView : MonoBehaviour
         }
     }
 
-    private void SelectSkin(int index)
+    private void FillSkins()
     {
-        foreach (var monkeySkin in skinData.skins)
+        foreach (var skin in skinData.skins)
         {
-            var skinButton = Instantiate(monkeyButtonPrefab, monkeysParent);
+            var skinButton = Instantiate(skinButtonPrefab, skinsParent);
+            var skinButtonComponent = skinButton.GetComponent<SkinButton>();
+            skinButtonComponent.Icon = skin.Icon;
         }
     }
 
-    private void OnColorBought(SkinData.ColorSet colorSet)
+    private void OnColorBought(ColorSet colorSet)
     {
         var buySkinColorView = container.InstantiatePrefab(buySkinColorViewPrefab, canvas);
         var buySkinColorViewComponent = buySkinColorView.GetComponent<BuySkinColorView>();
@@ -56,13 +55,15 @@ public class WardrobeView : MonoBehaviour
 
     private void Start()
     {
-        SelectSkin(0);
-        SelectColor(0);
+        FillPalettes();
+        FillSkins();
     }
 
     [Inject]
-    private void Init(DiContainer container)
+    private void Init(DiContainer container, SkinController skinController, SkinData skinData)
     {
         this.container = container;
+        this.skinController = skinController;
+        this.skinData = skinData;
     }
 }

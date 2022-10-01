@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using UnityEngine;
 using Zenject;
 using static SkinData;
@@ -7,6 +8,9 @@ public class SkinController : MonoBehaviour
     private GameObject currentModel;
     private SmoothJump smoothJump;
     private SkinData skinData;
+    private Skin selectedSkin;
+
+    public Skin SelectedSkin => selectedSkin;
 
     public bool SetSkin(string tag)
     {
@@ -14,6 +18,8 @@ public class SkinController : MonoBehaviour
         {
             if (skin.Name == tag)
             {
+                selectedSkin = skin;
+
                 if (currentModel != null)
                     Destroy(currentModel);
 
@@ -24,6 +30,12 @@ public class SkinController : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void SetColor(ColorSet colorSet, Material targetMaterial)
+    {
+        targetMaterial.color = colorSet.Color;
+        colorSet.IsSelected = true;
     }
 
     private void Start()

@@ -64,6 +64,7 @@ MonoBehaviour:
     isBought: 1
     isSelected: 0
     model: {fileID: 4583760366208429092, guid: b722b41cd12344d4ba58cf91bdf01255, type: 3}
+    icon: {fileID: 21300000, guid: 3393e6bffe4a99945b716e722427d699, type: 3}
   - name: Gorilla
     colorPalettes:
     - name: Primary color
@@ -115,3 +116,4 @@ MonoBehaviour:
     isBought: 0
     isSelected: 0
     model: {fileID: 480669691104914357, guid: 14cb790c882768e4ab74f1761e6df1e9, type: 3}
+    icon: {fileID: 21300000, guid: a1fee7129b2400748bbfd5554c75adc4, type: 3}

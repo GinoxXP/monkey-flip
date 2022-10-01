@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Zenject;
 using static SkinData;
 
 public class Pallete : MonoBehaviour
 {
+    private SkinController skinController;
     private List<(ColorButton, ColorSet)> colorButtons = new ();
 
     [SerializeField]
@@ -42,20 +44,14 @@ public class Pallete : MonoBehaviour
     {
         if (colorSet.IsBought)
         {
-            SetColor(colorSet, targetMaterial);
+            skinController.SetColor(colorSet, targetMaterial);
+            DeselectAll();
             UpdateColorButtons();
         }
         else
         {
             OnBuyColor?.Invoke(colorSet);
         }
-    }
-
-    private void SetColor(ColorSet colorSet, Material targetMaterial)
-    {
-        DeselectAll();
-        targetMaterial.color = colorSet.Color;
-        colorSet.IsSelected = true;
     }
 
     private void DeselectAll()
@@ -88,5 +84,11 @@ public class Pallete : MonoBehaviour
     private void Start()
     {
         UpdateColorButtons();
+    }
+
+    [Inject]
+    private void Init(SkinController skinController)
+    {
+        this.skinController = skinController;
     }
 }
