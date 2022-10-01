@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4142139955115138105}
   - component: {fileID: 5913898967338381026}
   - component: {fileID: 1426432184264260036}
-  - component: {fileID: 7588221542389802731}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -113,20 +112,3 @@ MonoBehaviour:
   isFlyMode: 0
   flyPosition: {x: 0, y: 5, z: 0}
   speedMultiplier: 0.9
---- !u!114 &7588221542389802731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1933906534280961523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 527f2114dbef83145900bab595edd5ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monkeys:
-  - model: {fileID: 4583760366208429092, guid: b722b41cd12344d4ba58cf91bdf01255, type: 3}
-    name: Chimpanze
-  - model: {fileID: 480669691104914357, guid: 14cb790c882768e4ab74f1761e6df1e9, type: 3}
-    name: Gorilla

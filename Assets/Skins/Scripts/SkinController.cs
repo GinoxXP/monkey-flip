@@ -2,13 +2,13 @@ using UnityEngine;
 using Zenject;
 using static SkinData;
 
-public class PlayerModelController : MonoBehaviour
+public class SkinController : MonoBehaviour
 {
     private GameObject currentModel;
     private SmoothJump smoothJump;
     private SkinData skinData;
 
-    public bool SetMonkey(string tag)
+    public bool SetSkin(string tag)
     {
         foreach (var skin in skinData.skins)
         {
@@ -17,7 +17,7 @@ public class PlayerModelController : MonoBehaviour
                 if (currentModel != null)
                     Destroy(currentModel);
 
-                currentModel = Instantiate(skin.Model, transform);
+                currentModel = Instantiate(skin.Model, smoothJump.transform);
                 smoothJump.Animator = currentModel.GetComponent<Animator>();
                 return true;
             }
@@ -28,7 +28,7 @@ public class PlayerModelController : MonoBehaviour
 
     private void Start()
     {
-        SetMonkey(CHIMPANZE_NAME);
+        SetSkin(CHIMPANZE_NAME);
     }
 
     [Inject]
