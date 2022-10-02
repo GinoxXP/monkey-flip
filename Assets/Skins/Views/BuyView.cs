@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -12,13 +13,15 @@ public class BuyView : MonoBehaviour
     [SerializeField]
     private string message;
 
-    public ColorSet ColorSet { get; set; }
+    public Action OnBought { get; set; }
+
+    public int Cost { get; set; }
 
     public void Buy()
     {
-        if (bananaBalanceManager.Remove(ColorSet.Cost))
+        if (bananaBalanceManager.Remove(Cost))
         {
-            ColorSet.IsBought = true;
+            OnBought?.Invoke();
             Close();
         }
     }
@@ -30,7 +33,7 @@ public class BuyView : MonoBehaviour
 
     private void Start()
     {
-        textComponent.text = string.Format(message, ColorSet.Cost);
+        textComponent.text = string.Format(message, Cost);
     }
 
     [Inject]

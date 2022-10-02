@@ -31,7 +31,7 @@ public class SkinData : ScriptableObject
 
         public List<ColorPalette> ColorPalettes => colorPalettes;
 
-        public bool IsBought => isBought;
+        public bool IsBought { get => isBought; set => isBought = value; }
 
         public bool IsSelected => isSelected;
 
