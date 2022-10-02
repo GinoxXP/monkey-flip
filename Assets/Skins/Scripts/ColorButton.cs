@@ -22,10 +22,10 @@ public class ColorButton : MonoBehaviour
 
     public Material TargetMaterial { get; set; }
 
-    public event Action<ColorSet, Material> Select;
+    public event Action<ColorSet, Material> OnSelect;
 
     public void Click()
     {
-        Select?.Invoke(ColorSet, TargetMaterial);
+        OnSelect?.Invoke(ColorSet, TargetMaterial);
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 using Zenject;
 using static SkinData;
 
-public class BuySkinColorView : MonoBehaviour
+public class BuyView : MonoBehaviour
 {
     private BananaBalanceManager bananaBalanceManager;
 

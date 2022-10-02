@@ -21,7 +21,7 @@ public class WardrobeView : MonoBehaviour
     [SerializeField]
     private GameObject palettePanelPrefab;
     [SerializeField]
-    private GameObject buySkinColorViewPrefab;
+    private GameObject buyViewPrefab;
     [SerializeField]
     private GameObject skinButtonPrefab;
 
@@ -42,15 +42,34 @@ public class WardrobeView : MonoBehaviour
         {
             var skinButton = Instantiate(skinButtonPrefab, skinsParent);
             var skinButtonComponent = skinButton.GetComponent<SkinButton>();
-            skinButtonComponent.Icon = skin.Icon;
+            skinButtonComponent.Skin = skin;
+            skinButtonComponent.OnSelect += OnSkinButtonClicked;
         }
     }
 
     private void OnColorBought(ColorSet colorSet)
     {
-        var buySkinColorView = container.InstantiatePrefab(buySkinColorViewPrefab, canvas);
-        var buySkinColorViewComponent = buySkinColorView.GetComponent<BuySkinColorView>();
-        buySkinColorViewComponent.ColorSet = colorSet;
+        var buyView = container.InstantiatePrefab(buyViewPrefab, canvas);
+        var buyViewComponent = buyView.GetComponent<BuyView>();
+        buyViewComponent.ColorSet = colorSet;
+    }
+
+    private void OnSkinBought(Skin skin)
+    {
+
+    }
+
+    private void OnSkinButtonClicked(Skin skin)
+    {
+        if (skin.IsBought)
+        {
+            skinController.SetSkin(skin);
+
+        }
+        else
+        {
+
+        }
     }
 
     private void Start()

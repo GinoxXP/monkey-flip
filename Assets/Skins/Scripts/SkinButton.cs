@@ -1,23 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
+using static SkinData;
 
-[RequireComponent(typeof(Image))]
 public class SkinButton : MonoBehaviour
 {
+    [SerializeField]
     private Image image;
+    [SerializeField]
+    private GameObject selectIcon;
+    [SerializeField]
+    private GameObject lockIcon;
 
-    public Sprite Icon { get; set; }
+    public Skin Skin { get; set; }
+
+    public bool IsSelected { get => selectIcon.activeSelf; set => selectIcon.SetActive(value); }
+
+    public bool IsLocked { get => lockIcon.activeSelf; set => lockIcon.SetActive(value); } 
+
+    public Action<Skin> OnSelect;
 
     public void Click()
     {
-
+        OnSelect?.Invoke(Skin);
     }
 
     private void Start()
     {
-        image = GetComponent<Image>();
-        image.sprite = Icon;
+        image.sprite = Skin.Icon;
     }
 }

@@ -1,4 +1,4 @@
-using System.ComponentModel;
+using System.Linq;
 using UnityEngine;
 using Zenject;
 using static SkinData;
@@ -12,11 +12,11 @@ public class SkinController : MonoBehaviour
 
     public Skin SelectedSkin => selectedSkin;
 
-    public bool SetSkin(string tag)
+    public void SetSkin(Skin newSkin)
     {
         foreach (var skin in skinData.skins)
         {
-            if (skin.Name == tag)
+            if (skin == newSkin)
             {
                 selectedSkin = skin;
 
@@ -25,11 +25,8 @@ public class SkinController : MonoBehaviour
 
                 currentModel = Instantiate(skin.Model, smoothJump.transform);
                 smoothJump.Animator = currentModel.GetComponent<Animator>();
-                return true;
             }
         }
-
-        return false;
     }
 
     public void SetColor(ColorSet colorSet, Material targetMaterial)
@@ -40,7 +37,7 @@ public class SkinController : MonoBehaviour
 
     private void Start()
     {
-        SetSkin(CHIMPANZE_NAME);
+        SetSkin(skinData.skins.First());
     }
 
     [Inject]

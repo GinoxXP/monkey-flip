@@ -34,7 +34,7 @@ public class Pallete : MonoBehaviour
             colorButtonComponent.ColorSet = colorSet;
             colorButtonComponent.TargetMaterial = colorPalettes.TargetMaterial;
 
-            colorButtonComponent.Select += OnColorButtonClicked;
+            colorButtonComponent.OnSelect += OnColorButtonClicked;
 
             colorButtons.Add((colorButtonComponent, colorSet));
         }
@@ -74,7 +74,7 @@ public class Pallete : MonoBehaviour
         for (int i = 0; i < colorButtons.Count; i++)
         {
             var (colorButton, colorSet) = colorButtons[i];
-            colorButton.Select -= OnColorButtonClicked;
+            colorButton.OnSelect -= OnColorButtonClicked;
             Destroy(colorButton.gameObject);
         }
 
