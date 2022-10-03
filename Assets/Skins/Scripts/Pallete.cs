@@ -2,12 +2,10 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using Zenject;
 using static SkinData;
 
 public class Pallete : MonoBehaviour
 {
-    private SkinController skinController;
     private List<(ColorButton, ColorSet)> colorButtons = new ();
 
     [SerializeField]
@@ -17,7 +15,7 @@ public class Pallete : MonoBehaviour
     [SerializeField]
     private GameObject colorButtonPrefab;
 
-    public event Action<ColorSet> OnBuyColor;
+    public event Action<ColorSet, Material> OnSelect;
 
     public void Fill(ColorPalette colorPalettes)
     {
@@ -34,24 +32,16 @@ public class Pallete : MonoBehaviour
             colorButtonComponent.ColorSet = colorSet;
             colorButtonComponent.TargetMaterial = colorPalettes.TargetMaterial;
 
-            colorButtonComponent.OnSelect += OnColorButtonClicked;
+            colorButtonComponent.OnSelect += OnSelected;
 
             colorButtons.Add((colorButtonComponent, colorSet));
         }
     }
 
-    private void OnColorButtonClicked(ColorSet colorSet, Material targetMaterial)
+    private void OnSelected(ColorSet colorSet, Material material)
     {
-        if (colorSet.IsBought)
-        {
-            skinController.SetColor(colorSet, targetMaterial);
-            DeselectAll();
-            UpdateColorButtons();
-        }
-        else
-        {
-            OnBuyColor?.Invoke(colorSet);
-        }
+        //DeselectAll();
+        OnSelect?.Invoke(colorSet, material);
     }
 
     private void DeselectAll()
@@ -74,7 +64,7 @@ public class Pallete : MonoBehaviour
         for (int i = 0; i < colorButtons.Count; i++)
         {
             var (colorButton, colorSet) = colorButtons[i];
-            colorButton.OnSelect -= OnColorButtonClicked;
+            colorButton.OnSelect -= OnSelect;
             Destroy(colorButton.gameObject);
         }
 
@@ -84,11 +74,5 @@ public class Pallete : MonoBehaviour
     private void Start()
     {
         UpdateColorButtons();
-    }
-
-    [Inject]
-    private void Init(SkinController skinController)
-    {
-        this.skinController = skinController;
     }
 }

@@ -32,7 +32,7 @@ public class WardrobeView : MonoBehaviour
             var palettePanel = Instantiate(palettePanelPrefab, palettesParent);
             var paletteComponent = palettePanel.GetComponent<Pallete>();
             paletteComponent.Fill(palette);
-            paletteComponent.OnBuyColor += OnColorBought;
+            paletteComponent.OnSelect += OnColorSetButtonClicked;
         }
     }
 
@@ -59,6 +59,18 @@ public class WardrobeView : MonoBehaviour
         var buyView = container.InstantiatePrefab(buyViewPrefab, canvas);
         var buyViewComponent = buyView.GetComponent<BuyView>();
         buyViewComponent.OnBought += () => skin.IsBought = true;
+    }
+
+    private void OnColorSetButtonClicked(ColorSet colorSet, Material targetMaterial)
+    {
+        if (colorSet.IsBought)
+        {
+            skinController.SetColor(colorSet, targetMaterial);
+        }
+        else
+        {
+            OnColorBought(colorSet);
+        }
     }
 
     private void OnSkinButtonClicked(Skin skin)
