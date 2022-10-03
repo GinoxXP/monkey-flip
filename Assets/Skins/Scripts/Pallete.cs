@@ -15,22 +15,23 @@ public class Pallete : MonoBehaviour
     [SerializeField]
     private GameObject colorButtonPrefab;
 
-    public event Action<ColorSet, Material> OnSelect;
+    public event Action<ColorSet, ColorPalette, Material> OnSelect;
 
-    public void Fill(ColorPalette colorPalettes)
+    public void Fill(ColorPalette colorPalette)
     {
         DestroyColorButtons();
 
-        palleteTitle.text = colorPalettes.Name;
+        palleteTitle.text = colorPalette.Name;
 
-        foreach (var colorSet in colorPalettes.ColorSets)
+        foreach (var colorSet in colorPalette.ColorSets)
         {
             var colorButton = Instantiate(colorButtonPrefab, colorsParent);
             var colorButtonComponent = colorButton.GetComponent<ColorButton>();
 
             colorButtonComponent.Color = colorSet.Color;
             colorButtonComponent.ColorSet = colorSet;
-            colorButtonComponent.TargetMaterial = colorPalettes.TargetMaterial;
+            colorButtonComponent.ColorPalette = colorPalette;
+            colorButtonComponent.TargetMaterial = colorPalette.TargetMaterial;
 
             colorButtonComponent.OnSelect += OnSelected;
 
@@ -38,16 +39,10 @@ public class Pallete : MonoBehaviour
         }
     }
 
-    private void OnSelected(ColorSet colorSet, Material material)
+    private void OnSelected(ColorSet colorSet, ColorPalette colorPalette, Material material)
     {
-        //DeselectAll();
-        OnSelect?.Invoke(colorSet, material);
-    }
-
-    private void DeselectAll()
-    {
-        foreach (var (colorButton, colorSet) in colorButtons)
-            colorSet.IsSelected = false;
+        OnSelect?.Invoke(colorSet, colorPalette, material);
+        UpdateColorButtons();
     }
 
     private void UpdateColorButtons()

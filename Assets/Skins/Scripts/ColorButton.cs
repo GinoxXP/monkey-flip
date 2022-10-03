@@ -20,12 +20,14 @@ public class ColorButton : MonoBehaviour
 
     public ColorSet ColorSet { get; set; }
 
+    public ColorPalette ColorPalette { get; set; }
+
     public Material TargetMaterial { get; set; }
 
-    public event Action<ColorSet, Material> OnSelect;
+    public event Action<ColorSet, ColorPalette, Material> OnSelect;
 
     public void Click()
     {
-        OnSelect?.Invoke(ColorSet, TargetMaterial);
+        OnSelect?.Invoke(ColorSet, ColorPalette, TargetMaterial);
     }
 }

@@ -1,14 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/SkinScriptableObject", order = 1)]
 public class SkinData : ScriptableObject
 {
-    public static readonly string CHIMPANZE_NAME = "Chimpanzee";
-    public static readonly string GORILLA_NAME = "Gorilla";
-
     public List<Skin> skins = new List<Skin>();
 
     [System.Serializable]
@@ -33,7 +28,7 @@ public class SkinData : ScriptableObject
 
         public bool IsBought { get => isBought; set => isBought = value; }
 
-        public bool IsSelected => isSelected;
+        public bool IsSelected { get => isSelected; set => isSelected = value; }
 
         public GameObject Model => model;
 

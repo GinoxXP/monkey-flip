@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -25,6 +26,8 @@ public class WardrobeView : MonoBehaviour
     [SerializeField]
     private GameObject skinButtonPrefab;
 
+    private List<SkinButton> skinButtons = new();
+
     private void FillPalettes()
     {
         foreach (var palette in skinController.SelectedSkin.ColorPalettes)
@@ -44,6 +47,8 @@ public class WardrobeView : MonoBehaviour
             var skinButtonComponent = skinButton.GetComponent<SkinButton>();
             skinButtonComponent.Skin = skin;
             skinButtonComponent.OnSelect += OnSkinButtonClicked;
+
+            skinButtons.Add(skinButtonComponent);
         }
     }
 
@@ -51,21 +56,30 @@ public class WardrobeView : MonoBehaviour
     {
         var buyView = container.InstantiatePrefab(buyViewPrefab, canvas);
         var buyViewComponent = buyView.GetComponent<BuyView>();
-        buyViewComponent.OnBought += () => colorSet.IsBought = true;
+        buyViewComponent.OnBought += () =>
+        {
+            colorSet.IsBought = true;
+        };
+        buyViewComponent.Buy();
     }
 
     private void OnSkinBought(Skin skin)
     {
         var buyView = container.InstantiatePrefab(buyViewPrefab, canvas);
         var buyViewComponent = buyView.GetComponent<BuyView>();
-        buyViewComponent.OnBought += () => skin.IsBought = true;
+        buyViewComponent.OnBought += () =>
+        {
+            skin.IsBought = true;
+            UpdateSkinButtons();
+        };
+        buyViewComponent.Buy();
     }
 
-    private void OnColorSetButtonClicked(ColorSet colorSet, Material targetMaterial)
+    private void OnColorSetButtonClicked(ColorSet colorSet, ColorPalette colorPalette, Material targetMaterial)
     {
         if (colorSet.IsBought)
         {
-            skinController.SetColor(colorSet, targetMaterial);
+            skinController.SetColor(colorSet, colorPalette, targetMaterial);
         }
         else
         {
@@ -78,10 +92,20 @@ public class WardrobeView : MonoBehaviour
         if (skin.IsBought)
         {
             skinController.SetSkin(skin);
+            UpdateSkinButtons();
         }
         else
         {
             OnSkinBought(skin);
+        }
+    }
+
+    private void UpdateSkinButtons()
+    {
+        foreach (var skinButton in skinButtons)
+        {
+            skinButton.IsLocked = !skinButton.Skin.IsBought;
+            skinButton.IsSelected = skinButton.Skin.IsSelected;
         }
     }
 

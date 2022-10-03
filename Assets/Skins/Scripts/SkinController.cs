@@ -8,9 +8,9 @@ public class SkinController : MonoBehaviour
     private GameObject currentModel;
     private SmoothJump smoothJump;
     private SkinData skinData;
-    private Skin selectedSkin;
+    private Skin currentSkin;
 
-    public Skin SelectedSkin => selectedSkin;
+    public Skin SelectedSkin => currentSkin;
 
     public void SetSkin(Skin newSkin)
     {
@@ -18,7 +18,7 @@ public class SkinController : MonoBehaviour
         {
             if (skin == newSkin)
             {
-                selectedSkin = skin;
+                currentSkin = skin;
 
                 if (currentModel != null)
                     Destroy(currentModel);
@@ -26,13 +26,27 @@ public class SkinController : MonoBehaviour
                 currentModel = Instantiate(skin.Model, smoothJump.transform);
                 smoothJump.Animator = currentModel.GetComponent<Animator>();
             }
+            else
+            {
+                skin.IsSelected = false;
+            }
         }
     }
 
-    public void SetColor(ColorSet colorSet, Material targetMaterial)
+    public void SetColor(ColorSet newColorSet, ColorPalette colorPalette, Material targetMaterial)
     {
-        targetMaterial.color = colorSet.Color;
-        colorSet.IsSelected = true;
+        foreach (var colorSet in colorPalette.ColorSets)
+        {
+            if (colorSet == newColorSet)
+            {
+                targetMaterial.color = newColorSet.Color;
+                colorSet.IsSelected = true;
+            }
+            else
+            {
+                colorSet.IsSelected = false;
+            }
+        }
     }
 
     private void Start()
