@@ -27,15 +27,18 @@ public class WardrobeView : MonoBehaviour
     private GameObject skinButtonPrefab;
 
     private List<SkinButton> skinButtons = new();
+    private List<Palette> colorPalettes = new();
 
     private void FillPalettes()
     {
         foreach (var palette in skinController.SelectedSkin.ColorPalettes)
         {
             var palettePanel = Instantiate(palettePanelPrefab, palettesParent);
-            var paletteComponent = palettePanel.GetComponent<Pallete>();
+            var paletteComponent = palettePanel.GetComponent<Palette>();
             paletteComponent.Fill(palette);
             paletteComponent.OnSelect += OnColorSetButtonClicked;
+
+            colorPalettes.Add(paletteComponent);
         }
     }
 
@@ -59,8 +62,8 @@ public class WardrobeView : MonoBehaviour
         buyViewComponent.OnBought += () =>
         {
             colorSet.IsBought = true;
+            UpdateColorPalettes();
         };
-        buyViewComponent.Buy();
     }
 
     private void OnSkinBought(Skin skin)
@@ -72,7 +75,6 @@ public class WardrobeView : MonoBehaviour
             skin.IsBought = true;
             UpdateSkinButtons();
         };
-        buyViewComponent.Buy();
     }
 
     private void OnColorSetButtonClicked(ColorSet colorSet, ColorPalette colorPalette, Material targetMaterial)
@@ -97,6 +99,14 @@ public class WardrobeView : MonoBehaviour
         else
         {
             OnSkinBought(skin);
+        }
+    }
+
+    private void UpdateColorPalettes()
+    {
+        foreach (var palette in colorPalettes)
+        {
+            palette.UpdateColorButtons();
         }
     }
 

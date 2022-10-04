@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using static SkinData;
 
-public class Pallete : MonoBehaviour
+public class Palette : MonoBehaviour
 {
     private List<(ColorButton, ColorSet)> colorButtons = new ();
 
@@ -39,19 +39,19 @@ public class Pallete : MonoBehaviour
         }
     }
 
-    private void OnSelected(ColorSet colorSet, ColorPalette colorPalette, Material material)
-    {
-        OnSelect?.Invoke(colorSet, colorPalette, material);
-        UpdateColorButtons();
-    }
-
-    private void UpdateColorButtons()
+    public void UpdateColorButtons()
     {
         foreach (var (colorButton, colorSet) in colorButtons)
         {
             colorButton.IsLocked = !colorSet.IsBought;
             colorButton.IsSelected = colorSet.IsSelected;
         }
+    }
+
+    private void OnSelected(ColorSet colorSet, ColorPalette colorPalette, Material material)
+    {
+        OnSelect?.Invoke(colorSet, colorPalette, material);
+        UpdateColorButtons();
     }
 
     private void DestroyColorButtons()
