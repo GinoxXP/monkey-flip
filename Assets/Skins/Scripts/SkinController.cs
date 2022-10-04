@@ -10,7 +10,7 @@ public class SkinController : MonoBehaviour
     private SkinData skinData;
     private Skin currentSkin;
 
-    public Skin SelectedSkin => currentSkin;
+    public Skin CurrentSkin => currentSkin;
 
     public void SetSkin(Skin newSkin)
     {
@@ -19,6 +19,8 @@ public class SkinController : MonoBehaviour
             if (skin == newSkin)
             {
                 currentSkin = skin;
+
+                skin.IsSelected = true;
 
                 if (currentModel != null)
                     Destroy(currentModel);

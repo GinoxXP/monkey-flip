@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using static SkinData;
@@ -19,7 +20,7 @@ public class Palette : MonoBehaviour
 
     public void Fill(ColorPalette colorPalette)
     {
-        DestroyColorButtons();
+        Clear();
 
         palleteTitle.text = colorPalette.Name;
 
@@ -48,22 +49,24 @@ public class Palette : MonoBehaviour
         }
     }
 
-    private void OnSelected(ColorSet colorSet, ColorPalette colorPalette, Material material)
+    public void Clear()
     {
-        OnSelect?.Invoke(colorSet, colorPalette, material);
-        UpdateColorButtons();
-    }
-
-    private void DestroyColorButtons()
-    {
-        for (int i = 0; i < colorButtons.Count; i++)
+        while (colorButtons.Count > 0)
         {
-            var (colorButton, colorSet) = colorButtons[i];
+            var (colorButton, colorSet) = colorButtons.First();
             colorButton.OnSelect -= OnSelect;
+
+            colorButtons.Remove((colorButton, colorSet));
             Destroy(colorButton.gameObject);
         }
 
         colorButtons.Clear();
+    }
+
+    private void OnSelected(ColorSet colorSet, ColorPalette colorPalette, Material material)
+    {
+        OnSelect?.Invoke(colorSet, colorPalette, material);
+        UpdateColorButtons();
     }
 
     private void Start()

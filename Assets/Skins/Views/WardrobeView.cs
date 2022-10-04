@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -31,7 +32,7 @@ public class WardrobeView : MonoBehaviour
 
     private void FillPalettes()
     {
-        foreach (var palette in skinController.SelectedSkin.ColorPalettes)
+        foreach (var palette in skinController.CurrentSkin.ColorPalettes)
         {
             var palettePanel = Instantiate(palettePanelPrefab, palettesParent);
             var paletteComponent = palettePanel.GetComponent<Palette>();
@@ -40,10 +41,14 @@ public class WardrobeView : MonoBehaviour
 
             colorPalettes.Add(paletteComponent);
         }
+
+        UpdateColorPalettes();
     }
 
     private void FillSkins()
     {
+        skinButtons.Clear();
+
         foreach (var skin in skinData.skins)
         {
             var skinButton = Instantiate(skinButtonPrefab, skinsParent);
@@ -53,6 +58,37 @@ public class WardrobeView : MonoBehaviour
 
             skinButtons.Add(skinButtonComponent);
         }
+
+        UpdateSkinButtons();
+    }
+
+    private void ClearPalettes()
+    {
+        while (colorPalettes.Count > 0)
+        {
+            var palette = colorPalettes.First();
+            palette.Clear();
+            palette.OnSelect -= OnColorSetButtonClicked;
+
+            colorPalettes.Remove(palette);
+            Destroy(palette.gameObject);
+        }
+
+        colorPalettes.Clear();
+    }
+
+    private void ClearSkins()
+    {
+        while (skinButtons.Count > 0)
+        {
+            var skinButton = skinButtons.First();
+            skinButton.OnSelect -= OnSkinButtonClicked;
+
+            skinButtons.Remove(skinButton);
+            Destroy(skinButton.gameObject);
+        }
+
+        skinButtons.Clear();
     }
 
     private void OnColorBought(ColorSet colorSet)
@@ -62,7 +98,7 @@ public class WardrobeView : MonoBehaviour
         buyViewComponent.OnBought += () =>
         {
             colorSet.IsBought = true;
-            UpdateColorPalettes();
+            UpdateView();
         };
     }
 
@@ -73,7 +109,7 @@ public class WardrobeView : MonoBehaviour
         buyViewComponent.OnBought += () =>
         {
             skin.IsBought = true;
-            UpdateSkinButtons();
+            UpdateView();
         };
     }
 
@@ -82,6 +118,7 @@ public class WardrobeView : MonoBehaviour
         if (colorSet.IsBought)
         {
             skinController.SetColor(colorSet, colorPalette, targetMaterial);
+            UpdateView();
         }
         else
         {
@@ -94,8 +131,7 @@ public class WardrobeView : MonoBehaviour
         if (skin.IsBought)
         {
             skinController.SetSkin(skin);
-            UpdateSkinButtons();
-        }
+            UpdateView();        }
         else
         {
             OnSkinBought(skin);
@@ -119,10 +155,18 @@ public class WardrobeView : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void UpdateView()
     {
+        ClearPalettes();
+        ClearSkins();
+
         FillPalettes();
         FillSkins();
+    }
+
+    private void Start()
+    {
+        UpdateView();
     }
 
     [Inject]
