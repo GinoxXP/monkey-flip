@@ -131,7 +131,8 @@ public class WardrobeView : MonoBehaviour
         if (skin.IsBought)
         {
             skinController.SetSkin(skin);
-            UpdateView();        }
+            UpdateView();        
+        }
         else
         {
             OnSkinBought(skin);
