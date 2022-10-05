@@ -8,6 +8,7 @@ public class MoveCamera : MonoBehaviour
     private readonly float MIN_TRESHOLD = 0.01f;
 
     private DifficultyManager difficultyManager;
+    private PauseController pauseController;
 
     [SerializeField]
     private AnimationCurve speedCurve;
@@ -22,6 +23,8 @@ public class MoveCamera : MonoBehaviour
 
     private IEnumerator moveCoroutine;
     private IEnumerator returnCoroutine;
+
+    private bool isPause;
 
     public void StopMove()
     {
@@ -50,6 +53,12 @@ public class MoveCamera : MonoBehaviour
 
         while(true)
         {
+            if (isPause)
+            {
+                yield return null;
+                continue;
+            }
+
             var distanceToEnd = Vector3.Distance(transform.position, endPosition);
             if (distanceToEnd < MIN_TRESHOLD)
                 break;
@@ -89,9 +98,20 @@ public class MoveCamera : MonoBehaviour
         SceneManager.LoadScene(currentScene.name);
     }
 
+    private void OnPauseChanged(bool isPause)
+        => this.isPause = isPause;
+
+    private void OnDestroy()
+    {
+        pauseController.PauseChanged -= OnPauseChanged;
+    }
+
     [Inject]
-    private void Init(DifficultyManager difficultyManager)
+    private void Init(DifficultyManager difficultyManager, PauseController pauseController)
     {
         this.difficultyManager = difficultyManager;
+        this.pauseController = pauseController;
+
+        this.pauseController.PauseChanged += OnPauseChanged;
     }
 }

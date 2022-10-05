@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using Zenject;
 
@@ -7,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     private SmoothJump smoothJump;
     private MoveLevel moveLevel;
+    private PauseController pauseController;
 
     [SerializeField]
     [Range(0,1)]
@@ -28,6 +30,12 @@ public class PlayerController : MonoBehaviour
 
     public void OnClick(InputAction.CallbackContext context)
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
+        if (pauseController.CurrentPauseState)
+            pauseController.SetPause(false);
+
         if (!IsCanJump)
             return;
 
@@ -83,9 +91,10 @@ public class PlayerController : MonoBehaviour
     }
 
     [Inject]
-    private void Init(SmoothJump smoothJump, MoveLevel moveLevel)
+    private void Init(SmoothJump smoothJump, MoveLevel moveLevel, PauseController pauseController)
     {
         this.smoothJump = smoothJump;
         this.moveLevel = moveLevel;
+        this.pauseController = pauseController;
     }
 }
