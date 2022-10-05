@@ -95,6 +95,7 @@ public class WardrobeView : MonoBehaviour
     {
         var buyView = container.InstantiatePrefab(buyViewPrefab, canvas);
         var buyViewComponent = buyView.GetComponent<BuyView>();
+        buyViewComponent.Cost = colorSet.Cost;
         buyViewComponent.OnBought += () =>
         {
             colorSet.IsBought = true;
@@ -106,6 +107,7 @@ public class WardrobeView : MonoBehaviour
     {
         var buyView = container.InstantiatePrefab(buyViewPrefab, canvas);
         var buyViewComponent = buyView.GetComponent<BuyView>();
+        buyViewComponent.Cost = skin.Cost;
         buyViewComponent.OnBought += () =>
         {
             skin.IsBought = true;

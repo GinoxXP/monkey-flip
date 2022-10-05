@@ -12,6 +12,8 @@ public class SkinData : ScriptableObject
         [SerializeField]
         private string name;
         [SerializeField]
+        private int cost;
+        [SerializeField]
         private List<ColorPalette> colorPalettes;
         [SerializeField]
         private bool isBought;
@@ -23,6 +25,8 @@ public class SkinData : ScriptableObject
         private Sprite icon;
 
         public string Name => name;
+
+        public int Cost => cost;
 
         public List<ColorPalette> ColorPalettes => colorPalettes;
 
