@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -24,7 +25,11 @@ public class PlayerController : MonoBehaviour
 
     public bool IsCanJump { get; set; } = true;
 
-    private float power;
+    public float Power { get; private set; }
+
+    public event Action StartClick;
+    public event Action StopClick;
+
     private IEnumerator clickTimer;
     private bool isAccumulationing;
 
@@ -52,8 +57,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnStartClick()
     {
+        StartClick?.Invoke();
         smoothJump.Animator.SetTrigger("PrepareJump");
-        power = minPower;
+        Power = minPower;
         isAccumulationing = true;
         clickTimer = ClickTimer();
         StartCoroutine(clickTimer);
@@ -61,22 +67,23 @@ public class PlayerController : MonoBehaviour
 
     private void OnStopClick()
     {
+        StopClick?.Invoke();
         smoothJump.Animator.SetTrigger("Flip");
         isAccumulationing = false;
         StopCoroutine(clickTimer);
         TransmitPower();
-        power = 0;
+        Power = 0;
     }
 
     private IEnumerator ClickTimer()
     {
         while (true)
         {
-            power += powerAccumulationSpeed * Time.deltaTime;
+            Power += powerAccumulationSpeed * Time.deltaTime;
 
-            if(power >= maxPower)
+            if(Power >= maxPower)
             {
-                power = maxPower;
+                Power = maxPower;
                 OnStopClick();
             }
 
@@ -86,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
     private void TransmitPower()
     {
-        smoothJump.Jump(power);
+        smoothJump.Jump(Power);
         moveLevel.Move();
     }
 
