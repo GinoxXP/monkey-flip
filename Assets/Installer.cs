@@ -5,6 +5,10 @@ public class Installer : MonoInstaller
 {
     [SerializeField]
     private SkinData skinData;
+    [SerializeField]
+    private Light directionLight;
+    [SerializeField]
+    private new Camera camera;
 
     public override void InstallBindings()
     {
@@ -20,6 +24,9 @@ public class Installer : MonoInstaller
         Container.Bind<PauseController>().FromComponentInHierarchy().AsSingle();
         Container.Bind<SkinController>().FromComponentInHierarchy().AsSingle();
         Container.Bind<DayCycleController>().FromComponentInHierarchy().AsSingle();
+
+        Container.Bind<Light>().FromComponentInHierarchy(directionLight).AsSingle();
+        Container.Bind<Camera>().FromComponentInHierarchy(camera).AsSingle();
 
         Container.Bind<SkinData>().FromScriptableObject(skinData).AsSingle();
     }
