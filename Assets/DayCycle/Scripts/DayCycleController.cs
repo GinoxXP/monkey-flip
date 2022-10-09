@@ -7,7 +7,10 @@ public class DayCycleController : MonoBehaviour
 {
     private new Light light;
     private new Camera camera;
+    private ScoreManager scoreManager;
 
+    [SerializeField]
+    private int stepChanging;
     [SerializeField]
     private LightingScheme dayScheme;
     [SerializeField]
@@ -15,30 +18,56 @@ public class DayCycleController : MonoBehaviour
 
     public event Action<List<Color>> TimeCycleChange;
 
-    public void SetDay()
+    private int lastScore;
+    private bool isNight;
+
+    private void SetDay()
     {
+        isNight = false;
+
         TimeCycleChange?.Invoke(dayScheme.BackgroundColors);
         camera.backgroundColor = dayScheme.SkyColor;
         light.color = dayScheme.LightColor;
     }
 
-    public void SetNight()
+    private void SetNight()
     {
+        isNight = true;
+
         TimeCycleChange?.Invoke(nightScheme.BackgroundColors);
         camera.backgroundColor = nightScheme.SkyColor;
         light.color = nightScheme.LightColor;
     }
 
+    private void ChangeTime()
+    {
+        if (isNight)
+            SetDay();
+        else
+            SetNight();
+    }
+
     private void Start()
     {
-        SetNight();
+        scoreManager.NewScoreAvailable += OnNewScoreAvailabled;
+    }
+
+    private void OnNewScoreAvailabled()
+    {
+        var score = scoreManager.Score;
+
+        if (score % stepChanging < lastScore % stepChanging)
+            ChangeTime();
+
+        lastScore = score;
     }
 
     [Inject]
-    private void Init(Light light, Camera camera)
+    private void Init(Light light, Camera camera, ScoreManager scoreManager)
     {
         this.light = light;
         this.camera = camera;
+        this.scoreManager = scoreManager;
     }
 }
 
