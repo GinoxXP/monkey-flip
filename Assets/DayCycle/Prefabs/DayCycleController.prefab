@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9007571576951324362
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9007571576951324357}
+  - component: {fileID: 2657439263765364631}
+  m_Layer: 0
+  m_Name: DayCycleController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9007571576951324357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9007571576951324362}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2657439263765364631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9007571576951324362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bcddeed87a46fe468165ffb897193fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayColors:
+  - {r: 0.08627451, g: 0.19607845, b: 0.07058824, a: 1}
+  - {r: 0.11764707, g: 0.41960788, b: 0.13333334, a: 1}
+  - {r: 0.28235295, g: 0.65882355, b: 0.15686275, a: 1}
+  - {r: 0.5176471, g: 0.83921576, b: 0.2901961, a: 1}
+  - {r: 0.69411767, g: 0.9450981, b: 0.43921572, a: 1}
+  - {r: 0.8117648, g: 0.9960785, b: 0.52156866, a: 1}
+  nightColors:
+  - {r: 0, g: 0.06666667, b: 0.10980393, a: 1}
+  - {r: 0, g: 0.08235294, b: 0.13725491, a: 1}
+  - {r: 0, g: 0.10196079, b: 0.17254902, a: 1}
+  - {r: 0, g: 0.12941177, b: 0.21568629, a: 1}
+  - {r: 0, g: 0.14509805, b: 0.24313727, a: 1}
+  - {r: 0, g: 0.16078432, b: 0.27058825, a: 1}
