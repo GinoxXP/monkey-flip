@@ -9,6 +9,7 @@ public class MoveCamera : MonoBehaviour
 
     private DifficultyManager difficultyManager;
     private PauseController pauseController;
+    private PlayerController playerController;
 
     [SerializeField]
     private AnimationCurve speedCurve;
@@ -104,14 +105,17 @@ public class MoveCamera : MonoBehaviour
     private void OnDestroy()
     {
         pauseController.PauseChanged -= OnPauseChanged;
+        this.playerController.StartClick -= StopMove;
     }
 
     [Inject]
-    private void Init(DifficultyManager difficultyManager, PauseController pauseController)
+    private void Init(DifficultyManager difficultyManager, PauseController pauseController, PlayerController playerController)
     {
         this.difficultyManager = difficultyManager;
         this.pauseController = pauseController;
+        this.playerController = playerController;
 
         this.pauseController.PauseChanged += OnPauseChanged;
+        this.playerController.StartClick += StopMove;
     }
 }
