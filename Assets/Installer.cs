@@ -25,8 +25,8 @@ public class Installer : MonoInstaller
         Container.Bind<SkinController>().FromComponentInHierarchy().AsSingle();
         Container.Bind<DayCycleController>().FromComponentInHierarchy().AsSingle();
 
-        Container.Bind<Light>().FromComponentInHierarchy(directionLight).AsSingle();
-        Container.Bind<Camera>().FromComponentInHierarchy(camera).AsSingle();
+        Container.Bind<Light>().FromInstance(directionLight).AsSingle();
+        Container.Bind<Camera>().FromInstance(camera).AsSingle();
 
         Container.Bind<SkinData>().FromScriptableObject(skinData).AsSingle();
     }

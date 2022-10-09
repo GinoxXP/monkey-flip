@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
@@ -12,31 +13,34 @@ public class DayCycleController : MonoBehaviour
     [SerializeField]
     private int stepChanging;
     [SerializeField]
-    private LightingScheme dayScheme;
+    private float speedChanging;
+    [Space]
     [SerializeField]
-    private LightingScheme nightScheme;
+    private LightScheme dayScheme;
+    [SerializeField]
+    private LightScheme nightScheme;
 
     public event Action<List<Color>> TimeCycleChange;
 
     private int lastScore;
     private bool isNight;
+    private IEnumerator timeChanging;
 
     private void SetDay()
     {
         isNight = false;
 
-        TimeCycleChange?.Invoke(dayScheme.BackgroundColors);
-        camera.backgroundColor = dayScheme.SkyColor;
-        light.color = dayScheme.LightColor;
+        timeChanging = TimeChanging(dayScheme, nightScheme);
+        StartCoroutine(timeChanging);
+
     }
 
     private void SetNight()
     {
         isNight = true;
 
-        TimeCycleChange?.Invoke(nightScheme.BackgroundColors);
-        camera.backgroundColor = nightScheme.SkyColor;
-        light.color = nightScheme.LightColor;
+        timeChanging = TimeChanging(nightScheme, dayScheme);
+        StartCoroutine(timeChanging);
     }
 
     private void ChangeTime()
@@ -62,6 +66,34 @@ public class DayCycleController : MonoBehaviour
         lastScore = score;
     }
 
+    private IEnumerator TimeChanging(LightScheme lightScheme, LightScheme lastLightScheme)
+    {
+        var progress = 0f;
+        var temporaryLightScheme = new LightScheme()
+        {
+            SkyColor = lastLightScheme.SkyColor,
+            LightColor = lastLightScheme.LightColor,
+        };
+        temporaryLightScheme.BackgroundColors = new ();
+        for (int i = 0; i < lastLightScheme.BackgroundColors.Count; i++)
+            temporaryLightScheme.BackgroundColors.Add(lastLightScheme.BackgroundColors[i]);
+
+        while (progress <= 1)
+        {
+            camera.backgroundColor = Color.Lerp(lastLightScheme.SkyColor, lightScheme.SkyColor, progress);
+            light.color = Color.Lerp(lastLightScheme.LightColor, lightScheme.LightColor, progress);
+
+            for (int i = 0; i < temporaryLightScheme.BackgroundColors.Count; i++)
+                temporaryLightScheme.BackgroundColors[i] = Color.Lerp(lastLightScheme.BackgroundColors[i], lightScheme.BackgroundColors[i], progress);
+
+            TimeCycleChange?.Invoke(temporaryLightScheme.BackgroundColors);
+
+            progress += speedChanging * Time.deltaTime;
+            yield return null;
+        }
+        timeChanging = null;
+    }
+
     [Inject]
     private void Init(Light light, Camera camera, ScoreManager scoreManager)
     {
@@ -72,7 +104,7 @@ public class DayCycleController : MonoBehaviour
 }
 
 [Serializable]
-public struct LightingScheme
+public struct LightScheme
 {
     [SerializeField]
     private List<Color> backgroundColors;
@@ -81,9 +113,9 @@ public struct LightingScheme
     [SerializeField]
     private Color lightColor;
 
-    public List<Color> BackgroundColors { get => backgroundColors; }
+    public List<Color> BackgroundColors { get => backgroundColors; set => backgroundColors = value; }
 
-    public Color SkyColor { get => skyColor; }
+    public Color SkyColor { get => skyColor; set => skyColor = value; }
 
-    public Color LightColor { get => lightColor; }
+    public Color LightColor { get => lightColor; set => lightColor = value; }
 }
