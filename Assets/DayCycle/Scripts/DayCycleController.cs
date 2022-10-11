@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Zenject;
 
@@ -14,46 +15,28 @@ public class DayCycleController : MonoBehaviour
     private int stepChanging;
     [SerializeField]
     private float speedChanging;
+    [SerializeField]
+    private int defaultTimeIndex;
     [Space]
     [SerializeField]
-    private LightScheme dayScheme;
-    [SerializeField]
-    private LightScheme nightScheme;
+    private List<LightScheme> lightSchemes;
 
     public event Action<List<Color>> TimeCycleChange;
 
     private int lastScore;
-    private bool isNight;
     private IEnumerator timeChanging;
+    private int timeIndex;
+    private LightScheme lastLightScheme;
 
-    private void SetDay()
+    private void NextTime()
     {
-        isNight = false;
+        timeIndex++;
 
-        timeChanging = TimeChanging(dayScheme, nightScheme);
+        if (timeIndex >= lightSchemes.Count)
+            timeIndex = 0;
+
+        timeChanging = TimeChanging(lightSchemes[timeIndex]);
         StartCoroutine(timeChanging);
-
-    }
-
-    private void SetNight()
-    {
-        isNight = true;
-
-        timeChanging = TimeChanging(nightScheme, dayScheme);
-        StartCoroutine(timeChanging);
-    }
-
-    private void ChangeTime()
-    {
-        if (isNight)
-            SetDay();
-        else
-            SetNight();
-    }
-
-    private void Start()
-    {
-        scoreManager.NewScoreAvailable += OnNewScoreAvailabled;
     }
 
     private void OnNewScoreAvailabled()
@@ -61,37 +44,55 @@ public class DayCycleController : MonoBehaviour
         var score = scoreManager.Score;
 
         if (score % stepChanging < lastScore % stepChanging)
-            ChangeTime();
+            NextTime();
 
         lastScore = score;
     }
 
-    private IEnumerator TimeChanging(LightScheme lightScheme, LightScheme lastLightScheme)
+    private LightScheme CloneLightSceme(LightScheme lightScheme)
+    {
+        var cloneLightScheme = new LightScheme()
+        {
+            SkyColor = lightScheme.SkyColor,
+            LightColor = lightScheme.LightColor,
+        };
+        cloneLightScheme.BackgroundColors = new();
+        for (int i = 0; i < lightScheme.BackgroundColors.Count; i++)
+            cloneLightScheme.BackgroundColors.Add(lightScheme.BackgroundColors[i]);
+
+        return cloneLightScheme;
+    }
+
+    private IEnumerator TimeChanging(LightScheme lightScheme)
     {
         var progress = 0f;
-        var temporaryLightScheme = new LightScheme()
-        {
-            SkyColor = lastLightScheme.SkyColor,
-            LightColor = lastLightScheme.LightColor,
-        };
-        temporaryLightScheme.BackgroundColors = new ();
-        for (int i = 0; i < lastLightScheme.BackgroundColors.Count; i++)
-            temporaryLightScheme.BackgroundColors.Add(lastLightScheme.BackgroundColors[i]);
+
+        var newLightScheme = new LightScheme();
 
         while (progress <= 1)
         {
             camera.backgroundColor = Color.Lerp(lastLightScheme.SkyColor, lightScheme.SkyColor, progress);
             light.color = Color.Lerp(lastLightScheme.LightColor, lightScheme.LightColor, progress);
 
-            for (int i = 0; i < temporaryLightScheme.BackgroundColors.Count; i++)
-                temporaryLightScheme.BackgroundColors[i] = Color.Lerp(lastLightScheme.BackgroundColors[i], lightScheme.BackgroundColors[i], progress);
+            for (int i = 0; i < lightScheme.BackgroundColors.Count; i++)
+                newLightScheme.BackgroundColors[i] = Color.Lerp(lastLightScheme.BackgroundColors[i], lightScheme.BackgroundColors[i], progress);
 
-            TimeCycleChange?.Invoke(temporaryLightScheme.BackgroundColors);
+            TimeCycleChange?.Invoke(newLightScheme.BackgroundColors);
 
             progress += speedChanging * Time.deltaTime;
             yield return null;
         }
         timeChanging = null;
+
+        lastLightScheme = CloneLightSceme(newLightScheme);
+    }
+
+    private void Start()
+    {
+        timeIndex = defaultTimeIndex;
+        lastLightScheme = CloneLightSceme(lightSchemes.First());
+
+        scoreManager.NewScoreAvailable += OnNewScoreAvailabled;
     }
 
     [Inject]
@@ -106,6 +107,8 @@ public class DayCycleController : MonoBehaviour
 [Serializable]
 public struct LightScheme
 {
+    [SerializeField]
+    private string name;
     [SerializeField]
     private List<Color> backgroundColors;
     [SerializeField]
