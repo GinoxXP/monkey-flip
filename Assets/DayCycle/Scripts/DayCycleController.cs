@@ -30,6 +30,8 @@ public class DayCycleController : MonoBehaviour
 
     private void NextTime()
     {
+        lastLightScheme = CloneLightSceme(lightSchemes[timeIndex]);
+
         timeIndex++;
 
         if (timeIndex >= lightSchemes.Count)
@@ -67,30 +69,28 @@ public class DayCycleController : MonoBehaviour
     {
         var progress = 0f;
 
-        var newLightScheme = new LightScheme();
-
+        var backgroundColors = new List<Color>();
         while (progress <= 1)
         {
+            backgroundColors.Clear();
+
             camera.backgroundColor = Color.Lerp(lastLightScheme.SkyColor, lightScheme.SkyColor, progress);
             light.color = Color.Lerp(lastLightScheme.LightColor, lightScheme.LightColor, progress);
 
             for (int i = 0; i < lightScheme.BackgroundColors.Count; i++)
-                newLightScheme.BackgroundColors[i] = Color.Lerp(lastLightScheme.BackgroundColors[i], lightScheme.BackgroundColors[i], progress);
+                backgroundColors.Add(Color.Lerp(lastLightScheme.BackgroundColors[i], lightScheme.BackgroundColors[i], progress));
 
-            TimeCycleChange?.Invoke(newLightScheme.BackgroundColors);
+            TimeCycleChange?.Invoke(backgroundColors);
 
             progress += speedChanging * Time.deltaTime;
             yield return null;
         }
         timeChanging = null;
-
-        lastLightScheme = CloneLightSceme(newLightScheme);
     }
 
     private void Start()
     {
         timeIndex = defaultTimeIndex;
-        lastLightScheme = CloneLightSceme(lightSchemes.First());
 
         scoreManager.NewScoreAvailable += OnNewScoreAvailabled;
     }

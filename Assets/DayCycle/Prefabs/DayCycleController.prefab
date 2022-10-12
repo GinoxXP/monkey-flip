@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bcddeed87a46fe468165ffb897193fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stepChanging: 20
-  speedChanging: 0.2
+  stepChanging: 200
+  speedChanging: 1
   defaultTimeIndex: 1
   lightSchemes:
   - name: Morning
