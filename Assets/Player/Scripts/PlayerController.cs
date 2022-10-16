@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using Zenject;
 
 public class PlayerController : MonoBehaviour
@@ -33,27 +32,27 @@ public class PlayerController : MonoBehaviour
     private IEnumerator clickTimer;
     private bool isAccumulationing;
 
-    public void OnClick(InputAction.CallbackContext context)
-    {
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
+    //public void OnClick(InputAction.CallbackContext context)
+    //{
+    //    if (EventSystem.current.IsPointerOverGameObject())
+    //        return;
 
-        if (pauseController.CurrentPauseState)
-            pauseController.SetPause(false);
+    //    if (pauseController.CurrentPauseState)
+    //        pauseController.SetPause(false);
 
-        if (!IsCanJump)
-            return;
+    //    if (!IsCanJump)
+    //        return;
 
-        if (context.started)
-        {
-            OnStartClick();
-        }
+    //    if (context.started)
+    //    {
+    //        OnStartClick();
+    //    }
 
-        if (context.canceled && isAccumulationing)
-        {
-            OnStopClick();
-        }
-    }
+    //    if (context.canceled && isAccumulationing)
+    //    {
+    //        OnStopClick();
+    //    }
+    //}
 
     private void OnStartClick()
     {
@@ -95,6 +94,30 @@ public class PlayerController : MonoBehaviour
     {
         smoothJump.Jump(Power);
         moveLevel.Move();
+    }
+
+    private void Update()
+    {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) ||
+            (Input.touchCount != 0 && Input.GetTouch(0).phase == TouchPhase.Began))
+        {
+            if (pauseController.CurrentPauseState)
+                pauseController.SetPause(false);
+
+            if (!IsCanJump)
+                return;
+
+            OnStartClick();
+        }
+
+        if (Input.GetKeyUp(KeyCode.Mouse0) ||
+            (Input.touchCount != 0 && Input.GetTouch(0).phase == TouchPhase.Ended))
+        {
+            OnStopClick();
+        }
     }
 
     [Inject]
