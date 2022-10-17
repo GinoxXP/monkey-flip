@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
@@ -96,13 +97,21 @@ public class PlayerController : MonoBehaviour
         moveLevel.Move();
     }
 
+    private bool IsPointerOverUIObject()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
+    }
+
     private void Update()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
+        if (IsPointerOverUIObject())
             return;
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) ||
-            (Input.touchCount != 0 && Input.GetTouch(0).phase == TouchPhase.Began))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             if (pauseController.CurrentPauseState)
                 pauseController.SetPause(false);
@@ -113,8 +122,7 @@ public class PlayerController : MonoBehaviour
             OnStartClick();
         }
 
-        if (Input.GetKeyUp(KeyCode.Mouse0) ||
-            (Input.touchCount != 0 && Input.GetTouch(0).phase == TouchPhase.Ended))
+        if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             OnStopClick();
         }
