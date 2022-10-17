@@ -33,28 +33,6 @@ public class PlayerController : MonoBehaviour
     private IEnumerator clickTimer;
     private bool isAccumulationing;
 
-    //public void OnClick(InputAction.CallbackContext context)
-    //{
-    //    if (EventSystem.current.IsPointerOverGameObject())
-    //        return;
-
-    //    if (pauseController.CurrentPauseState)
-    //        pauseController.SetPause(false);
-
-    //    if (!IsCanJump)
-    //        return;
-
-    //    if (context.started)
-    //    {
-    //        OnStartClick();
-    //    }
-
-    //    if (context.canceled && isAccumulationing)
-    //    {
-    //        OnStopClick();
-    //    }
-    //}
-
     private void OnStartClick()
     {
         StartClick?.Invoke();
@@ -67,6 +45,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnStopClick()
     {
+        if (!isAccumulationing)
+            return;
+
         StopClick?.Invoke();
         smoothJump.Animator.SetTrigger("Flip");
         isAccumulationing = false;
