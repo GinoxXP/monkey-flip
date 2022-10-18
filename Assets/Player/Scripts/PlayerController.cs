@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using Zenject;
 
 public class PlayerController : MonoBehaviour
@@ -32,6 +33,29 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator clickTimer;
     private bool isAccumulationing;
+
+    public void OnClick(InputAction.CallbackContext context)
+    {
+        var pointerPosition = Pointer.current.position.ReadValue();
+        if (IsPointerOverUIObject(pointerPosition))
+            return;
+
+        if (pauseController.CurrentPauseState)
+            pauseController.SetPause(false);
+
+        if (!IsCanJump)
+            return;
+
+        if (context.started)
+        {
+            OnStartClick();
+        }
+
+        if (context.canceled && isAccumulationing)
+        {
+            OnStopClick();
+        }
+    }
 
     private void OnStartClick()
     {
@@ -78,36 +102,36 @@ public class PlayerController : MonoBehaviour
         moveLevel.Move();
     }
 
-    private bool IsPointerOverUIObject()
+    private bool IsPointerOverUIObject(Vector2 position)
     {
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        eventDataCurrentPosition.position = position;
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         return results.Count > 0;
     }
 
-    private void Update()
-    {
-        if (IsPointerOverUIObject())
-            return;
+    //private void Update()
+    //{
+    //    if (IsPointerOverUIObject())
+    //        return;
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            if (pauseController.CurrentPauseState)
-                pauseController.SetPause(false);
+    //    if (Input.GetKeyDown(KeyCode.Mouse0))
+    //    {
+    //        if (pauseController.CurrentPauseState)
+    //            pauseController.SetPause(false);
 
-            if (!IsCanJump)
-                return;
+    //        if (!IsCanJump)
+    //            return;
 
-            OnStartClick();
-        }
+    //        OnStartClick();
+    //    }
 
-        if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            OnStopClick();
-        }
-    }
+    //    if (Input.GetKeyUp(KeyCode.Mouse0))
+    //    {
+    //        OnStopClick();
+    //    }
+    //}
 
     [Inject]
     private void Init(SmoothJump smoothJump, MoveLevel moveLevel, PauseController pauseController)
