@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -35,7 +36,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnClick(InputAction.CallbackContext context)
     {
-        if (EventSystem.current.IsPointerOverGameObject())
+        var pointerPosition = Pointer.current.position.ReadValue();
+        if (IsPointerOverUIObject(pointerPosition))
             return;
 
         if (pauseController.CurrentPauseState)
@@ -67,6 +69,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnStopClick()
     {
+        if (!isAccumulationing)
+            return;
+
         StopClick?.Invoke();
         smoothJump.Animator.SetTrigger("Flip");
         isAccumulationing = false;
@@ -96,6 +101,37 @@ public class PlayerController : MonoBehaviour
         smoothJump.Jump(Power);
         moveLevel.Move();
     }
+
+    private bool IsPointerOverUIObject(Vector2 position)
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = position;
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
+    }
+
+    //private void Update()
+    //{
+    //    if (IsPointerOverUIObject())
+    //        return;
+
+    //    if (Input.GetKeyDown(KeyCode.Mouse0))
+    //    {
+    //        if (pauseController.CurrentPauseState)
+    //            pauseController.SetPause(false);
+
+    //        if (!IsCanJump)
+    //            return;
+
+    //        OnStartClick();
+    //    }
+
+    //    if (Input.GetKeyUp(KeyCode.Mouse0))
+    //    {
+    //        OnStopClick();
+    //    }
+    //}
 
     [Inject]
     private void Init(SmoothJump smoothJump, MoveLevel moveLevel, PauseController pauseController)
