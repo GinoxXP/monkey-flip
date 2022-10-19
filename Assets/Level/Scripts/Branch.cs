@@ -3,7 +3,6 @@ using Zenject;
 
 public class Branch : MonoBehaviour
 {
-    private PlayerController playerController;
     private SmoothJump smoothJump;
     private MoveLevel moveLevel;
     private MoveCamera moveCamera;
@@ -17,7 +16,6 @@ public class Branch : MonoBehaviour
             moveLevel.StopMove();
             smoothJump.StopJump();
             isPlayerStanded = true;
-            playerController.IsCanJump = true;
             moveCamera.StartReturn();
         }
     }
@@ -26,19 +24,16 @@ public class Branch : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerController.IsCanJump = false;
             moveCamera.StopMove();
         }
     }
 
     [Inject]
     private void Init(
-        PlayerController playerController,
         SmoothJump smoothJump,
         MoveLevel moveLevel,
         MoveCamera moveCamera)
     {
-        this.playerController = playerController;
         this.smoothJump = smoothJump;
         this.moveLevel = moveLevel;
         this.moveCamera = moveCamera;
