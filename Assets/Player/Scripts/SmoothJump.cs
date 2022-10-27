@@ -20,6 +20,8 @@ public class SmoothJump : MonoBehaviour
 
     public Animator Animator { get; set; }
 
+    public AnimationCurve JumpCurve => jumpCurve;
+
     private new Rigidbody rigidbody;
     private IEnumerator jumpCoroutine;
 

@@ -1864,7 +1864,8 @@ PrefabInstance:
       propertyPath: depthLevel
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2090797745917550639, guid: fbd88ea12ae900844983f04133f6e53b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fbd88ea12ae900844983f04133f6e53b, type: 3}
 --- !u!1001 &8909320651544591422
 PrefabInstance:

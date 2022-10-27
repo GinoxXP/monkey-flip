@@ -4,12 +4,14 @@ using Zenject;
 public class BranchDetector : MonoBehaviour
 {
     private PlayerController playerController;
+    private Level level;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<Branch>(out _))
+        if (other.TryGetComponent<Branch>(out var branch))
         {
             playerController.IsCanJump = true;
+            level.CurrentSegment = branch.ParentSegment;
         }
     }
 
@@ -22,8 +24,9 @@ public class BranchDetector : MonoBehaviour
     }
 
     [Inject]
-    private void Init(PlayerController playerController)
+    private void Init(PlayerController playerController, Level level)
     {
         this.playerController = playerController;
+        this.level = level;
     }
 }

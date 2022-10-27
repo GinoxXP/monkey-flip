@@ -16,6 +16,8 @@ public class MoveLevel : MonoBehaviour
     private IEnumerator moveCoroutine;
     private float trail;
 
+    public float Speed => speed;
+
     public void Move()
     {
         trail = 0;

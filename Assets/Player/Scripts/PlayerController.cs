@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private SmoothJump smoothJump;
     private MoveLevel moveLevel;
     private PauseController pauseController;
+    private JumpAssistant jumpAssistant;
 
     [SerializeField]
     [Range(0,1)]
@@ -98,7 +99,8 @@ public class PlayerController : MonoBehaviour
 
     private void TransmitPower()
     {
-        smoothJump.Jump(Power);
+        var perfectValue = jumpAssistant.GetPerfectPower();
+        smoothJump.Jump(perfectValue);
         moveLevel.Move();
     }
 
@@ -111,33 +113,12 @@ public class PlayerController : MonoBehaviour
         return results.Count > 0;
     }
 
-    //private void Update()
-    //{
-    //    if (IsPointerOverUIObject())
-    //        return;
-
-    //    if (Input.GetKeyDown(KeyCode.Mouse0))
-    //    {
-    //        if (pauseController.CurrentPauseState)
-    //            pauseController.SetPause(false);
-
-    //        if (!IsCanJump)
-    //            return;
-
-    //        OnStartClick();
-    //    }
-
-    //    if (Input.GetKeyUp(KeyCode.Mouse0))
-    //    {
-    //        OnStopClick();
-    //    }
-    //}
-
     [Inject]
-    private void Init(SmoothJump smoothJump, MoveLevel moveLevel, PauseController pauseController)
+    private void Init(SmoothJump smoothJump, MoveLevel moveLevel, PauseController pauseController, JumpAssistant jumpAssistant)
     {
         this.smoothJump = smoothJump;
         this.moveLevel = moveLevel;
         this.pauseController = pauseController;
+        this.jumpAssistant = jumpAssistant;
     }
 }

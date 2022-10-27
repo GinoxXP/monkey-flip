@@ -14,6 +14,24 @@ public class Level : MonoBehaviour
 
     public Transform LastCreatedSegment => Segments.FirstOrDefault();
 
+    public Transform CurrentSegment { get; set; }
+
+    public Transform NextSegment
+    {
+        get
+        {
+            if (Segments.Count < 2)
+                return null;
+
+            var currentIndex = Segments.FindIndex(x => x == CurrentSegment);
+
+            if (currentIndex < 1)
+                return null;
+
+            return Segments[currentIndex - 1];
+        }
+    }
+
     private void Start()
     {
         Segments.Add(firstSegment);
