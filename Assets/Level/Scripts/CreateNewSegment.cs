@@ -3,7 +3,7 @@ using Zenject;
 
 public class CreateNewSegment : MonoBehaviour
 {
-    private GenerationLevel generationLevel;
+    private LevelGenerator generationLevel;
     private DifficultyManager difficultyManager;
 
     private void OnTriggerEnter(Collider other)
@@ -17,7 +17,7 @@ public class CreateNewSegment : MonoBehaviour
 
     [Inject]
     private void Init(
-        GenerationLevel generationLevel,
+        LevelGenerator generationLevel,
         DifficultyManager difficultyManager)
     {
         this.generationLevel = generationLevel;

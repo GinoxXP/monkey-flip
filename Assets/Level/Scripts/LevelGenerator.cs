@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class GenerationLevel : MonoBehaviour
+public class LevelGenerator : MonoBehaviour
 {
+    private Level levelController;
     private DiContainer container;
-    private MoveLevel moveLevel;
     private DifficultyManager difficultyManager;
 
     private System.Random random;
@@ -18,8 +18,6 @@ public class GenerationLevel : MonoBehaviour
     private AnimationCurve maxRandomOffsetCurve;
     [SerializeField]
     private Transform branchesParent;
-    [SerializeField]
-    private Transform lastCreatedSegment;
 
     public void Generate()
     {
@@ -32,7 +30,7 @@ public class GenerationLevel : MonoBehaviour
         var branch = container.InstantiatePrefab(segmentsPrefab[randomIndex], branchesParent);
 
         var randomOffset = (float)random.NextDouble() * maxRandomOffsetCurve.Evaluate(difficultyManager.Difficulty);
-        var lastPosition = lastCreatedSegment.position;
+        var lastPosition = levelController.LastCreatedSegment.position;
 
         var newPosition = new Vector3(lastPosition.x - distance - randomOffset, branch.transform.position.y, branch.transform.position.z);
         branch.transform.position = newPosition;
@@ -40,8 +38,7 @@ public class GenerationLevel : MonoBehaviour
         var segment = branch.GetComponent<Segment>();
         segment.RandomValue = random.NextDouble();
 
-        moveLevel.Segments.Add(branch.transform);
-        lastCreatedSegment = branch.transform;
+        levelController.Segments.Insert(0, branch.transform);
     }
 
     private void Start()
@@ -51,9 +48,9 @@ public class GenerationLevel : MonoBehaviour
     }
 
     [Inject]
-    private void Init(MoveLevel moveLevel, DiContainer container, DifficultyManager difficultyManager)
+    private void Init(Level levelController, DiContainer container, DifficultyManager difficultyManager)
     {
-        this.moveLevel = moveLevel;
+        this.levelController = levelController;
         this.container = container;
         this.difficultyManager = difficultyManager;
     }

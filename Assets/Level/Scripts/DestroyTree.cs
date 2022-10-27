@@ -3,21 +3,20 @@ using Zenject;
 
 public class DestroyTree : MonoBehaviour
 {    
-    private MoveLevel moveLevel;
+    private Level levelController;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<Segment>(out _))
         {
-            moveLevel.Segments.Remove(other.transform);
+            levelController.Segments.Remove(other.transform);
             Destroy(other.gameObject);
         }
     }
 
     [Inject]
-    private void Init(
-        MoveLevel moveLevel)
+    private void Init(Level levelController)
     {
-        this.moveLevel = moveLevel;
+        this.levelController = levelController;
     }
 }
