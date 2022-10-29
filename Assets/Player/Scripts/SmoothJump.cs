@@ -12,32 +12,22 @@ public class SmoothJump : MonoBehaviour
     [SerializeField]
     private AnimationCurve jumpCurve;
     [SerializeField]
-    private bool isFlyMode;
-    [SerializeField]
-    private Vector3 flyPosition;
-    [SerializeField]
-    private float speedMultiplier;
+    private float animationSpeedMultiplier;
 
     public Animator Animator { get; set; }
 
+    public float MaxHeight => maxHeight;
+
     public AnimationCurve JumpCurve => jumpCurve;
 
-    private new Rigidbody rigidbody;
     private IEnumerator jumpCoroutine;
 
     public void Jump(float power)
     {
         Animator.SetTrigger("Flip");
         Animator.speed = playerController.MaxPower / power;
-        if (isFlyMode)
-        {
-            Fly();
-        }
-        else
-        {
-            jumpCoroutine = AnimationByTime(power);
-            StartCoroutine(jumpCoroutine);
-        }
+        jumpCoroutine = AnimationByTime(power);
+        StartCoroutine(jumpCoroutine);
     }
 
     public void StopJump()
@@ -54,9 +44,9 @@ public class SmoothJump : MonoBehaviour
         var startPosition = transform.position;
 
         var duration = 0f;
-        var curveTime = jumpCurve.keys[jumpCurve.keys.Length - 1].time * speedMultiplier;
+        var curveTime = jumpCurve.keys[jumpCurve.keys.Length - 1].time * animationSpeedMultiplier;
 
-        Animator.speed = speedMultiplier;
+        Animator.speed = animationSpeedMultiplier;
 
         while (duration < curveTime)
         {
@@ -69,17 +59,6 @@ public class SmoothJump : MonoBehaviour
         }
 
         yield return null;
-    }
-
-    private void Fly()
-    {
-        rigidbody.useGravity = false;
-        transform.position = flyPosition;
-    }
-
-    private void Start()
-    {
-        rigidbody = GetComponent<Rigidbody>();
     }
 
     [Inject]

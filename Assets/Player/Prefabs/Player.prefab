@@ -112,7 +112,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   isFlyMode: 0
   flyPosition: {x: 0, y: 5, z: 0}
-  speedMultiplier: 0.9
+  animationSpeedMultiplier: 0.9
 --- !u!1 &6433303650434472753
 GameObject:
   m_ObjectHideFlags: 0
