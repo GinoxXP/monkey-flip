@@ -82,6 +82,7 @@ MonoBehaviour:
   items:
   - itemObject: {fileID: 8763885221847254335}
     spawnProbability: 0.10000000149011612
+  branch: {fileID: 8922735618446270995}
 --- !u!1001 &1332924771189247929
 PrefabInstance:
   m_ObjectHideFlags: 0
