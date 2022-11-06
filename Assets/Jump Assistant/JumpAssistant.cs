@@ -24,18 +24,18 @@ public class JumpAssistant : MonoBehaviour
         var positionDelta = targetPointPosition - Vector3.up * currentPointPosition.y;
 
         var intersectPointI = GetIntersectOxPoint(curve, 0);
-        var intersectPointJ = GetIntersectOxPoint(curve, positionDelta.y / smoothJump.MaxHeight);
+        var intersectPointJ = GetIntersectOxPoint(curve, positionDelta.y / maxHeight);
 
         var deltaIntersectPoint = intersectPointJ - intersectPointI;
 
         var intersectPoint = intersectPointI + deltaIntersectPoint;
 
-        var result = Mathf.Abs(targetBranchPosition.x) / ((intersectPointI + deltaIntersectPoint) * speed);
+        var result = Mathf.Abs(targetBranchPosition.x) / (intersectPoint * speed);
 
         return result;
     }
 
-    private float GetIntersectOxPoint(AnimationCurve curve, float heightDelta)
+    private float GetIntersectOxPoint(AnimationCurve curve, float oxHeightDelta)
     {
         var step = 0.05f;
         var curveTime = curve.keys[curve.keys.Length - 1].time;
@@ -46,7 +46,7 @@ public class JumpAssistant : MonoBehaviour
         float intersectOxPoint = 0;
         while (progress <= curveTime)
         {
-            var currentSign = Mathf.Sign(curve.Evaluate(progress) - heightDelta);
+            var currentSign = Mathf.Sign(curve.Evaluate(progress) - oxHeightDelta);
 
             if (lastSign.HasValue)
             {
