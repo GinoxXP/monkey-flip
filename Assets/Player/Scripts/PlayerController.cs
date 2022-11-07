@@ -99,8 +99,8 @@ public class PlayerController : MonoBehaviour
 
     private void TransmitPower()
     {
-        var perfectValue = jumpAssistant.GetPerfectPower();
-        smoothJump.Jump(perfectValue);
+        var assistedPower = jumpAssistant.GetAssistedPower(Power);
+        smoothJump.Jump(assistedPower);
         moveLevel.Move();
     }
 
