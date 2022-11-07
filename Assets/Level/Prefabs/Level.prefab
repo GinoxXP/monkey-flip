@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 8097952541771659911}
   - component: {fileID: 8097952541771659910}
   - component: {fileID: 3290448948772582734}
+  - component: {fileID: 7911409661999053260}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -88,7 +89,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  startSegment: {fileID: 917619727292010208}
 --- !u!114 &8097952541771659910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +131,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   branchesParent: {fileID: 3702451928631714589}
-  lastCreatedSegment: {fileID: 917619727292010208}
 --- !u!114 &3290448948772582734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +154,19 @@ MonoBehaviour:
     speed: 1
   - background: {fileID: 6289987195061252972}
     speed: 0.2
+--- !u!114 &7911409661999053260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8097952541771659909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cc3f2d1f2eee3540ac7814e1323bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstSegment: {fileID: 917619727292010208}
 --- !u!1001 &847069306325792337
 PrefabInstance:
   m_ObjectHideFlags: 0

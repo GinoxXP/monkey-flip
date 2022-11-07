@@ -7,7 +7,12 @@ public class Branch : MonoBehaviour
     private MoveLevel moveLevel;
     private MoveCamera moveCamera;
 
+    [SerializeField]
+    private Transform parentSegment;
+
     private bool isPlayerStanded;
+
+    public Transform ParentSegment => parentSegment;
 
     private void OnTriggerEnter(Collider other)
     {
