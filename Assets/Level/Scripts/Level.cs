@@ -1,9 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 public class Level : MonoBehaviour
 {
+    private LevelGenerator generationLevel;
+    private DifficultyManager difficultyManager;
+
     [SerializeField]
     private Transform firstSegment;
 
@@ -32,8 +36,29 @@ public class Level : MonoBehaviour
         }
     }
 
+    public void DestroySegment(Transform transform)
+    {
+        Segments.Remove(transform);
+        Destroy(transform.gameObject);
+    }
+
+    public void CreateSegment()
+    {
+        generationLevel.Generate();
+        difficultyManager.AddDifficulty();
+    }
+
     private void Start()
     {
         Segments.Add(firstSegment);
+    }
+
+    [Inject]
+    private void Init(
+        LevelGenerator generationLevel,
+        DifficultyManager difficultyManager)
+    {
+        this.generationLevel = generationLevel;
+        this.difficultyManager = difficultyManager;
     }
 }

@@ -3237,7 +3237,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 994287875735083414, guid: a8983ed8de3de404b82c4a2cd5971ce5, type: 3}
       propertyPath: m_Name
-      value: Destroy Zone
+      value: Destroying Segment Zone
       objectReference: {fileID: 0}
     - target: {fileID: 4289801748516710917, guid: a8983ed8de3de404b82c4a2cd5971ce5, type: 3}
       propertyPath: m_RootOrder
