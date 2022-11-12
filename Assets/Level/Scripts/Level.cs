@@ -5,8 +5,8 @@ using Zenject;
 
 public class Level : MonoBehaviour
 {
-    private LevelGenerator generationLevel;
     private DifficultyManager difficultyManager;
+    private PerlinNoiseGeneration perlinNoiseGeneration;
 
     [SerializeField]
     private Transform firstSegment;
@@ -44,21 +44,25 @@ public class Level : MonoBehaviour
 
     public void CreateSegment()
     {
-        generationLevel.Generate();
+        var segment = perlinNoiseGeneration.Generate();
+        Segments.Insert(0, segment);
+
         difficultyManager.AddDifficulty();
     }
 
     private void Start()
     {
+        perlinNoiseGeneration.SetSeed();
         Segments.Add(firstSegment);
+        CreateSegment();
     }
 
     [Inject]
     private void Init(
-        LevelGenerator generationLevel,
-        DifficultyManager difficultyManager)
+        DifficultyManager difficultyManager,
+        PerlinNoiseGeneration perlinNoiseGeneration)
     {
-        this.generationLevel = generationLevel;
         this.difficultyManager = difficultyManager;
+        this.perlinNoiseGeneration = perlinNoiseGeneration;
     }
 }

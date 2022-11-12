@@ -14,6 +14,11 @@ public class Branch : MonoBehaviour
 
     public Transform ParentSegment => parentSegment;
 
+    public void SetHeight(float height)
+    {
+        transform.position = new Vector3(transform.position.x, height, transform.position.z);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player") && !isPlayerStanded)

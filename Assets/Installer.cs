@@ -15,7 +15,6 @@ public class Installer : MonoInstaller
         Container.Bind<SmoothJump>().FromComponentInHierarchy().AsSingle();
         Container.Bind<PlayerController>().FromComponentInHierarchy().AsSingle();
         Container.Bind<MoveLevel>().FromComponentInHierarchy().AsSingle();
-        Container.Bind<LevelGenerator>().FromComponentInHierarchy().AsSingle();
         Container.Bind<DifficultyManager>().FromComponentInHierarchy().AsSingle();
         Container.Bind<ScoreManager>().FromComponentInHierarchy().AsSingle();
         Container.Bind<MoveCamera>().FromComponentInHierarchy().AsSingle();
@@ -26,6 +25,7 @@ public class Installer : MonoInstaller
         Container.Bind<DayCycleController>().FromComponentInHierarchy().AsSingle();
         Container.Bind<Level>().FromComponentInHierarchy().AsSingle();
         Container.Bind<JumpAssistant>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<PerlinNoiseGeneration>().FromComponentInHierarchy().AsSingle();
 
         Container.Bind<Light>().FromInstance(directionLight).AsSingle();
         Container.Bind<Camera>().FromInstance(camera).AsSingle();
