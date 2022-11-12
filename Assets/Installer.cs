@@ -26,6 +26,7 @@ public class Installer : MonoInstaller
         Container.Bind<Level>().FromComponentInHierarchy().AsSingle();
         Container.Bind<JumpAssistant>().FromComponentInHierarchy().AsSingle();
         Container.Bind<PerlinNoiseGeneration>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<LootCreation>().FromComponentInHierarchy().AsSingle();
 
         Container.Bind<Light>().FromInstance(directionLight).AsSingle();
         Container.Bind<Camera>().FromInstance(camera).AsSingle();

@@ -8,6 +8,7 @@ public class PerlinNoiseGeneration : MonoBehaviour
     private DifficultyManager difficultyManager;
     private Level level;
     private ScoreManager scoreManager;
+    private LootCreation lootCreation;
     private System.Random random;
 
     [SerializeField]
@@ -65,6 +66,10 @@ public class PerlinNoiseGeneration : MonoBehaviour
         var branchHeight = levelSegmentLineY + GetBranchHeight(scoreManager.Score);
         segmentComponent.Branch.SetHeight(branchHeight);
 
+        var lootProbabilityValue = (int)(random.NextDouble() * lootCreation.MaxProbabilityValue);
+        var loot = lootCreation.GetLootObject(lootProbabilityValue);
+        segmentComponent.Branch.SetLoot(loot);
+
         return segment.transform;
     }
 
@@ -79,11 +84,13 @@ public class PerlinNoiseGeneration : MonoBehaviour
         DiContainer container,
         DifficultyManager difficultyManager,
         Level level,
-        ScoreManager scoreManager)
+        ScoreManager scoreManager,
+        LootCreation lootCreation)
     {
         this.container = container;
         this.difficultyManager = difficultyManager;
         this.level = level;
         this.scoreManager = scoreManager;
+        this.lootCreation = lootCreation;
     }
 }

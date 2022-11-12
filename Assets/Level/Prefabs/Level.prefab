@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 3290448948772582734}
   - component: {fileID: 7911409661999053260}
   - component: {fileID: 3596686860793509423}
+  - component: {fileID: 3684956117994700134}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -176,6 +177,23 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3684956117994700134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8097952541771659909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc2c120427e56684bba4c9aae25e0017, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootList:
+  - lootObject: {fileID: 0}
+    probabilityValue: 90
+  - lootObject: {fileID: 7773234025661827718, guid: 91bdec4ec417c044a8137ca6042625d6, type: 3}
+    probabilityValue: 10
 --- !u!1001 &847069306325792337
 PrefabInstance:
   m_ObjectHideFlags: 0
