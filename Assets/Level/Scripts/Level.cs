@@ -1,9 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 public class Level : MonoBehaviour
 {
+    private DifficultyManager difficultyManager;
+    private PerlinNoiseGeneration perlinNoiseGeneration;
+
     [SerializeField]
     private Transform firstSegment;
 
@@ -32,8 +36,33 @@ public class Level : MonoBehaviour
         }
     }
 
+    public void DestroySegment(Transform transform)
+    {
+        Segments.Remove(transform);
+        Destroy(transform.gameObject);
+    }
+
+    public void CreateSegment()
+    {
+        var segment = perlinNoiseGeneration.Generate();
+        Segments.Insert(0, segment);
+
+        difficultyManager.AddDifficulty();
+    }
+
     private void Start()
     {
+        perlinNoiseGeneration.SetSeed();
         Segments.Add(firstSegment);
+        CreateSegment();
+    }
+
+    [Inject]
+    private void Init(
+        DifficultyManager difficultyManager,
+        PerlinNoiseGeneration perlinNoiseGeneration)
+    {
+        this.difficultyManager = difficultyManager;
+        this.perlinNoiseGeneration = perlinNoiseGeneration;
     }
 }
