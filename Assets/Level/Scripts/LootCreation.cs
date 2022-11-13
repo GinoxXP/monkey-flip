@@ -21,10 +21,14 @@ public class LootCreation : MonoBehaviour
 
     public GameObject GetLootObject(int probabilityValue)
     {
+        var lootProbabilitiesSum = 0;
+
         foreach (var loot in lootList)
         {
-            if (loot.probabilityValue < probabilityValue)
+            if (probabilityValue >= lootProbabilitiesSum && probabilityValue < loot.probabilityValue + lootProbabilitiesSum)
                 return loot.lootObject;
+
+            lootProbabilitiesSum += loot.probabilityValue;
         }
 
         return null;

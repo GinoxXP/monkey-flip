@@ -191,9 +191,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootList:
   - lootObject: {fileID: 0}
-    probabilityValue: 90
+    probabilityValue: 9
   - lootObject: {fileID: 7773234025661827718, guid: 91bdec4ec417c044a8137ca6042625d6, type: 3}
-    probabilityValue: 10
+    probabilityValue: 1
 --- !u!1001 &847069306325792337
 PrefabInstance:
   m_ObjectHideFlags: 0
