@@ -64,7 +64,7 @@ MonoBehaviour:
       targetMaterial: {fileID: 2100000, guid: 1899e88ef78e85f448c355cb9c0b0e43, type: 2}
     isBought: 1
     isSelected: 1
-    model: {fileID: 4583760366208429092, guid: b722b41cd12344d4ba58cf91bdf01255, type: 3}
+    model: {fileID: 2295111690396814832, guid: 589e589261a3c4943815ea2deb56ad88, type: 3}
     icon: {fileID: 21300000, guid: 3393e6bffe4a99945b716e722427d699, type: 3}
   - name: Gorilla
     cost: 100
