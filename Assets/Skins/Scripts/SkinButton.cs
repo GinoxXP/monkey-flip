@@ -5,24 +5,30 @@ using static SkinData;
 
 public class SkinButton : MonoBehaviour
 {
+    private bool isSelected;
+
     [SerializeField]
     private Image image;
     [SerializeField]
-    private GameObject selectIcon;
-    [SerializeField]
-    private GameObject lockIcon;
+    private GameObject selectedPanel;
 
     public Skin Skin { get; set; }
 
-    public bool IsSelected { get => selectIcon.activeSelf; set => selectIcon.SetActive(value); }
+    public bool IsSelected
+    {
+        get => isSelected;
+        set
+        {
+            isSelected = value;
+            selectedPanel.SetActive(isSelected);
+        }
+    }
 
-    public bool IsLocked { get => lockIcon.activeSelf; set => lockIcon.SetActive(value); } 
-
-    public Action<Skin> OnSelect;
+    public Action<SkinButton> OnSelect;
 
     public void Click()
     {
-        OnSelect?.Invoke(Skin);
+        OnSelect?.Invoke(this);
     }
 
     private void Start()
