@@ -35,22 +35,6 @@ public class SkinController : MonoBehaviour
         }
     }
 
-    public void SetColor(ColorSet newColorSet, ColorPalette colorPalette, Material targetMaterial)
-    {
-        foreach (var colorSet in colorPalette.ColorSets)
-        {
-            if (colorSet == newColorSet)
-            {
-                targetMaterial.color = newColorSet.Color;
-                colorSet.IsSelected = true;
-            }
-            else
-            {
-                colorSet.IsSelected = false;
-            }
-        }
-    }
-
     private void Start()
     {
         SetSkin(skinData.skins.First());
