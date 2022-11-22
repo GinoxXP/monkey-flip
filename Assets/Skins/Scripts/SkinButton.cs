@@ -11,6 +11,8 @@ public class SkinButton : MonoBehaviour
     private Image image;
     [SerializeField]
     private GameObject selectedPanel;
+    [SerializeField]
+    private GameObject skinSelectedIcon;
 
     public Skin Skin { get; set; }
 
@@ -31,8 +33,20 @@ public class SkinButton : MonoBehaviour
         OnSelect?.Invoke(this);
     }
 
+    private void UpdateSkinSelectedIcon()
+    {
+        skinSelectedIcon.SetActive(Skin.IsSelected);
+    }
+
+    private void OnSkinPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        UpdateSkinSelectedIcon();
+    }
+
     private void Start()
     {
         image.sprite = Skin.Icon;
+        UpdateSkinSelectedIcon();
+        Skin.PropertyChanged += OnSkinPropertyChanged;
     }
 }
