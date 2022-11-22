@@ -1473,7 +1473,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1972454812387226432}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1338059520344374727}
+        m_TargetAssemblyTypeName: WardrobeController, Assembly-CSharp
+        m_MethodName: SelectSkin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7566140541661438048
 MonoBehaviour:
   m_ObjectHideFlags: 0

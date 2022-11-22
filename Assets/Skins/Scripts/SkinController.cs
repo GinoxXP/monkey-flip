@@ -12,7 +12,7 @@ public class SkinController : MonoBehaviour
 
     public Skin CurrentSkin => currentSkin;
 
-    public void SetSkin(Skin newSkin)
+    public void SetSkin(Skin newSkin, bool isPreview = false)
     {
         foreach (var skin in skinData.skins)
         {
@@ -20,7 +20,8 @@ public class SkinController : MonoBehaviour
             {
                 currentSkin = skin;
 
-                skin.IsSelected = true;
+                if (!isPreview)
+                    skin.IsSelected = true;
 
                 if (currentModel != null)
                     Destroy(currentModel);
@@ -30,7 +31,8 @@ public class SkinController : MonoBehaviour
             }
             else
             {
-                skin.IsSelected = false;
+                if (!isPreview)
+                    skin.IsSelected = false;
             }
         }
     }

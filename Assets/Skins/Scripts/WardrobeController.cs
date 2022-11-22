@@ -25,6 +25,7 @@ public class WardrobeController : MonoBehaviour
     private GameObject skinButtonPrefab;
 
     private List<SkinButton> skinButtons = new();
+    private Skin lastSelectedSkin;
 
     private enum ButtonType
     {
@@ -33,9 +34,30 @@ public class WardrobeController : MonoBehaviour
         Buy,
     }
 
+    public void Open()
+    {
+        UpdateView();
+
+        foreach (var skin in skinData.skins)
+        {
+            if (skin.IsSelected)
+            {
+                lastSelectedSkin = skin;
+                break;
+            }
+        }
+    }
+
     public void Close()
     {
+        skinController.SetSkin(lastSelectedSkin);
         gameObject.SetActive(false);
+    }
+
+    public void SelectSkin()
+    {
+        UpdateSelectedSkinButton();
+        lastSelectedSkin = skinData.skins.Where(x => x.IsSelected).FirstOrDefault();
     }
 
     private void FillSkins()
@@ -69,15 +91,12 @@ public class WardrobeController : MonoBehaviour
 
     private void OnSkinButtonClicked(SkinButton skinButton)
     {
-        foreach(var a in skinButtons)
-        {
-            a.IsSelected = false;
-        }
+        foreach (var button in skinButtons)
+            button.IsSelected = false;
 
         skinButton.IsSelected = true;
 
-        UpdateSelectedSkinButton();
-
+        skinController.SetSkin(skinButton.Skin, true);
         SetActiveButton(skinButton.Skin);
     }
 
@@ -118,11 +137,6 @@ public class WardrobeController : MonoBehaviour
             if (skinButton.Skin.IsSelected)
                 SetActiveButton(skinButton.Skin);
         }
-    }
-
-    private void Start()
-    {
-        UpdateView();
     }
 
     [Inject]
