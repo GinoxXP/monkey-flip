@@ -10,7 +10,7 @@ public class SkinData : ScriptableObject
     public List<Skin> skins = new List<Skin>();
 
     [System.Serializable]
-    public class Skin : INotifyPropertyChanged
+    public class Skin
     {
         [SerializeField]
         private string name;
@@ -37,7 +37,7 @@ public class SkinData : ScriptableObject
             set
             {
                 isSelected = value;
-                OnPropertyChanged();
+                IsSelectedShanged?.Invoke();
             }
         }
 
@@ -45,11 +45,7 @@ public class SkinData : ScriptableObject
 
         public Sprite Icon => icon;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event Action IsSelectedShanged;
 
-        private void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
     }
 }

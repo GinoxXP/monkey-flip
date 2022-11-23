@@ -9,6 +9,7 @@ public class WardrobeController : MonoBehaviour
 {
     private SkinController skinController;
     private SkinData skinData;
+    private BananaBalanceManager balanceManager;
 
     [SerializeField]
     private GameObject selectButton;
@@ -23,8 +24,11 @@ public class WardrobeController : MonoBehaviour
     private Transform skinsParent;
     [SerializeField]
     private GameObject skinButtonPrefab;
+    [SerializeField]
+    private TMP_Text priceText;
 
     private List<SkinButton> skinButtons = new();
+    private Skin lastSetedSkin;
     private Skin lastSelectedSkin;
 
     private enum ButtonType
@@ -42,7 +46,7 @@ public class WardrobeController : MonoBehaviour
         {
             if (skin.IsSelected)
             {
-                lastSelectedSkin = skin;
+                lastSetedSkin = skin;
                 break;
             }
         }
@@ -50,14 +54,24 @@ public class WardrobeController : MonoBehaviour
 
     public void Close()
     {
-        skinController.SetSkin(lastSelectedSkin);
+        skinController.SetSkin(lastSetedSkin);
         gameObject.SetActive(false);
     }
 
     public void SelectSkin()
     {
-        UpdateSelectedSkinButton();
-        lastSelectedSkin = skinData.skins.Where(x => x.IsSelected).FirstOrDefault();
+        //UpdateSelectedSkinButton();
+        //lastSetedSkin = skinData.skins.Where(x => x.IsSelected).FirstOrDefault();
+    }
+
+    public void BuySkin()
+    {
+        if (balanceManager.CanRemove(lastSelectedSkin.Cost))
+        {
+            balanceManager.Remove(lastSelectedSkin.Cost);
+            lastSelectedSkin.IsBought = true;
+            UpdateSelectedSkinButton();
+        }
     }
 
     private void FillSkins()
@@ -97,6 +111,7 @@ public class WardrobeController : MonoBehaviour
         skinButton.IsSelected = true;
 
         skinController.SetSkin(skinButton.Skin, true);
+        lastSelectedSkin = skinButton.Skin;
         SetActiveButton(skinButton.Skin);
     }
 
@@ -118,7 +133,8 @@ public class WardrobeController : MonoBehaviour
         {
             selectButton.SetActive(false);
             selectedButtonPlaceholder.SetActive(false);
-            buyButton.SetActive(true); 
+            buyButton.SetActive(true);
+            priceText.text = skin.Cost.ToString();
         }
     }
 
@@ -126,23 +142,24 @@ public class WardrobeController : MonoBehaviour
     {
         ClearSkins();
         FillSkins();
-        UpdateSelectedSkinButton();
-    }
 
-    private void UpdateSelectedSkinButton()
-    {
         foreach (var skinButton in skinButtons)
         {
-            skinButton.IsSelected = skinButton.Skin.IsSelected;
             if (skinButton.Skin.IsSelected)
                 SetActiveButton(skinButton.Skin);
         }
     }
 
+    private void UpdateSelectedSkinButton()
+    {
+        SetActiveButton(lastSelectedSkin);
+    }
+
     [Inject]
-    private void Init(SkinController skinController, SkinData skinData)
+    private void Init(SkinController skinController, SkinData skinData, BananaBalanceManager balanceManager)
     {
         this.skinController = skinController;
         this.skinData = skinData;
+        this.balanceManager = balanceManager;
     }
 }

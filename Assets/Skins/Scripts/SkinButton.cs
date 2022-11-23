@@ -38,7 +38,7 @@ public class SkinButton : MonoBehaviour
         skinSelectedIcon.SetActive(Skin.IsSelected);
     }
 
-    private void OnSkinPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    private void OnSkinSelectedChanged()
     {
         UpdateSkinSelectedIcon();
     }
@@ -47,6 +47,11 @@ public class SkinButton : MonoBehaviour
     {
         image.sprite = Skin.Icon;
         UpdateSkinSelectedIcon();
-        Skin.PropertyChanged += OnSkinPropertyChanged;
+        Skin.IsSelectedShanged += OnSkinSelectedChanged;
+    }
+
+    private void OnDestroy()
+    {
+        Skin.IsSelectedShanged -= OnSkinSelectedChanged;
     }
 }

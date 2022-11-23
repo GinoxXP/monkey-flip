@@ -15,107 +15,13 @@ MonoBehaviour:
   skins:
   - name: Chimpanzee
     cost: 0
-    colorPalettes:
-    - name: Primary color
-      colorSets:
-      - color: {r: 0.27450982, g: 0.11372549, b: 0, a: 1}
-        cost: 0
-        isBought: 1
-        isSelected: 1
-      - color: {r: 0.9411765, g: 0.63529414, b: 0.007843138, a: 1}
-        cost: 10
-        isBought: 0
-        isSelected: 0
-      - color: {r: 0.94509804, g: 0.53333336, b: 0.019607844, a: 1}
-        cost: 20
-        isBought: 0
-        isSelected: 0
-      - color: {r: 0.8509804, g: 0.3647059, b: 0.22352941, a: 1}
-        cost: 35
-        isBought: 0
-        isSelected: 0
-      - color: {r: 0.1254902, g: 0.17254902, b: 0.34901962, a: 1}
-        cost: 50
-        isBought: 0
-        isSelected: 0
-      targetMaterial: {fileID: 2100000, guid: ce43b242828957642b5342c7922db650, type: 2}
-    - name: Secondary color
-      colorSets:
-      - color: {r: 1, g: 0.8156863, b: 0.5254902, a: 1}
-        cost: 0
-        isBought: 1
-        isSelected: 1
-      - color: {r: 0.34901962, g: 0.34901962, b: 0.34901962, a: 1}
-        cost: 10
-        isBought: 0
-        isSelected: 0
-      - color: {r: 0.49803922, g: 0.49803922, b: 0.49803922, a: 1}
-        cost: 15
-        isBought: 0
-        isSelected: 0
-      - color: {r: 0.33333334, g: 0.8666667, b: 0.8784314, a: 1}
-        cost: 35
-        isBought: 0
-        isSelected: 0
-      - color: {r: 0.4, g: 0.0627451, b: 0.9490196, a: 1}
-        cost: 50
-        isBought: 0
-        isSelected: 0
-      targetMaterial: {fileID: 2100000, guid: 1899e88ef78e85f448c355cb9c0b0e43, type: 2}
     isBought: 1
     isSelected: 1
     model: {fileID: 2295111690396814832, guid: 589e589261a3c4943815ea2deb56ad88, type: 3}
     icon: {fileID: 21300000, guid: 3393e6bffe4a99945b716e722427d699, type: 3}
   - name: Gorilla
-    cost: 100
-    colorPalettes:
-    - name: Primary color
-      colorSets:
-      - color: {r: 0.14117648, g: 0.1254902, b: 0.1254902, a: 1}
-        cost: 0
-        isBought: 1
-        isSelected: 1
-      - color: {r: 0.8627451, g: 0.8627451, b: 0.8666667, a: 1}
-        cost: 10
-        isBought: 0
-        isSelected: 0
-      - color: {r: 0.77254903, g: 0.7647059, b: 0.7764706, a: 1}
-        cost: 20
-        isBought: 0
-        isSelected: 0
-      - color: {r: 0.09803922, g: 0.52156866, b: 0.6313726, a: 1}
-        cost: 35
-        isBought: 0
-        isSelected: 0
-      - color: {r: 0.23529412, g: 0.5372549, b: 0.42745098, a: 1}
-        cost: 50
-        isBought: 0
-        isSelected: 0
-      targetMaterial: {fileID: 2100000, guid: c4d84bba206a21d4a83d7528ba6e95d4, type: 2}
-    - name: Secondary color
-      colorSets:
-      - color: {r: 0.34509805, g: 0.34509805, b: 0.3647059, a: 1}
-        cost: 0
-        isBought: 1
-        isSelected: 1
-      - color: {r: 0.7921569, g: 0.8980392, b: 1, a: 1}
-        cost: 10
-        isBought: 0
-        isSelected: 0
-      - color: {r: 0.6745098, g: 0.92941177, b: 1, a: 1}
-        cost: 20
-        isBought: 0
-        isSelected: 0
-      - color: {r: 0.5372549, g: 0.73333335, b: 0.99607843, a: 1}
-        cost: 35
-        isBought: 0
-        isSelected: 0
-      - color: {r: 0.94509804, g: 0.827451, b: 0.007843138, a: 1}
-        cost: 50
-        isBought: 0
-        isSelected: 0
-      targetMaterial: {fileID: 2100000, guid: f0f12e696ab58df4aa2d7e8646e9d027, type: 2}
-    isBought: 0
+    cost: 0
+    isBought: 1
     isSelected: 0
     model: {fileID: 480669691104914357, guid: 14cb790c882768e4ab74f1761e6df1e9, type: 3}
     icon: {fileID: 21300000, guid: a1fee7129b2400748bbfd5554c75adc4, type: 3}
