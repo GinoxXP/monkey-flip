@@ -1461,7 +1461,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1338059520344374727}
         m_TargetAssemblyTypeName: WardrobeController, Assembly-CSharp
-        m_MethodName: SelectSkin
+        m_MethodName: SetSkin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

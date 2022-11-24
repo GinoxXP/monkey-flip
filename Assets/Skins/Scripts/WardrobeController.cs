@@ -54,6 +54,7 @@ public class WardrobeController : MonoBehaviour
 
     public void Close()
     {
+        ClearSkins();
         skinController.SetSkin(lastSetedSkin);
         gameObject.SetActive(false);
     }
@@ -66,6 +67,12 @@ public class WardrobeController : MonoBehaviour
             lastSelectedSkin.IsBought = true;
             UpdateSelectedSkinButton();
         }
+    }
+
+    public void SetSkin()
+    {
+        lastSetedSkin = lastSelectedSkin;
+        skinController.SetSkin(lastSelectedSkin);
     }
 
     private void FillSkins()
