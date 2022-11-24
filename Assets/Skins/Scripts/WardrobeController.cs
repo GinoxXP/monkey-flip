@@ -58,12 +58,6 @@ public class WardrobeController : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void SelectSkin()
-    {
-        //UpdateSelectedSkinButton();
-        //lastSetedSkin = skinData.skins.Where(x => x.IsSelected).FirstOrDefault();
-    }
-
     public void BuySkin()
     {
         if (balanceManager.CanRemove(lastSelectedSkin.Cost))
@@ -84,6 +78,12 @@ public class WardrobeController : MonoBehaviour
             var skinButtonComponent = skinButton.GetComponent<SkinButton>();
             skinButtonComponent.Skin = skin;
             skinButtonComponent.OnSelect += OnSkinButtonClicked;
+
+            if (skin.IsSelected)
+            {
+                skinNameText.text = skin.Name;
+                skinButtonComponent.IsSelected = true;
+            }
 
             skinButtons.Add(skinButtonComponent);
         }
@@ -113,6 +113,7 @@ public class WardrobeController : MonoBehaviour
         skinController.SetSkin(skinButton.Skin, true);
         lastSelectedSkin = skinButton.Skin;
         SetActiveButton(skinButton.Skin);
+        skinNameText.text = skinButton.Skin.Name;
     }
 
     private void SetActiveButton(Skin skin)
