@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/SkinScriptableObject", order = 1)]
@@ -14,8 +17,6 @@ public class SkinData : ScriptableObject
         [SerializeField]
         private int cost;
         [SerializeField]
-        private List<ColorPalette> colorPalettes;
-        [SerializeField]
         private bool isBought;
         [SerializeField]
         private bool isSelected;
@@ -28,52 +29,23 @@ public class SkinData : ScriptableObject
 
         public int Cost => cost;
 
-        public List<ColorPalette> ColorPalettes => colorPalettes;
-
         public bool IsBought { get => isBought; set => isBought = value; }
 
-        public bool IsSelected { get => isSelected; set => isSelected = value; }
+        public bool IsSelected
+        {
+            get => isSelected;
+            set
+            {
+                isSelected = value;
+                IsSelectedShanged?.Invoke();
+            }
+        }
 
         public GameObject Model => model;
 
         public Sprite Icon => icon;
-    }
 
-    [System.Serializable]
-    public class ColorPalette
-    {
-        [SerializeField]
-        private string name;
-        [SerializeField]
-        private List<ColorSet> colorSets;
-        [SerializeField]
-        private Material targetMaterial;
+        public event Action IsSelectedShanged;
 
-        public string Name => name;
-
-        public List<ColorSet> ColorSets => colorSets;
-
-        public Material TargetMaterial => targetMaterial;
-    }
-
-    [System.Serializable]
-    public class ColorSet
-    {
-        [SerializeField]
-        private Color color;
-        [SerializeField]
-        private int cost;
-        [SerializeField]
-        private bool isBought;
-        [SerializeField]
-        private bool isSelected;
-
-        public Color Color => color;
-
-        public int Cost => cost;
-
-        public bool IsBought { get => isBought; set => isBought = value; }
-
-        public bool IsSelected { get => isSelected; set => isSelected = value; }
     }
 }

@@ -46,8 +46,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 1.4, z: 0.7}
-  m_Center: {x: 0, y: -0.1, z: 0}
+  m_Size: {x: 0.3, y: 1.206574, z: 0.7}
+  m_Center: {x: 0, y: -0.0032870173, z: 0}
 --- !u!54 &5913898967338381026
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -110,8 +110,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  isFlyMode: 0
-  flyPosition: {x: 0, y: 5, z: 0}
   animationSpeedMultiplier: 0.9
 --- !u!1 &6433303650434472753
 GameObject:
@@ -158,7 +156,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.1, z: 0.5}
-  m_Center: {x: 0, y: -0.8, z: 0}
+  m_Center: {x: 0, y: -0.6, z: 0}
 --- !u!114 &4060613749428565011
 MonoBehaviour:
   m_ObjectHideFlags: 0
