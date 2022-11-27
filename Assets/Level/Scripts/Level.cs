@@ -55,6 +55,8 @@ public class Level : MonoBehaviour
         perlinNoiseGeneration.SetSeed();
         Segments.Add(firstSegment);
         CreateSegment();
+        CreateSegment();
+        CreateSegment();
     }
 
     [Inject]
