@@ -6,7 +6,7 @@ using Zenject;
 [RequireComponent(typeof(BackgroundManager))]
 public class MoveLevel : MonoBehaviour
 {
-    private ScoreManager scoreManager;
+    private Score scoreManager;
     private BackgroundManager backgroundManager;
     private Level levelController;
 
@@ -38,7 +38,7 @@ public class MoveLevel : MonoBehaviour
         if (ignoreScore)
             return;
 
-        scoreManager.Score += (int)trail;
+        scoreManager.ScoreValue += (int)trail;
     }
 
     private IEnumerator AnimationByTime()
@@ -67,7 +67,7 @@ public class MoveLevel : MonoBehaviour
     }
 
     [Inject]
-    private void Init(ScoreManager scoreManager, Level levelController)
+    private void Init(Score scoreManager, Level levelController)
     {
         this.scoreManager = scoreManager;
         this.levelController = levelController;

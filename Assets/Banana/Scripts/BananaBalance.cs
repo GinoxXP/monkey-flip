@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class BananaBalanceManager : MonoBehaviour
+public class BananaBalance : MonoBehaviour
 {
     public const string BANANA_COUNTER_KEY = "BananaCounter";
 

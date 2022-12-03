@@ -4,7 +4,7 @@ using Zenject;
 
 public class ScoreView : MonoBehaviour
 {
-    private ScoreManager scoreManager;
+    private Score scoreManager;
 
     [SerializeField]
     private TMP_Text scoreText;
@@ -15,7 +15,7 @@ public class ScoreView : MonoBehaviour
     {
         UpdateText();
 
-        if (scoreManager.BestScore == 0)
+        if (scoreManager.BestScoreValue == 0)
             DisableBestScoreText();
 
         scoreManager.NewScoreAvailable += UpdateText;
@@ -24,8 +24,8 @@ public class ScoreView : MonoBehaviour
 
     private void UpdateText()
     {
-        scoreText.text = scoreManager.Score.ToString();
-        bestScoreText.text = scoreManager.BestScore.ToString();
+        scoreText.text = scoreManager.ScoreValue.ToString();
+        bestScoreText.text = scoreManager.BestScoreValue.ToString();
     }
 
     private void DisableBestScoreText()
@@ -41,7 +41,7 @@ public class ScoreView : MonoBehaviour
     }
 
     [Inject]
-    private void Init(ScoreManager scoreManager)
+    private void Init(Score scoreManager)
     {
         this.scoreManager = scoreManager;
     }

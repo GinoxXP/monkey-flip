@@ -2,10 +2,11 @@ using System.Collections;
 using UnityEngine;
 using Zenject;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Monkey))]
 public class SmoothJump : MonoBehaviour
 {
     private PlayerController playerController;
+    private Monkey monkey;
 
     [SerializeField]
     private float maxHeight;
@@ -24,6 +25,7 @@ public class SmoothJump : MonoBehaviour
 
     public void Jump(float power)
     {
+        monkey.Hop();
         Animator.SetTrigger("Flip");
         Animator.speed = playerController.MaxPower / power;
         jumpCoroutine = AnimationByTime(power);
@@ -62,8 +64,9 @@ public class SmoothJump : MonoBehaviour
     }
 
     [Inject]
-    private void Init(PlayerController playerController)
+    private void Init(PlayerController playerController, Monkey monkey)
     {
         this.playerController = playerController;
+        this.monkey = monkey;
     }
 }
