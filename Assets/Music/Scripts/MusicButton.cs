@@ -1,13 +1,19 @@
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using Zenject;
 
 [RequireComponent(typeof(Image))]
 public class MusicButton : MonoBehaviour
 {
     private const string VOLUME_PARAMETER = "Volume";
+    private const float DISABLE_MUSIC_VOLUME = -80;
+    private const float ENABLE_MUSIC_VOLUME = 0;
+
+    private PauseController pauseController;
     private Image image;
-    private bool isOn;
+
+    private bool isOn = true;
 
     [SerializeField]
     private Sprite onStateSprite;
@@ -25,12 +31,12 @@ public class MusicButton : MonoBehaviour
             if (isOn)
             {
                 image.sprite = onStateSprite;
-                musicMixer.SetFloat(VOLUME_PARAMETER, 1);
+                musicMixer.SetFloat(VOLUME_PARAMETER, ENABLE_MUSIC_VOLUME);
             }
             else
             {
                 image.sprite = offStateSprite;
-                musicMixer.SetFloat(VOLUME_PARAMETER, 0);
+                musicMixer.SetFloat(VOLUME_PARAMETER, DISABLE_MUSIC_VOLUME);
             }
         }
     }
@@ -38,8 +44,20 @@ public class MusicButton : MonoBehaviour
     public void Click()
         => IsOn = !IsOn;
 
+    private void OnPauseChanged(bool isPause)
+    {
+        gameObject.SetActive(isPause);
+    }
+
     private void Start()
     {
         image = GetComponent<Image>();
+    }
+
+    [Inject]
+    private void Init(PauseController pauseController)
+    {
+        this.pauseController = pauseController;
+        pauseController.PauseChanged += OnPauseChanged;
     }
 }
