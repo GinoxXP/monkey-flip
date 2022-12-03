@@ -4,7 +4,7 @@ using Zenject;
 
 public class BananaView : MonoBehaviour
 {
-    private BananaBalanceManager bananaBalanceManager;
+    private BananaBalance bananaBalanceManager;
 
     [SerializeField]
     private TMP_Text counter;
@@ -33,7 +33,7 @@ public class BananaView : MonoBehaviour
     }
 
     [Inject]
-    private void Init(BananaBalanceManager bananaBalanceManager)
+    private void Init(BananaBalance bananaBalanceManager)
     {
         this.bananaBalanceManager = bananaBalanceManager;
     }

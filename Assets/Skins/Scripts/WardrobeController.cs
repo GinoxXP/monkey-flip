@@ -9,7 +9,7 @@ public class WardrobeController : MonoBehaviour
 {
     private SkinController skinController;
     private SkinData skinData;
-    private BananaBalanceManager balanceManager;
+    private BananaBalance balanceManager;
 
     [SerializeField]
     private GameObject selectButton;
@@ -164,7 +164,7 @@ public class WardrobeController : MonoBehaviour
     }
 
     [Inject]
-    private void Init(SkinController skinController, SkinData skinData, BananaBalanceManager balanceManager)
+    private void Init(SkinController skinController, SkinData skinData, BananaBalance balanceManager)
     {
         this.skinController = skinController;
         this.skinData = skinData;

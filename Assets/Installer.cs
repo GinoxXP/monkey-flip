@@ -16,10 +16,10 @@ public class Installer : MonoInstaller
         Container.Bind<PlayerController>().FromComponentInHierarchy().AsSingle();
         Container.Bind<MoveLevel>().FromComponentInHierarchy().AsSingle();
         Container.Bind<DifficultyManager>().FromComponentInHierarchy().AsSingle();
-        Container.Bind<ScoreManager>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<Score>().FromComponentInHierarchy().AsSingle();
         Container.Bind<MoveCamera>().FromComponentInHierarchy().AsSingle();
         Container.Bind<BananaView>().FromComponentInHierarchy().AsSingle();
-        Container.Bind<BananaBalanceManager>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<BananaBalance>().FromComponentInHierarchy().AsSingle();
         Container.Bind<PauseController>().FromComponentInHierarchy().AsSingle();
         Container.Bind<SkinController>().FromComponentInHierarchy().AsSingle();
         Container.Bind<DayCycleController>().FromComponentInHierarchy().AsSingle();
@@ -27,6 +27,7 @@ public class Installer : MonoInstaller
         Container.Bind<JumpAssistant>().FromComponentInHierarchy().AsSingle();
         Container.Bind<PerlinNoiseGeneration>().FromComponentInHierarchy().AsSingle();
         Container.Bind<LootCreation>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<Monkey>().FromComponentInHierarchy().AsSingle();
 
         Container.Bind<Light>().FromInstance(directionLight).AsSingle();
         Container.Bind<Camera>().FromInstance(camera).AsSingle();

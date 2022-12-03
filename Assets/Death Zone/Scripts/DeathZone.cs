@@ -10,7 +10,7 @@ public class DeathZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if(other.TryGetComponent<SmoothJump>(out _))
         {
             crocodile.Bite();
             moveLevel.StopMove(true);

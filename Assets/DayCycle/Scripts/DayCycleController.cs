@@ -9,7 +9,7 @@ public class DayCycleController : MonoBehaviour
 {
     private new Light light;
     private new Camera camera;
-    private ScoreManager scoreManager;
+    private Score scoreManager;
 
     [SerializeField]
     private int stepChanging;
@@ -43,7 +43,7 @@ public class DayCycleController : MonoBehaviour
 
     private void OnNewScoreAvailabled()
     {
-        var score = scoreManager.Score;
+        var score = scoreManager.ScoreValue;
 
         if (score % stepChanging < lastScore % stepChanging)
             NextTime();
@@ -96,7 +96,7 @@ public class DayCycleController : MonoBehaviour
     }
 
     [Inject]
-    private void Init(Light light, Camera camera, ScoreManager scoreManager)
+    private void Init(Light light, Camera camera, Score scoreManager)
     {
         this.light = light;
         this.camera = camera;
