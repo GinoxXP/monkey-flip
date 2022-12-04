@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.Tables;
 using Zenject;
 using static SkinData;
 
@@ -88,7 +90,7 @@ public class WardrobeController : MonoBehaviour
 
             if (skin.IsSelected)
             {
-                skinNameText.text = skin.Name;
+                skinNameText.text = LocalizationSettings.StringDatabase.GetLocalizedString(skin.LocalizationKey);
                 skinButtonComponent.IsSelected = true;
             }
 
@@ -116,11 +118,12 @@ public class WardrobeController : MonoBehaviour
             button.IsSelected = false;
 
         skinButton.IsSelected = true;
+        var skin = skinButton.Skin;
 
-        skinController.SetSkin(skinButton.Skin, true);
-        lastSelectedSkin = skinButton.Skin;
-        SetActiveButton(skinButton.Skin);
-        skinNameText.text = skinButton.Skin.Name;
+        skinController.SetSkin(skin, true);
+        lastSelectedSkin = skin;
+        SetActiveButton(skin);
+        skinNameText.text = LocalizationSettings.StringDatabase.GetLocalizedString(skin.LocalizationKey);
     }
 
     private void SetActiveButton(Skin skin)
