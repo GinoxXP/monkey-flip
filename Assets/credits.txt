@@ -15,6 +15,9 @@ Freepic, kerismaker, ariefstudio, Prosymbols Premium
 <a href="https://www.flaticon.com/free-icons/close" title="close icons">Close icons created by ariefstudio - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/fashion" title="fashion icons">Fashion icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/password" title="password icons">Password icons created by Prosymbols Premium - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/uk-flag" title="uk flag icons">Uk flag icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/russia" title="russia icons">Russia icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/turkey" title="turkey icons">Turkey icons created by Freepik - Flaticon</a>
 
 Sounds:
 befig, felixyadomi, gerynh, ammaro
