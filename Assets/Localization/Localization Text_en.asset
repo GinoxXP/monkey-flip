@@ -18,20 +18,20 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 180500815872
-    m_Localized: Selected
-    m_Metadata:
-      m_Items: []
-  - m_Id: 395010105344
-    m_Localized: Select
-    m_Metadata:
-      m_Items: []
   - m_Id: 702154792960
     m_Localized: Chimpanzee
     m_Metadata:
       m_Items: []
   - m_Id: 924020891648
     m_Localized: Gorilla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7649633492992
+    m_Localized: Select
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8481582080000
+    m_Localized: Selected
     m_Metadata:
       m_Items: []
   references:

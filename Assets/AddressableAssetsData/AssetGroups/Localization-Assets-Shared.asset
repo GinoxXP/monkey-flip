@@ -21,6 +21,14 @@ MonoBehaviour:
     m_Address: Assets/Localization/String Table Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
+  - m_GUID: d79fc9cd73023cc42af2b6bafa7c4e31
+    m_Address: Assets/Localization/New Table Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: c4eccb10e9b4db2488facf3f7a8f8a7f
+    m_Address: Assets/Localization/Localized Assets Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: f1e9e625d305420438733b6029d37560, type: 2}
   m_SchemaSet:

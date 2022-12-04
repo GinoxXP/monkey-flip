@@ -15,20 +15,20 @@ MonoBehaviour:
   m_TableCollectionName: Localization Text
   m_TableCollectionNameGuidString: 156aeda446d722743b39d3c9245a07e9
   m_Entries:
-  - m_Id: 180500815872
-    m_Key: wardrobe_selected
-    m_Metadata:
-      m_Items: []
-  - m_Id: 395010105344
-    m_Key: wardrobe_select
-    m_Metadata:
-      m_Items: []
   - m_Id: 702154792960
-    m_Key: monkey_chimpanzee
+    m_Key: Monkey Chimpanzee
     m_Metadata:
       m_Items: []
   - m_Id: 924020891648
-    m_Key: monkey_gorilla
+    m_Key: Monkey Gorilla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7649633492992
+    m_Key: Wardrobe Select Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8481582080000
+    m_Key: Wardrobe Selected Button
     m_Metadata:
       m_Items: []
   m_Metadata:
