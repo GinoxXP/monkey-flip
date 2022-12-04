@@ -8,12 +8,12 @@ using UnityEngine;
 public class SkinData : ScriptableObject
 {
     public List<Skin> skins = new List<Skin>();
-
+    
     [System.Serializable]
     public class Skin
     {
         [SerializeField]
-        private string name;
+        private string localizationKey;
         [SerializeField]
         private int cost;
         [SerializeField]
@@ -25,7 +25,7 @@ public class SkinData : ScriptableObject
         [SerializeField]
         private Sprite icon;
 
-        public string Name => name;
+        public string LocalizationKey => localizationKey;
 
         public int Cost => cost;
 

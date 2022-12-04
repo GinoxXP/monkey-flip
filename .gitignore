@@ -62,3 +62,7 @@ crashlytics-build.properties
 # Blender backups
 *.blend1
 *.blend1.meta
+
+# Packed Addressables
+
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
