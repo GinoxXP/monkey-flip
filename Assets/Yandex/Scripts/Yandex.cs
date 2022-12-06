@@ -10,12 +10,10 @@ public class Yandex : MonoBehaviour
 
     public Texture PlayerPhoto { get; private set; }
 
-    #region ToJS
-
-    [DllImport("__Internal")]
-    private static extern void GetPlayerData();
-
-    #endregion
+    public void Authorize()
+    {
+        Auth();
+    }
 
     #region fromJS
 
@@ -28,6 +26,16 @@ public class Yandex : MonoBehaviour
     {
         StartCoroutine(DownloadImage(url));
     }
+
+    #endregion
+
+    #region ToJS
+
+    [DllImport("__Internal")]
+    private static extern void Auth();
+
+    [DllImport("__Internal")]
+    private static extern void GetPlayerData();
 
     #endregion
 
