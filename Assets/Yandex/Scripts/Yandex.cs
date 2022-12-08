@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Net;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -10,19 +11,45 @@ public class Yandex : MonoBehaviour
 
     public Texture PlayerPhoto { get; private set; }
 
+    public object LoadedData { get; private set; }
+
+
     public void Authorize()
     {
-        Auth();
+        AuthExternal();
+    }
+
+    public void Save(object obj)
+    {
+        var jsonString = JsonUtility.ToJson(obj);
+        SaveDataExternal(jsonString);
+    }
+
+    public async Task<T> Load<T>()
+    {
+        LoadDataExternal();
+
+        var task = new Task<T>(() =>
+        {
+            while (LoadedData == null) { }
+            return (T)LoadedData;
+        });
+        return await task;
     }
 
     #region fromJS
 
-    public void SetPlayerName(string name)
+    public void LoadDataInternal(string json)
+    {
+        LoadedData = JsonUtility.FromJson<object>(json);
+    }
+
+    public void SetPlayerNameInternal(string name)
     {
         PlayerName = name;
     }
 
-    public void SetPlayerPhoto(string url)
+    public void SetPlayerPhotoInternal(string url)
     {
         StartCoroutine(DownloadImage(url));
     }
@@ -32,10 +59,16 @@ public class Yandex : MonoBehaviour
     #region ToJS
 
     [DllImport("__Internal")]
-    private static extern void Auth();
+    private static extern void AuthExternal();
 
     [DllImport("__Internal")]
-    private static extern void GetPlayerData();
+    private static extern void SaveDataExternal(string jsonData);
+
+    [DllImport("__Internal")]
+    private static extern void LoadDataExternal();
+
+    [DllImport("__Internal")]
+    private static extern void GetPlayerDataExternal();
 
     #endregion
 
