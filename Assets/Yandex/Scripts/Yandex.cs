@@ -37,6 +37,11 @@ public class Yandex : MonoBehaviour
         return await task;
     }
 
+    public void ShowFullscreenAdv()
+    {
+        ShowFullscreenAdvExternal();
+    }
+
     #region fromJS
 
     public void LoadDataInternal(string json)
@@ -69,6 +74,9 @@ public class Yandex : MonoBehaviour
 
     [DllImport("__Internal")]
     private static extern void GetPlayerDataExternal();
+
+    [DllImport("__Internal")]
+    private static extern void ShowFullscreenAdvExternal();
 
     #endregion
 
