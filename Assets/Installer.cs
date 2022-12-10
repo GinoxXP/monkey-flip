@@ -30,6 +30,7 @@ public class Installer : MonoInstaller
         Container.Bind<Monkey>().FromComponentInHierarchy().AsSingle();
         Container.Bind<ReloadScene>().FromComponentInHierarchy().AsSingle();
         Container.Bind<Yandex>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<BranchDetector>().FromComponentInHierarchy().AsSingle();
 
         Container.Bind<Light>().FromInstance(directionLight).AsSingle();
         Container.Bind<Camera>().FromInstance(camera).AsSingle();
