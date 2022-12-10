@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5461701137250605869}
   - component: {fileID: 7874027067598901860}
   - component: {fileID: 1808630046105713683}
+  - component: {fileID: 4583896192260421325}
   m_Layer: 0
   m_Name: Snake
   m_TagString: Untagged
@@ -136,6 +137,51 @@ MonoBehaviour:
   - {fileID: 7929073790006703656}
   - {fileID: 19989190079154971}
   - {fileID: 8410086149010527239}
+--- !u!114 &4583896192260421325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5641141407279781235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb05a8a58a7201248828415259218ed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedByDifficultyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 1.2380953
+      outSlope: 1.2380953
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7
+      value: 1.8666667
+      inSlope: 0.95608145
+      outSlope: 0.95608145
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.38878435
+    - serializedVersion: 3
+      time: 1
+      value: 2
+      inSlope: 0.4444444
+      outSlope: 0.4444444
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &8938486284398657591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -181,15 +227,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 05c09369b075aa845b021b1d2f0f9466, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.4
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 05c09369b075aa845b021b1d2f0f9466, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.4
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 05c09369b075aa845b021b1d2f0f9466, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.4
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 05c09369b075aa845b021b1d2f0f9466, type: 3}
       propertyPath: m_LocalPosition.x

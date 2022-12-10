@@ -5,7 +5,6 @@ public class Branch : MonoBehaviour
 {
     private SmoothJump smoothJump;
     private MoveLevel moveLevel;
-    private MoveCamera moveCamera;
     private DiContainer container;
 
     [SerializeField]
@@ -37,15 +36,6 @@ public class Branch : MonoBehaviour
             moveLevel.StopMove();
             smoothJump.StopJump();
             isPlayerStanded = true;
-            moveCamera.StartReturn();
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            moveCamera.StopMove();
         }
     }
 
@@ -53,12 +43,10 @@ public class Branch : MonoBehaviour
     private void Init(
         SmoothJump smoothJump,
         MoveLevel moveLevel,
-        MoveCamera moveCamera,
         DiContainer container)
     {
         this.smoothJump = smoothJump;
         this.moveLevel = moveLevel;
-        this.moveCamera = moveCamera;
         this.container = container;
     }
 }
