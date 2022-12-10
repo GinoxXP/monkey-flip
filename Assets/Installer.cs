@@ -28,6 +28,7 @@ public class Installer : MonoInstaller
         Container.Bind<PerlinNoiseGeneration>().FromComponentInHierarchy().AsSingle();
         Container.Bind<LootCreation>().FromComponentInHierarchy().AsSingle();
         Container.Bind<Monkey>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<ReloadScene>().FromComponentInHierarchy().AsSingle();
         Container.Bind<Yandex>().FromComponentInHierarchy().AsSingle();
 
         Container.Bind<Light>().FromInstance(directionLight).AsSingle();

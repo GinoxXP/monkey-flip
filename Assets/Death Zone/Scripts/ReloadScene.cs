@@ -1,22 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-using Zenject;
 
 public class ReloadScene : MonoBehaviour
 {
-    private Yandex yandex;
+    public event Action SceneReloaded;
 
     public void Reload()
     {
-        yandex.ShowFullscreenAdv();
-
         var currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
-    }
-
-    [Inject]
-    private void Init(Yandex yandex)
-    {
-        this.yandex = yandex;
+        SceneReloaded?.Invoke();
     }
 }
