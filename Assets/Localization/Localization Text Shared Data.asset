@@ -31,6 +31,14 @@ MonoBehaviour:
     m_Key: Wardrobe Selected Button
     m_Metadata:
       m_Items: []
+  - m_Id: 2614138147692544
+    m_Key: Monkey Marmoset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2614321392640000
+    m_Key: Monkey Proboscis
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
