@@ -21,6 +21,8 @@ public class MusicButton : MonoBehaviour
     private Sprite offStateSprite;
     [SerializeField]
     private AudioMixer musicMixer;
+    [SerializeField]
+    private string KEY;
 
     private bool IsOn
     {
@@ -28,6 +30,7 @@ public class MusicButton : MonoBehaviour
         set
         {
             isOn = value;
+            PlayerPrefs.SetInt(KEY, isOn ? 1 : 0);
             if (isOn)
             {
                 image.sprite = onStateSprite;
@@ -52,6 +55,8 @@ public class MusicButton : MonoBehaviour
     private void Start()
     {
         image = GetComponent<Image>();
+
+        IsOn = PlayerPrefs.GetInt(KEY, 1) == 1;
     }
 
     [Inject]

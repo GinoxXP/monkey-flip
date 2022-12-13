@@ -149,3 +149,4 @@ MonoBehaviour:
   onStateSprite: {fileID: 21300000, guid: 8af9cc5ccac28f74cb311e0cdc0bac01, type: 3}
   offStateSprite: {fileID: 21300000, guid: 6807d19c06e751c40b23ab4060793106, type: 3}
   musicMixer: {fileID: 24100000, guid: a20a71adde4a2fd458f76ffe688156ab, type: 2}
+  KEY: MUSIC_LEVEL
