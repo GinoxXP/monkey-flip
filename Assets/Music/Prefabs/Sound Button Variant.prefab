@@ -12,6 +12,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 7c94efcd3db7a6047897db879236011a, type: 3}
     - target: {fileID: 8133638759379407267, guid: b120580656bf25d4d9b3d7868da6e196, type: 3}
+      propertyPath: KEY
+      value: SOUND_LEVEL
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133638759379407267, guid: b120580656bf25d4d9b3d7868da6e196, type: 3}
       propertyPath: musicMixer
       value: 
       objectReference: {fileID: 24100000, guid: 7bcf65b3908fba84d89ea375a5a16b70, type: 2}
@@ -109,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8133638759379407269, guid: b120580656bf25d4d9b3d7868da6e196, type: 3}
       propertyPath: m_Name
-      value: Sound Button
+      value: Sound Button Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b120580656bf25d4d9b3d7868da6e196, type: 3}

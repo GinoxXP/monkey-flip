@@ -6,6 +6,8 @@ using Zenject;
 
 public class LocalizationDropdown : MonoBehaviour
 {
+    private const string LOCALIZATION_KEY = "SELECTED_LOCALIZATION";
+
     private PauseController pauseController;
 
     [SerializeField]
@@ -14,6 +16,7 @@ public class LocalizationDropdown : MonoBehaviour
     public void OnDropdownValueChanged(int index)
     {
         var selectedOption = dropdown.options[index];
+        PlayerPrefs.SetInt(LOCALIZATION_KEY, index);
         SetLocale(selectedOption.text);
     }
 
@@ -23,6 +26,11 @@ public class LocalizationDropdown : MonoBehaviour
 
     private void SetLocale(string localeKey)
         => LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales.Where(x => x.Formatter.ToString() == localeKey).FirstOrDefault();
+
+    private void Start()
+    {
+        dropdown.value = PlayerPrefs.GetInt(LOCALIZATION_KEY, 0);
+    }
 
     [Inject]
     private void Init(PauseController pauseController)
