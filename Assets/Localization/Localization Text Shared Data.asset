@@ -39,6 +39,10 @@ MonoBehaviour:
     m_Key: Monkey Proboscis
     m_Metadata:
       m_Items: []
+  - m_Id: 3755441736638464
+    m_Key: Authorization
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
