@@ -2,24 +2,18 @@ mergeInto(LibraryManager.library, {
 
   AuthExternal: function () {
     auth();
-  },
-
-  SaveDataExternal: function (data) {
-    var dataString = UTF8ToString(data);
-    var obj = JSON.parse(dataString);
-    player.setData(obj);
-  },
-
-  LoadDataExternal: function (){
-    player.getData().then(_data => {
-      const json = JSON.stringify(_data);
-      gameInstance.SendMessage("Yandex", "LoadDataInternal", json);
-    });
+    gameInstance.SendMessage("Yandex", "UserAuthorizationCompleated");
   },
 
   GetPlayerDataExternal: function () {
-    gameInstance.SendMessage("Yandex", "SetPlayerNameInternal", player.getName());
-    gameInstance.SendMessage("Yandex", "SetPlayerPhotoInternal", player.getPhoto());
+    if(initPlayer){
+      var data = {"id" : player.getID(), "name" : player.getName(), "avatarUrlSmall" : player.getPhoto('small'), "avatarUrlMedium" : player.getPhoto('medium'), "avatarUrlLarge" : player.getPhoto('large')};
+      console.log("Player data is get");
+      gameInstance.SendMessage("Yandex", "SetPlayerDataInternal", JSON.stringify(data));
+    }
+    else {
+      console.log("Player data isn't get");
+    }
   },
 
   ShowFullscreenAdvExternal: function () {
@@ -33,6 +27,18 @@ mergeInto(LibraryManager.library, {
         }
       }
     });
+  },
+
+  GetLeaderboardExternal: function () {
+    ysdk.getLeaderboards()
+      .then(lb => {
+        // Получение 10 топов
+        lb.getLeaderboardEntries("scoreLeaderboard", { quantityTop: 10 })
+          .then(res => {
+            console.log(res);
+            gameInstance.SendMessage("Yandex", "SetLeaderboardInternal", JSON.stringify(res));
+          });
+      });
   },
 
 });

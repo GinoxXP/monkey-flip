@@ -49,10 +49,10 @@
 
     function initPlayer() {
       return ysdk.getPlayer().then(_player => {
-        player = _player;
-
-        return player;
-      });
+                player = _player;
+            }).catch(err => {
+                // Если игрок не авторизован, выбрасывает исключение USER_NOT_AUTHORIZED.
+            });
     }
 
     function auth(){

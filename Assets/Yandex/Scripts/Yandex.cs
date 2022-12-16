@@ -1,62 +1,89 @@
+using System;
 using System.Collections;
 using System.Net;
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 
 public class Yandex : MonoBehaviour
 {
-    public string PlayerName { get; private set; }
-
     public Texture PlayerPhoto { get; private set; }
 
-    public object LoadedData { get; private set; }
+    public UserData User { get; private set; }
 
+    public event Action UserAuthorizated;
 
-    public void Authorize()
+    public event Action UserDataReceived;
+
+    public void Authorization()
     {
-        AuthExternal();
-    }
-
-    public void Save(object obj)
-    {
-        var jsonString = JsonUtility.ToJson(obj);
-        SaveDataExternal(jsonString);
-    }
-
-    public async Task<T> Load<T>()
-    {
-        LoadDataExternal();
-
-        var task = new Task<T>(() =>
+        try
         {
-            while (LoadedData == null) { }
-            return (T)LoadedData;
-        });
-        return await task;
+            AuthExternal();
+        }
+        catch(Exception ex)
+        {
+            Debug.LogException(ex);
+        }
     }
 
     public void ShowFullscreenAdv()
     {
-        ShowFullscreenAdvExternal();
+        try
+        {
+            ShowFullscreenAdvExternal();
+        }
+        catch(Exception ex)
+        {
+            Debug.LogException(ex);
+        }
+    }
+
+    public void GetPlayerData()
+    {
+        try
+        {
+            GetPlayerDataExternal();
+        }
+        catch(Exception ex)
+        {
+            Debug.LogException(ex);
+        }
+    }
+
+    public void GetLeaderboard()
+    {
+        try
+        {
+            GetLeaderboardExternal();
+        }
+        catch(Exception ex)
+        {
+            Debug.LogException(ex);
+        }
     }
 
     #region fromJS
 
-    public void LoadDataInternal(string json)
+    public void UserAuthorizationCompleated()
     {
-        LoadedData = JsonUtility.FromJson<object>(json);
+        UserAuthorizated?.Invoke();
     }
 
-    public void SetPlayerNameInternal(string name)
+    public void SetPlayerDataInternal(string json)
     {
-        PlayerName = name;
+        User = JsonUtility.FromJson<UserData>(json);
+        UserDataReceived?.Invoke();
     }
 
     public void SetPlayerPhotoInternal(string url)
     {
         StartCoroutine(DownloadImage(url));
+    }
+
+    public void SetLeaderboardInternal(string json)
+    {
+
     }
 
     #endregion
@@ -67,16 +94,13 @@ public class Yandex : MonoBehaviour
     private static extern void AuthExternal();
 
     [DllImport("__Internal")]
-    private static extern void SaveDataExternal(string jsonData);
-
-    [DllImport("__Internal")]
-    private static extern void LoadDataExternal();
-
-    [DllImport("__Internal")]
     private static extern void GetPlayerDataExternal();
 
     [DllImport("__Internal")]
     private static extern void ShowFullscreenAdvExternal();
+
+    [DllImport("__Internal")]
+    private static extern void GetLeaderboardExternal();
 
     #endregion
 
@@ -95,4 +119,19 @@ public class Yandex : MonoBehaviour
             PlayerPhoto = ((DownloadHandlerTexture)request.downloadHandler).texture;
         }
     }
+
+    private void Start()
+    {
+        Authorization();
+    }
+
+    public struct UserData
+    {
+        public string id;
+        public string name;
+        public string avatarUrlSmall;
+        public string avatarUrlMedium;
+        public string avatarUrlLarge;
+    }
+
 }
