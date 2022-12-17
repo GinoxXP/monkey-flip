@@ -43,6 +43,10 @@ MonoBehaviour:
     m_Key: Authorization
     m_Metadata:
       m_Items: []
+  - m_Id: 4745070950473728
+    m_Key: Leaderboard
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

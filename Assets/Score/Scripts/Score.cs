@@ -1,9 +1,12 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 public class Score : MonoBehaviour
 {
     private const string BEST_SCORE_KEY = "BestScore";
+
+    private Yandex yandex;
 
     [SerializeField]
     private AudioSource newBestScore;
@@ -36,9 +39,19 @@ public class Score : MonoBehaviour
     public int BestScoreValue
     {
         get => PlayerPrefs.GetInt(BEST_SCORE_KEY, 0);
-        set => PlayerPrefs.SetInt(BEST_SCORE_KEY, value);
+        set
+        {
+            PlayerPrefs.SetInt(BEST_SCORE_KEY, value);
+            yandex.SetToLeaderboard(value);
+        }
     }
 
     public event Action NewBestScoreAvailable;
     public event Action NewScoreAvailable;
+
+    [Inject]
+    private void Init(Yandex yandex)
+    {
+        this.yandex = yandex;
+    }
 }

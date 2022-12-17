@@ -11,6 +11,8 @@ public class Yandex : MonoBehaviour
 
     public UserData User { get; private set; }
 
+    public LeaderboardEntry PlayerLeaderboardEntry { get; private set; }
+
     public event Action UserAuthorizated;
 
     public event Action UserDataReceived;
@@ -63,6 +65,11 @@ public class Yandex : MonoBehaviour
         }
     }
 
+    public void SetToLeaderboard(int score)
+    {
+        SetToLeaderboardExternal(score);
+    }
+
     #region fromJS
 
     public void UserAuthorizationCompleated()
@@ -86,6 +93,11 @@ public class Yandex : MonoBehaviour
 
     }
 
+    public void SetLeaderboardEntryInternal(string json)
+    {
+        var leaderboardEntry = JsonUtility.FromJson<LeaderboardEntry>(json);
+    }
+
     #endregion
 
     #region ToJS
@@ -101,6 +113,9 @@ public class Yandex : MonoBehaviour
 
     [DllImport("__Internal")]
     private static extern void GetLeaderboardExternal();
+
+    [DllImport("__Internal")]
+    private static extern void SetToLeaderboardExternal(int score);
 
     #endregion
 
@@ -123,6 +138,7 @@ public class Yandex : MonoBehaviour
     private void Start()
     {
         Authorization();
+        //GetPlayerData();
     }
 
     public struct UserData
@@ -134,4 +150,42 @@ public class Yandex : MonoBehaviour
         public string avatarUrlLarge;
     }
 
+    public struct Leaderboard
+    {
+
+    }
+
+    [Serializable]
+    public struct LeaderboardEntry
+    {
+        public int score;
+
+        public string extraData;
+
+        public int rank;
+
+        public Player player;
+
+        public string formattedScore;
+    }
+
+    [Serializable]
+    public struct Player
+    {
+        public string lang;
+
+        public string publicName;
+
+        public string uniqueID;
+
+        public ScopePermission scopePermissions;
+    }
+
+    [Serializable]
+    public struct ScopePermission
+    {
+        public string avatar;
+
+        public string public_name;
+    }
 }

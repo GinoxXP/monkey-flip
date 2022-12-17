@@ -46,6 +46,10 @@ MonoBehaviour:
     m_Localized: "Giri\u015F yapmak"
     m_Metadata:
       m_Items: []
+  - m_Id: 4745070950473728
+    m_Localized: "Liderler S\u0131ralamas\u0131"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
