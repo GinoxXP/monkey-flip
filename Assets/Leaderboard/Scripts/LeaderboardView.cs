@@ -17,7 +17,6 @@ public class LeaderboardView : MonoBehaviour
     {
         gameObject.SetActive(true);
         yandex.GetLeaderboard();
-        Fill();
     }
 
     public void Close()
@@ -29,12 +28,19 @@ public class LeaderboardView : MonoBehaviour
     {
         var entry = yandex.PlayerLeaderboardEntry;
         playerName.text = entry.player.publicName;
-        playerScore.text = entry.score.ToString();
+        playerScore.text = entry.formattedScore;
+    }
+
+    private void OnDestroy()
+    {
+        yandex.LeaderboardReceived -= Fill;
     }
 
     [Inject]
     private void Init(Yandex yandex)
     {
         this.yandex = yandex;
+
+        yandex.LeaderboardReceived += Fill;
     }
 }

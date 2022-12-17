@@ -17,6 +17,8 @@ public class Yandex : MonoBehaviour
 
     public event Action UserDataReceived;
 
+    public event Action LeaderboardReceived;
+
     public void Authorization()
     {
         try
@@ -95,7 +97,8 @@ public class Yandex : MonoBehaviour
 
     public void SetLeaderboardEntryInternal(string json)
     {
-        var leaderboardEntry = JsonUtility.FromJson<LeaderboardEntry>(json);
+        PlayerLeaderboardEntry = JsonUtility.FromJson<LeaderboardEntry>(json);
+        LeaderboardReceived?.Invoke();
     }
 
     #endregion
@@ -138,7 +141,6 @@ public class Yandex : MonoBehaviour
     private void Start()
     {
         Authorization();
-        //GetPlayerData();
     }
 
     public struct UserData

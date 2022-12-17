@@ -865,8 +865,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cedb388424b2334e8e33a01b663e605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: {fileID: 0}
-  playerScore: {fileID: 0}
+  playerName: {fileID: 4462508559574698573}
+  playerScore: {fileID: 3643132184530336932}
 --- !u!114 &2782455818611647619
 MonoBehaviour:
   m_ObjectHideFlags: 0

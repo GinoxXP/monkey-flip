@@ -30,26 +30,26 @@ mergeInto(LibraryManager.library, {
   },
 
   GetLeaderboardExternal: function () {
+    // ysdk.getLeaderboards()
+    //   .then(lb => {
+    //     // Получение 10 топов
+    //     lb.getLeaderboardEntries("scoreLeaderboard", { quantityTop: 10 })
+    //       .then(res => {
+    //         console.log(res);
+    //         gameInstance.SendMessage("Yandex", "SetLeaderboardInternal", JSON.stringify(res));
+    //       });
+    //   });
     ysdk.getLeaderboards()
-      .then(lb => {
-        // Получение 10 топов
-        lb.getLeaderboardEntries("scoreLeaderboard", { quantityTop: 10 })
-          .then(res => {
-            console.log(res);
-            gameInstance.SendMessage("Yandex", "SetLeaderboardInternal", JSON.stringify(res));
-          });
-      });
-    ysdk.getLeaderboards()
-      .then(lb => lb.getLeaderboardPlayerEntry("scoreLeaderboard")
+      .then(lb => lb.getLeaderboardPlayerEntry("scoreLeaderboard"))
       .then(res => {
-        console.log(res);
-        gameInstance.SendMessage("Yandex", "SetLeaderboardEntryInternal", JSON.stringify(res));
+          console.log(res);
+          gameInstance.SendMessage("Yandex", "SetLeaderboardEntryInternal", JSON.stringify(res));
       })
       .catch(err => {
-        if (err.code === "LEADERBOARD_PLAYER_NOT_PRESENT") {
-        // Срабатывает, если у игрока нет записи в лидерборде
+        if (err.code === 'LEADERBOARD_PLAYER_NOT_PRESENT') {
+          // Срабатывает, если у игрока нет записи в лидерборде
         }
-      }));
+      });
   },
 
   SetToLeaderboardExternal: function (score) {
