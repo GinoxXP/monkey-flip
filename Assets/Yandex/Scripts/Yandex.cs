@@ -13,11 +13,15 @@ public class Yandex : MonoBehaviour
 
     public LeaderboardEntry PlayerLeaderboardEntry { get; private set; }
 
+    public Leaderboard PlayerLeaderboard { get; private set; }
+
     public event Action UserAuthorizated;
 
     public event Action UserDataReceived;
 
     public event Action LeaderboardReceived;
+
+    public event Action LeaderboardEntryReceived;
 
     public void Authorization()
     {
@@ -92,13 +96,14 @@ public class Yandex : MonoBehaviour
 
     public void SetLeaderboardInternal(string json)
     {
-
+        PlayerLeaderboard = JsonUtility.FromJson<Leaderboard>(json);
+        LeaderboardReceived?.Invoke();
     }
 
     public void SetLeaderboardEntryInternal(string json)
     {
         PlayerLeaderboardEntry = JsonUtility.FromJson<LeaderboardEntry>(json);
-        LeaderboardReceived?.Invoke();
+        LeaderboardEntryReceived?.Invoke();
     }
 
     #endregion
@@ -138,6 +143,16 @@ public class Yandex : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        UserAuthorizated -= GetLeaderboard;
+    }
+
+    private void Awake()
+    {
+        UserAuthorizated += GetLeaderboard;
+    }
+
     private void Start()
     {
         Authorization();
@@ -152,9 +167,10 @@ public class Yandex : MonoBehaviour
         public string avatarUrlLarge;
     }
 
+    [Serializable]
     public struct Leaderboard
     {
-
+        public LeaderboardEntry[] entries;
     }
 
     [Serializable]

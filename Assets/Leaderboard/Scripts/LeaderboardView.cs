@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using Zenject;
 
 public class LeaderboardView : MonoBehaviour
@@ -12,6 +11,10 @@ public class LeaderboardView : MonoBehaviour
     private TMP_Text playerName;
     [SerializeField]
     private TMP_Text playerScore;
+    [SerializeField]
+    private GameObject leaderboardEntryPrefab;
+    [SerializeField]
+    private Transform leaderboardEntryParent;
 
     public void Open()
     {
@@ -24,23 +27,36 @@ public class LeaderboardView : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+
     private void Fill()
     {
-        var entry = yandex.PlayerLeaderboardEntry;
-        playerName.text = entry.player.publicName;
-        playerScore.text = entry.formattedScore;
+        var playerEntry = yandex.PlayerLeaderboardEntry;
+        playerName.text = playerEntry.player.publicName;
+        playerScore.text = playerEntry.formattedScore;
+
+        var leaderboard = yandex.PlayerLeaderboard;
+        foreach (var entry in leaderboard.entries)
+        {
+            var entryObject = Instantiate(leaderboardEntryPrefab, leaderboardEntryParent);
+            var entryComponent = entryObject.GetComponent<LeaderboardEntry>();
+            entryComponent.Name = entry.player.publicName;
+            entryComponent.Score = entry.formattedScore;
+        }
     }
 
     private void OnDestroy()
     {
-        yandex.LeaderboardReceived -= Fill;
+        yandex.LeaderboardEntryReceived -= Fill;
+    }
+
+    private void Awake()
+    {
+        yandex.LeaderboardEntryReceived += Fill;
     }
 
     [Inject]
     private void Init(Yandex yandex)
     {
         this.yandex = yandex;
-
-        yandex.LeaderboardReceived += Fill;
     }
 }
