@@ -524,5 +524,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df8a7ad6363f2d408ffb33f8b5c2dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rankText: {fileID: 6047197000959927707}
   nameText: {fileID: 1174733651486391813}
   scoreText: {fileID: 4374466245160240723}

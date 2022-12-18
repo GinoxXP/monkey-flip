@@ -1,3 +1,4 @@
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +19,8 @@ public class LeaderboardView : MonoBehaviour
     [SerializeField]
     private Transform leaderboardEntryParent;
 
+    private List<LeaderboardEntry> leaderbordEntries = new List<LeaderboardEntry>();
+
     public void Open()
     {
         gameObject.SetActive(true);
@@ -30,13 +33,16 @@ public class LeaderboardView : MonoBehaviour
     }
 
 
-    private void Fill()
+    private void FillPlayerEntry()
     {
         var playerEntry = yandex.PlayerLeaderboardEntry;
         playerName.text = playerEntry.player.publicName;
         playerScore.text = playerEntry.formattedScore;
         playerAvatar.texture = yandex.PlayerPhoto;
+    }
 
+    private void FillLeaderboard()
+    {
         var leaderboard = yandex.PlayerLeaderboard;
         foreach (var entry in leaderboard.entries)
         {
@@ -45,17 +51,26 @@ public class LeaderboardView : MonoBehaviour
             entryComponent.Rank = entry.rank.ToString();
             entryComponent.Name = entry.player.publicName;
             entryComponent.Score = entry.formattedScore;
+            leaderbordEntries.Add(entryComponent);
         }
     }
 
     private void OnDestroy()
     {
-        yandex.LeaderboardEntryReceived -= Fill;
+        yandex.LeaderboardEntryReceived -= FillPlayerEntry;
+        yandex.LeaderboardReceived -= FillLeaderboard;
+
+        for (int i = leaderbordEntries.Count - 1; i > 0; i--)
+        {
+            Destroy(leaderbordEntries[i].gameObject);
+            leaderbordEntries.RemoveAt(i);
+        }
     }
 
     private void Awake()
     {
-        yandex.LeaderboardEntryReceived += Fill;
+        yandex.LeaderboardEntryReceived += FillPlayerEntry;
+        yandex.LeaderboardReceived += FillLeaderboard;
     }
 
     [Inject]
