@@ -41,6 +41,7 @@ public class LeaderboardView : MonoBehaviour
         var playerEntry = yandex.PlayerLeaderboardEntry;
         playerName.text = playerEntry.player.publicName;
         playerScore.text = playerEntry.formattedScore;
+        playerRank.text = playerEntry.rank.ToString();
     }
 
     private void FillPlayerPhoto()
