@@ -13,6 +13,8 @@ public class LeaderboardView : MonoBehaviour
     [SerializeField]
     private TMP_Text playerScore;
     [SerializeField]
+    private TMP_Text playerRank;
+    [SerializeField]
     private RawImage playerAvatar;
     [SerializeField]
     private GameObject leaderboardEntryPrefab;
@@ -30,6 +32,7 @@ public class LeaderboardView : MonoBehaviour
     public void Close()
     {
         gameObject.SetActive(false);
+        ClearLeaderboard();
     }
 
 
@@ -38,6 +41,10 @@ public class LeaderboardView : MonoBehaviour
         var playerEntry = yandex.PlayerLeaderboardEntry;
         playerName.text = playerEntry.player.publicName;
         playerScore.text = playerEntry.formattedScore;
+    }
+
+    private void FillPlayerPhoto()
+    {
         playerAvatar.texture = yandex.PlayerPhoto;
     }
 
@@ -55,11 +62,8 @@ public class LeaderboardView : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    private void ClearLeaderboard()
     {
-        yandex.LeaderboardEntryReceived -= FillPlayerEntry;
-        yandex.LeaderboardReceived -= FillLeaderboard;
-
         for (int i = leaderbordEntries.Count - 1; i > 0; i--)
         {
             Destroy(leaderbordEntries[i].gameObject);
@@ -67,10 +71,18 @@ public class LeaderboardView : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        yandex.LeaderboardEntryReceived -= FillPlayerEntry;
+        yandex.LeaderboardReceived -= FillLeaderboard;
+        yandex.PlayerDataReceived -= FillPlayerPhoto;
+    }
+
     private void Awake()
     {
         yandex.LeaderboardEntryReceived += FillPlayerEntry;
         yandex.LeaderboardReceived += FillLeaderboard;
+        yandex.PlayerDataReceived += FillPlayerPhoto;
     }
 
     [Inject]

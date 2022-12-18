@@ -1783,7 +1783,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 940, y: 0}
+  m_AnchoredPosition: {x: 520, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2124954569450967479
@@ -2305,6 +2305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: {fileID: 4462508559574698573}
   playerScore: {fileID: 3643132184530336932}
+  playerRank: {fileID: 5009068239031094102}
   playerAvatar: {fileID: 8358218349962164966}
   leaderboardEntryPrefab: {fileID: 7725784390489567790, guid: 49280f2e20d767949b8cf833ce25a96e, type: 3}
   leaderboardEntryParent: {fileID: 6548306819077023440}
