@@ -9,15 +9,15 @@ public class Yandex : MonoBehaviour
 {
     public Texture PlayerPhoto { get; private set; }
 
-    public UserData User { get; private set; }
+    public PlayerData Player { get; private set; }
 
     public LeaderboardEntry PlayerLeaderboardEntry { get; private set; }
 
     public Leaderboard PlayerLeaderboard { get; private set; }
 
-    public event Action UserAuthorizated;
+    public event Action PlayerAuthorizated;
 
-    public event Action UserDataReceived;
+    public event Action PlayerDataReceived;
 
     public event Action LeaderboardReceived;
 
@@ -80,13 +80,14 @@ public class Yandex : MonoBehaviour
 
     public void UserAuthorizationCompleated()
     {
-        UserAuthorizated?.Invoke();
+        PlayerAuthorizated?.Invoke();
     }
 
     public void SetPlayerDataInternal(string json)
     {
-        User = JsonUtility.FromJson<UserData>(json);
-        UserDataReceived?.Invoke();
+        Player = JsonUtility.FromJson<PlayerData>(json);
+        StartCoroutine(DownloadImage(Player.avatarUrlLarge));
+        PlayerDataReceived?.Invoke();
     }
 
     public void SetPlayerPhotoInternal(string url)
@@ -145,12 +146,14 @@ public class Yandex : MonoBehaviour
 
     private void OnDestroy()
     {
-        UserAuthorizated -= GetLeaderboard;
+        PlayerAuthorizated -= GetLeaderboard;
+        PlayerAuthorizated -= GetPlayerData;
     }
 
     private void Awake()
     {
-        UserAuthorizated += GetLeaderboard;
+        PlayerAuthorizated += GetLeaderboard;
+        PlayerAuthorizated += GetPlayerData;
     }
 
     private void Start()
@@ -158,7 +161,7 @@ public class Yandex : MonoBehaviour
         Authorization();
     }
 
-    public struct UserData
+    public struct PlayerData
     {
         public string id;
         public string name;
@@ -182,13 +185,13 @@ public class Yandex : MonoBehaviour
 
         public int rank;
 
-        public Player player;
+        public PlayerEntry player;
 
         public string formattedScore;
     }
 
     [Serializable]
-    public struct Player
+    public struct PlayerEntry
     {
         public string lang;
 

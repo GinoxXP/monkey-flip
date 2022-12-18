@@ -47,6 +47,30 @@ MonoBehaviour:
     m_Key: Leaderboard
     m_Metadata:
       m_Items: []
+  - m_Id: 5143737075228672
+    m_Key: 'Score:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5144817481801728
+    m_Key: 'Rank:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5150718854946816
+    m_Key: Rank
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5151123739500544
+    m_Key: PlayerName
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5151456981147648
+    m_Key: Score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5152315685199872
+    m_Key: Top 10
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

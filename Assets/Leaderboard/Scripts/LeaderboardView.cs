@@ -1,6 +1,6 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 using Zenject;
 
 public class LeaderboardView : MonoBehaviour
@@ -11,6 +11,8 @@ public class LeaderboardView : MonoBehaviour
     private TMP_Text playerName;
     [SerializeField]
     private TMP_Text playerScore;
+    [SerializeField]
+    private RawImage playerAvatar;
     [SerializeField]
     private GameObject leaderboardEntryPrefab;
     [SerializeField]
@@ -33,12 +35,14 @@ public class LeaderboardView : MonoBehaviour
         var playerEntry = yandex.PlayerLeaderboardEntry;
         playerName.text = playerEntry.player.publicName;
         playerScore.text = playerEntry.formattedScore;
+        playerAvatar.texture = yandex.PlayerPhoto;
 
         var leaderboard = yandex.PlayerLeaderboard;
         foreach (var entry in leaderboard.entries)
         {
             var entryObject = Instantiate(leaderboardEntryPrefab, leaderboardEntryParent);
             var entryComponent = entryObject.GetComponent<LeaderboardEntry>();
+            entryComponent.Rank = entry.rank.ToString();
             entryComponent.Name = entry.player.publicName;
             entryComponent.Score = entry.formattedScore;
         }

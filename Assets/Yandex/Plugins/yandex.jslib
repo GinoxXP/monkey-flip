@@ -6,14 +6,7 @@ mergeInto(LibraryManager.library, {
   },
 
   GetPlayerDataExternal: function () {
-    if(initPlayer){
-      var data = {"id" : player.getID(), "name" : player.getName(), "avatarUrlSmall" : player.getPhoto('small'), "avatarUrlMedium" : player.getPhoto('medium'), "avatarUrlLarge" : player.getPhoto('large')};
-      console.log("Player data is get");
-      gameInstance.SendMessage("Yandex", "SetPlayerDataInternal", JSON.stringify(data));
-    }
-    else {
-      console.log("Player data isn't get");
-    }
+    gameInstance.SendMessage("Yandex", "SetPlayerDataInternal", JSON.stringify(player));
   },
 
   ShowFullscreenAdvExternal: function () {
