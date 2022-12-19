@@ -9,8 +9,6 @@ public class Yandex : MonoBehaviour
 {
     public Texture PlayerPhoto { get; private set; }
 
-    public PlayerData Player { get; private set; }
-
     public LeaderboardEntry PlayerLeaderboardEntry { get; private set; }
 
     public Leaderboard PlayerLeaderboard { get; private set; }
@@ -22,6 +20,8 @@ public class Yandex : MonoBehaviour
     public event Action LeaderboardReceived;
 
     public event Action LeaderboardEntryReceived;
+
+    public event Action PlayerPhotoDownloaded;
 
     public void Authorization()
     {
@@ -47,11 +47,11 @@ public class Yandex : MonoBehaviour
         }
     }
 
-    public void GetPlayerData()
+    public void GetPlayerPhoto()
     {
         try
         {
-            GetPlayerDataExternal();
+            GetPlayerPhotoExternal();
         }
         catch(Exception ex)
         {
@@ -83,16 +83,10 @@ public class Yandex : MonoBehaviour
         PlayerAuthorizated?.Invoke();
     }
 
-    public void SetPlayerDataInternal(string json)
-    {
-        Player = JsonUtility.FromJson<PlayerData>(json);
-        StartCoroutine(DownloadImage(Player.avatarUrlLarge));
-        PlayerDataReceived?.Invoke();
-    }
-
     public void SetPlayerPhotoInternal(string url)
     {
         StartCoroutine(DownloadImage(url));
+        PlayerDataReceived?.Invoke();
     }
 
     public void SetLeaderboardInternal(string json)
@@ -115,7 +109,7 @@ public class Yandex : MonoBehaviour
     private static extern void AuthExternal();
 
     [DllImport("__Internal")]
-    private static extern void GetPlayerDataExternal();
+    private static extern void GetPlayerPhotoExternal();
 
     [DllImport("__Internal")]
     private static extern void ShowFullscreenAdvExternal();
@@ -141,33 +135,23 @@ public class Yandex : MonoBehaviour
         else
         {
             PlayerPhoto = ((DownloadHandlerTexture)request.downloadHandler).texture;
+            PlayerPhotoDownloaded?.Invoke();
         }
     }
 
     private void OnDestroy()
     {
         PlayerAuthorizated -= GetLeaderboard;
-        PlayerAuthorizated -= GetPlayerData;
     }
 
     private void Awake()
     {
         PlayerAuthorizated += GetLeaderboard;
-        PlayerAuthorizated += GetPlayerData;
     }
 
     private void Start()
     {
         Authorization();
-    }
-
-    public struct PlayerData
-    {
-        public string id;
-        public string name;
-        public string avatarUrlSmall;
-        public string avatarUrlMedium;
-        public string avatarUrlLarge;
     }
 
     [Serializable]

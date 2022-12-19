@@ -5,8 +5,8 @@ mergeInto(LibraryManager.library, {
     gameInstance.SendMessage("Yandex", "UserAuthorizationCompleated");
   },
 
-  GetPlayerDataExternal: function () {
-    gameInstance.SendMessage("Yandex", "SetPlayerDataInternal", JSON.stringify(player));
+  GetPlayerPhotoExternal: function () {
+    gameInstance.SendMessage("Yandex", "SetPlayerPhotoInternal", player.getPhoto("large"));
   },
 
   ShowFullscreenAdvExternal: function () {

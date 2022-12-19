@@ -27,6 +27,7 @@ public class LeaderboardView : MonoBehaviour
     {
         gameObject.SetActive(true);
         yandex.GetLeaderboard();
+        yandex.GetPlayerPhoto();
     }
 
     public void Close()
@@ -76,14 +77,14 @@ public class LeaderboardView : MonoBehaviour
     {
         yandex.LeaderboardEntryReceived -= FillPlayerEntry;
         yandex.LeaderboardReceived -= FillLeaderboard;
-        yandex.PlayerDataReceived -= FillPlayerPhoto;
+        yandex.PlayerPhotoDownloaded -= FillPlayerPhoto;
     }
 
     private void Awake()
     {
         yandex.LeaderboardEntryReceived += FillPlayerEntry;
         yandex.LeaderboardReceived += FillLeaderboard;
-        yandex.PlayerDataReceived += FillPlayerPhoto;
+        yandex.PlayerPhotoDownloaded += FillPlayerPhoto;
     }
 
     [Inject]
