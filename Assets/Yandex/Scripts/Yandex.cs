@@ -1,62 +1,104 @@
+using System;
 using System.Collections;
 using System.Net;
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 
 public class Yandex : MonoBehaviour
 {
-    public string PlayerName { get; private set; }
-
     public Texture PlayerPhoto { get; private set; }
 
-    public object LoadedData { get; private set; }
+    public LeaderboardEntry PlayerLeaderboardEntry { get; private set; }
 
+    public Leaderboard PlayerLeaderboard { get; private set; }
 
-    public void Authorize()
+    public event Action PlayerAuthorizated;
+
+    public event Action PlayerDataReceived;
+
+    public event Action LeaderboardReceived;
+
+    public event Action LeaderboardEntryReceived;
+
+    public event Action PlayerPhotoDownloaded;
+
+    public void Authorization()
     {
-        AuthExternal();
-    }
-
-    public void Save(object obj)
-    {
-        var jsonString = JsonUtility.ToJson(obj);
-        SaveDataExternal(jsonString);
-    }
-
-    public async Task<T> Load<T>()
-    {
-        LoadDataExternal();
-
-        var task = new Task<T>(() =>
+        try
         {
-            while (LoadedData == null) { }
-            return (T)LoadedData;
-        });
-        return await task;
+            AuthExternal();
+        }
+        catch(Exception ex)
+        {
+            Debug.LogException(ex);
+        }
     }
 
     public void ShowFullscreenAdv()
     {
-        ShowFullscreenAdvExternal();
+        try
+        {
+            ShowFullscreenAdvExternal();
+        }
+        catch(Exception ex)
+        {
+            Debug.LogException(ex);
+        }
+    }
+
+    public void GetPlayerPhoto()
+    {
+        try
+        {
+            GetPlayerPhotoExternal();
+        }
+        catch(Exception ex)
+        {
+            Debug.LogException(ex);
+        }
+    }
+
+    public void GetLeaderboard()
+    {
+        try
+        {
+            GetLeaderboardExternal();
+        }
+        catch(Exception ex)
+        {
+            Debug.LogException(ex);
+        }
+    }
+
+    public void SetToLeaderboard(int score)
+    {
+        SetToLeaderboardExternal(score);
     }
 
     #region fromJS
 
-    public void LoadDataInternal(string json)
+    public void UserAuthorizationCompleated()
     {
-        LoadedData = JsonUtility.FromJson<object>(json);
-    }
-
-    public void SetPlayerNameInternal(string name)
-    {
-        PlayerName = name;
+        PlayerAuthorizated?.Invoke();
     }
 
     public void SetPlayerPhotoInternal(string url)
     {
         StartCoroutine(DownloadImage(url));
+        PlayerDataReceived?.Invoke();
+    }
+
+    public void SetLeaderboardInternal(string json)
+    {
+        PlayerLeaderboard = JsonUtility.FromJson<Leaderboard>(json);
+        LeaderboardReceived?.Invoke();
+    }
+
+    public void SetLeaderboardEntryInternal(string json)
+    {
+        PlayerLeaderboardEntry = JsonUtility.FromJson<LeaderboardEntry>(json);
+        LeaderboardEntryReceived?.Invoke();
     }
 
     #endregion
@@ -67,16 +109,16 @@ public class Yandex : MonoBehaviour
     private static extern void AuthExternal();
 
     [DllImport("__Internal")]
-    private static extern void SaveDataExternal(string jsonData);
-
-    [DllImport("__Internal")]
-    private static extern void LoadDataExternal();
-
-    [DllImport("__Internal")]
-    private static extern void GetPlayerDataExternal();
+    private static extern void GetPlayerPhotoExternal();
 
     [DllImport("__Internal")]
     private static extern void ShowFullscreenAdvExternal();
+
+    [DllImport("__Internal")]
+    private static extern void GetLeaderboardExternal();
+
+    [DllImport("__Internal")]
+    private static extern void SetToLeaderboardExternal(int score);
 
     #endregion
 
@@ -93,6 +135,62 @@ public class Yandex : MonoBehaviour
         else
         {
             PlayerPhoto = ((DownloadHandlerTexture)request.downloadHandler).texture;
+            PlayerPhotoDownloaded?.Invoke();
         }
+    }
+
+    private void OnDestroy()
+    {
+        PlayerAuthorizated -= GetLeaderboard;
+    }
+
+    private void Awake()
+    {
+        PlayerAuthorizated += GetLeaderboard;
+    }
+
+    private void Start()
+    {
+        Authorization();
+    }
+
+    [Serializable]
+    public struct Leaderboard
+    {
+        public LeaderboardEntry[] entries;
+    }
+
+    [Serializable]
+    public struct LeaderboardEntry
+    {
+        public int score;
+
+        public string extraData;
+
+        public int rank;
+
+        public PlayerEntry player;
+
+        public string formattedScore;
+    }
+
+    [Serializable]
+    public struct PlayerEntry
+    {
+        public string lang;
+
+        public string publicName;
+
+        public string uniqueID;
+
+        public ScopePermission scopePermissions;
+    }
+
+    [Serializable]
+    public struct ScopePermission
+    {
+        public string avatar;
+
+        public string public_name;
     }
 }

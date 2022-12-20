@@ -42,6 +42,38 @@ MonoBehaviour:
     m_Localized: "Kahrolas\u0131"
     m_Metadata:
       m_Items: []
+  - m_Id: 3755441736638464
+    m_Localized: "Giri\u015F yapmak"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4745070950473728
+    m_Localized: "Liderler S\u0131ralamas\u0131"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5143737075228672
+    m_Localized: 'Puan:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5144817481801728
+    m_Localized: "R\xFCtbe:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5150718854946816
+    m_Localized: "R\xFCtbe"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5151123739500544
+    m_Localized: Oyuncu ismi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5151456981147648
+    m_Localized: Puan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5152315685199872
+    m_Localized: En iyi 10
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
