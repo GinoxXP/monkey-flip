@@ -23,15 +23,16 @@ public class Snake : MonoBehaviour
 
     private bool isPause;
     private bool isBiteFinished;
+    private bool isReadyToBite;
 
     public void StartBite()
     {
-        animator.Play(BITE_ANIMATION);
-
-        if (isPause)
+        if (isPause || !isReadyToBite)
             return;
 
+        isReadyToBite = false;
         animator.speed = speedByDifficultyCurve.Evaluate(difficultyManager.Difficulty);
+        animator.Play(BITE_ANIMATION);
     }
 
     public void CancelBite()
@@ -49,6 +50,11 @@ public class Snake : MonoBehaviour
 
         var coroutine = FinishBiteCoroutine();
         StartCoroutine(coroutine);
+    }
+
+    public void FinishTurnBack()
+    {
+        isReadyToBite = true;
     }
 
     private IEnumerator FinishBiteCoroutine()
