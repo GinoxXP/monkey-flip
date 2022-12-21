@@ -48,10 +48,23 @@ public class Score : MonoBehaviour
 
     public event Action NewBestScoreAvailable;
     public event Action NewScoreAvailable;
+    public event Action NeedRevalidate;
+
+    private void OnLeaderboardEntryReceived()
+    {
+        BestScoreValue = yandex.PlayerLeaderboardEntry.score;
+        NeedRevalidate?.Invoke();
+    }
+
+    private void OnDestroy()
+    {
+        yandex.LeaderboardEntryReceived -= OnLeaderboardEntryReceived;
+    }
 
     [Inject]
     private void Init(Yandex yandex)
     {
         this.yandex = yandex;
+        yandex.LeaderboardEntryReceived += OnLeaderboardEntryReceived;
     }
 }
