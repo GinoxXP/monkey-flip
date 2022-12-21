@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8909320650468419460}
   - component: {fileID: 8909320650468419463}
   - component: {fileID: 8528953711278559909}
+  - component: {fileID: 4481096606523983877}
   m_Layer: 5
   m_Name: Wardrobe Button
   m_TagString: Untagged
@@ -35,8 +36,8 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -20, y: 20}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 1, y: 0}
@@ -134,3 +135,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c6ed5408c21a446842219ca938beee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4481096606523983877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8909320650468419465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: 50
+  m_MinHeight: 50
+  m_PreferredWidth: 150
+  m_PreferredHeight: 150
+  m_FlexibleWidth: 1
+  m_FlexibleHeight: 1
+  m_LayoutPriority: 1

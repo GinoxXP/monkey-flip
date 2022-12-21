@@ -42,6 +42,7 @@ public class WardrobeController : MonoBehaviour
 
     public void Open()
     {
+        gameObject.SetActive(true);
         UpdateView();
 
         foreach (var skin in skinData.skins)
@@ -75,6 +76,7 @@ public class WardrobeController : MonoBehaviour
     {
         lastSetedSkin = lastSelectedSkin;
         skinController.SetSkin(lastSelectedSkin);
+        UpdateSelectedSkinButton();
     }
 
     private void FillSkins()
