@@ -4,45 +4,58 @@ using Zenject;
 
 public class ScoreView : MonoBehaviour
 {
-    private Score scoreManager;
+    private Score score;
 
     [SerializeField]
     private TMP_Text scoreText;
     [SerializeField]
     private TMP_Text bestScoreText;
 
-    private void Start()
+    public void Revalidate()
     {
-        UpdateText();
-
-        if (scoreManager.BestScoreValue == 0)
-            DisableBestScoreText();
-
-        scoreManager.NewScoreAvailable += UpdateText;
-        scoreManager.NewBestScoreAvailable += DisableBestScoreText;
+        EnableBestScoreText();
+        Start();
     }
 
     private void UpdateText()
     {
-        scoreText.text = scoreManager.ScoreValue.ToString();
-        bestScoreText.text = scoreManager.BestScoreValue.ToString();
+        scoreText.text = score.ScoreValue.ToString();
+        bestScoreText.text = score.BestScoreValue.ToString();
     }
 
     private void DisableBestScoreText()
     {
-        if(bestScoreText.gameObject.activeSelf)
+        if (bestScoreText.gameObject.activeSelf)
             bestScoreText.gameObject.SetActive(false);
+    }
+
+    private void EnableBestScoreText()
+    {
+        bestScoreText.gameObject.SetActive(true);
+    }
+
+    private void Start()
+    {
+        UpdateText();
+
+        if (score.BestScoreValue == 0)
+            DisableBestScoreText();
+
+        score.NewScoreAvailable += UpdateText;
+        score.NewBestScoreAvailable += DisableBestScoreText;
+        score.NeedRevalidate += Revalidate;
     }
 
     private void OnDestroy()
     {
-        scoreManager.NewScoreAvailable -= UpdateText;
-        scoreManager.NewBestScoreAvailable -= DisableBestScoreText;
+        score.NewScoreAvailable -= UpdateText;
+        score.NewBestScoreAvailable -= DisableBestScoreText;
+        score.NeedRevalidate -= Revalidate;
     }
 
     [Inject]
     private void Init(Score scoreManager)
     {
-        this.scoreManager = scoreManager;
+        this.score = scoreManager;
     }
 }
