@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8133638759379407265}
   - component: {fileID: 8133638759379407266}
   - component: {fileID: 8133638759379407267}
+  - component: {fileID: 7414064367054119455}
   m_Layer: 5
   m_Name: Music Button
   m_TagString: Untagged
@@ -150,3 +151,23 @@ MonoBehaviour:
   offStateSprite: {fileID: 21300000, guid: 6807d19c06e751c40b23ab4060793106, type: 3}
   musicMixer: {fileID: 24100000, guid: a20a71adde4a2fd458f76ffe688156ab, type: 2}
   KEY: MUSIC_LEVEL
+--- !u!114 &7414064367054119455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8133638759379407269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: 50
+  m_MinHeight: 50
+  m_PreferredWidth: 150
+  m_PreferredHeight: 150
+  m_FlexibleWidth: 1
+  m_FlexibleHeight: 1
+  m_LayoutPriority: 1
