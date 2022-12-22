@@ -39,7 +39,7 @@ public class SkinController : MonoBehaviour
 
     private void Start()
     {
-        SetSkin(skinData.skins.First());
+        SetSkin(skinData.skins.Where(x => x.IsSelected).First());
     }
 
     [Inject]
