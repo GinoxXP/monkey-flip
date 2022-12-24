@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6997098977456790705}
   - component: {fileID: 3588666484702395567}
   - component: {fileID: 566356119065469719}
+  - component: {fileID: 6496153861319619608}
   m_Layer: 5
   m_Name: Credits Button
   m_TagString: Untagged
@@ -134,3 +135,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8d82c989f4d6045951e3bca8230687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6496153861319619608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7909394751875635693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: 50
+  m_MinHeight: 50
+  m_PreferredWidth: 150
+  m_PreferredHeight: 150
+  m_FlexibleWidth: 1
+  m_FlexibleHeight: 1
+  m_LayoutPriority: 1
