@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -12,6 +11,12 @@ public class MoveLevel : MonoBehaviour
 
     [SerializeField]
     private float speed;
+    [SerializeField]
+    private AnimationCurve curvePosition;
+    [SerializeField]
+    private Transform destroingZone;
+    [SerializeField]
+    private float startTransformPositionZ;
 
     private IEnumerator moveCoroutine;
     private float trail;
@@ -52,7 +57,7 @@ public class MoveLevel : MonoBehaviour
                 var newPosition = new Vector3(
                 branch.transform.position.x + speed * Time.deltaTime,
                 branch.transform.position.y,
-                branch.transform.position.z);
+                branch.transform.position.x > startTransformPositionZ ? branch.transform.position.z - curvePosition.Evaluate(destroingZone.transform.position.x / branch.transform.position.x) * Time.deltaTime : branch.transform.position.z);
 
                 branch.transform.position = newPosition;
             }

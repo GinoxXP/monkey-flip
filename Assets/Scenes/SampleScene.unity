@@ -2769,10 +2769,6 @@ PrefabInstance:
       propertyPath: firstSegment
       value: 
       objectReference: {fileID: 62567252}
-    - target: {fileID: 3596686860793509423, guid: fbd88ea12ae900844983f04133f6e53b, type: 3}
-      propertyPath: yScale
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4352118352462271584, guid: fbd88ea12ae900844983f04133f6e53b, type: 3}
       propertyPath: items.Array.size
       value: 0
