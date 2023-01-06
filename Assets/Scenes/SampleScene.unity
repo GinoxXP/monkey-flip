@@ -144,6 +144,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Graphy]'
       objectReference: {fileID: 0}
+    - target: {fileID: 177638, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 22451668, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -230,6 +234,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
+--- !u!1 &172884104 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 177638, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
+  m_PrefabInstance: {fileID: 172884103}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &336283073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2064,7 +2073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3709142917889386284, guid: afd707359820bc64090d38c51edf7515, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3709142917889386284, guid: afd707359820bc64090d38c51edf7515, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_ActionId
@@ -2111,6 +2120,10 @@ PrefabInstance:
       value: 1e17cf42-1b79-4f1d-af88-8eb53eb4e442
       objectReference: {fileID: 0}
     - target: {fileID: 3709142917889386284, guid: afd707359820bc64090d38c51edf7515, type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_ActionId
+      value: 40c486dc-a9e3-4244-9620-5bf39afff961
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709142917889386284, guid: afd707359820bc64090d38c51edf7515, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_ActionName
       value: Player/Click[/Mouse/press]
       objectReference: {fileID: 0}
@@ -2155,19 +2168,39 @@ PrefabInstance:
       value: UI/TrackedDeviceOrientation
       objectReference: {fileID: 0}
     - target: {fileID: 3709142917889386284, guid: afd707359820bc64090d38c51edf7515, type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_ActionName
+      value: Player/Debug[/Keyboard/backquote]
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709142917889386284, guid: afd707359820bc64090d38c51edf7515, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709142917889386284, guid: afd707359820bc64090d38c51edf7515, type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3709142917889386284, guid: afd707359820bc64090d38c51edf7515, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3709142917889386284, guid: afd707359820bc64090d38c51edf7515, type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709142917889386284, guid: afd707359820bc64090d38c51edf7515, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3709142917665145672}
     - target: {fileID: 3709142917889386284, guid: afd707359820bc64090d38c51edf7515, type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 172884104}
+    - target: {fileID: 3709142917889386284, guid: afd707359820bc64090d38c51edf7515, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709142917889386284, guid: afd707359820bc64090d38c51edf7515, type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3709142917889386284, guid: afd707359820bc64090d38c51edf7515, type: 3}
@@ -2175,11 +2208,27 @@ PrefabInstance:
       value: OnPosition
       objectReference: {fileID: 0}
     - target: {fileID: 3709142917889386284, guid: afd707359820bc64090d38c51edf7515, type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709142917889386284, guid: afd707359820bc64090d38c51edf7515, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PlayerController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3709142917889386284, guid: afd707359820bc64090d38c51edf7515, type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709142917889386284, guid: afd707359820bc64090d38c51edf7515, type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709142917889386284, guid: afd707359820bc64090d38c51edf7515, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709142917889386284, guid: afd707359820bc64090d38c51edf7515, type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3709142917889386286, guid: afd707359820bc64090d38c51edf7515, type: 3}
