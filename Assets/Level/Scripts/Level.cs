@@ -57,6 +57,7 @@ public class Level : MonoBehaviour
         CreateSegment();
         CreateSegment();
         CreateSegment();
+        CreateSegment();
     }
 
     [Inject]
