@@ -90,6 +90,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  curvePosition:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  destroingZone: {fileID: 8520039896200389686}
+  startTransformPositionZ: 3
 --- !u!114 &3290448948772582734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xScale: 0.1
-  yScale: 8
+  yScale: 5
   levelSegmentLineY: -0.6
   segmentPrefab: {fileID: 522624939404872928, guid: b5555e305e87acc48bffbb90696078b4, type: 3}
   segmentsParent: {fileID: 3702451928631714589}
