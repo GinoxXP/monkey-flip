@@ -388,8 +388,8 @@ MonoBehaviour:
     - Kevin Macleod\n\nSprites: from Flaticon\r\nFreepic, kerismaker, ariefstudio,
     Prosymbols Premium\n\nSounds: from freesound\r\nbefig, felixyadomi, gerynh, ammaro\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 71e6d3ed8262689479603c6da25496c3, type: 2}
+  m_sharedMaterial: {fileID: 4750722714935847569, guid: 71e6d3ed8262689479603c6da25496c3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
