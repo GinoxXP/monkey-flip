@@ -34,8 +34,8 @@ RectTransform:
   m_Father: {fileID: 7207664890906264254}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.333, y: 0}
+  m_AnchorMax: {x: 0.667, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -69,8 +69,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0418\u043C\u044F \u0438\u0433\u0440\u043E\u043A\u0430"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 946f8007828cc7e44bb55864584e2dc6, type: 2}
-  m_sharedMaterial: {fileID: -3206192464733277573, guid: 946f8007828cc7e44bb55864584e2dc6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 71e6d3ed8262689479603c6da25496c3, type: 2}
+  m_sharedMaterial: {fileID: 4750722714935847569, guid: 71e6d3ed8262689479603c6da25496c3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.25
+  m_fontSize: 36.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -210,8 +210,8 @@ RectTransform:
   m_Father: {fileID: 7207664890906264254}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.667, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 0.5}
@@ -245,8 +245,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0421\u0447\u0435\u0442"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 946f8007828cc7e44bb55864584e2dc6, type: 2}
-  m_sharedMaterial: {fileID: -3206192464733277573, guid: 946f8007828cc7e44bb55864584e2dc6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 71e6d3ed8262689479603c6da25496c3, type: 2}
+  m_sharedMaterial: {fileID: 4750722714935847569, guid: 71e6d3ed8262689479603c6da25496c3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.25
+  m_fontSize: 36.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -387,7 +387,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.333, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
@@ -421,8 +421,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0420\u0430\u043D\u0433"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 946f8007828cc7e44bb55864584e2dc6, type: 2}
-  m_sharedMaterial: {fileID: -3206192464733277573, guid: 946f8007828cc7e44bb55864584e2dc6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 71e6d3ed8262689479603c6da25496c3, type: 2}
+  m_sharedMaterial: {fileID: 4750722714935847569, guid: 71e6d3ed8262689479603c6da25496c3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -446,7 +446,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.25
+  m_fontSize: 36.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -540,7 +540,6 @@ GameObject:
   - component: {fileID: 7399035556097077500}
   - component: {fileID: 6911185094273279215}
   - component: {fileID: 8669128707175738556}
-  - component: {fileID: 8053957515601922867}
   m_Layer: 5
   m_Name: Leaderboard Entry
   m_TagString: Untagged
@@ -624,29 +623,3 @@ MonoBehaviour:
   rankText: {fileID: 6966974582222900029}
   nameText: {fileID: 7929360654408400580}
   scoreText: {fileID: 1949865400292223853}
---- !u!114 &8053957515601922867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7725784390489567790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
-  m_ChildScaleWidth: 1
-  m_ChildScaleHeight: 1
-  m_ReverseArrangement: 0
