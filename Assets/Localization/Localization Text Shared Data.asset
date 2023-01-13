@@ -71,6 +71,10 @@ MonoBehaviour:
     m_Key: Top 10
     m_Metadata:
       m_Items: []
+  - m_Id: 14264886384123904
+    m_Key: User Hidden
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

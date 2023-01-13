@@ -74,6 +74,10 @@ MonoBehaviour:
     m_Localized: En iyi 10
     m_Metadata:
       m_Items: []
+  - m_Id: 14264886384123904
+    m_Localized: "Kullan\u0131c\u0131 gizlendi"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 using Zenject;
 
 public class LeaderboardView : MonoBehaviour
 {
+    private readonly string hiddenUserKey = "User Hidden";
     private Yandex yandex;
 
     [SerializeField]
@@ -22,6 +24,7 @@ public class LeaderboardView : MonoBehaviour
     private Transform leaderboardEntryParent;
 
     private List<LeaderboardEntry> leaderbordEntries = new List<LeaderboardEntry>();
+    private List<GameObject> entryObjects = new List<GameObject>();
 
     public void Open()
     {
@@ -52,13 +55,22 @@ public class LeaderboardView : MonoBehaviour
 
     private void FillLeaderboard()
     {
+        foreach (var entryObject in entryObjects)
+            Destroy(entryObject.gameObject);
+
+        entryObjects.Clear();
+
         var leaderboard = yandex.PlayerLeaderboard;
         foreach (var entry in leaderboard.entries)
         {
             var entryObject = Instantiate(leaderboardEntryPrefab, leaderboardEntryParent);
+            entryObjects.Add(entryObject);
             var entryComponent = entryObject.GetComponent<LeaderboardEntry>();
             entryComponent.Rank = entry.rank.ToString();
-            entryComponent.Name = entry.player.publicName;
+            entryComponent.Name =
+                string.IsNullOrEmpty(entry.player.publicName) || string.IsNullOrWhiteSpace(entry.player.publicName) ?
+                LocalizationSettings.StringDatabase.GetLocalizedString(hiddenUserKey) :
+                entry.player.publicName;
             entryComponent.Score = entry.formattedScore;
             leaderbordEntries.Add(entryComponent);
         }
