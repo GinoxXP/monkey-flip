@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 using Zenject;
-using static SkinData;
-using static Yandex;
 
 public class LeaderboardView : MonoBehaviour
 {
@@ -26,6 +24,7 @@ public class LeaderboardView : MonoBehaviour
     private Transform leaderboardEntryParent;
 
     private List<LeaderboardEntry> leaderbordEntries = new List<LeaderboardEntry>();
+    private List<GameObject> entryObjects = new List<GameObject>();
 
     public void Open()
     {
@@ -56,10 +55,16 @@ public class LeaderboardView : MonoBehaviour
 
     private void FillLeaderboard()
     {
+        foreach (var entryObject in entryObjects)
+            Destroy(entryObject.gameObject);
+
+        entryObjects.Clear();
+
         var leaderboard = yandex.PlayerLeaderboard;
         foreach (var entry in leaderboard.entries)
         {
             var entryObject = Instantiate(leaderboardEntryPrefab, leaderboardEntryParent);
+            entryObjects.Add(entryObject);
             var entryComponent = entryObject.GetComponent<LeaderboardEntry>();
             entryComponent.Rank = entry.rank.ToString();
             entryComponent.Name =
