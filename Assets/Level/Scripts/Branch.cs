@@ -3,12 +3,31 @@ using Zenject;
 
 public class Branch : MonoBehaviour
 {
-    private PlayerController playerController;
     private SmoothJump smoothJump;
     private MoveLevel moveLevel;
-    private MoveCamera moveCamera;
+    private DiContainer container;
+
+    [SerializeField]
+    private Transform parentSegment;
+    [SerializeField]
+    private Transform lootParent;
 
     private bool isPlayerStanded;
+
+    public Transform ParentSegment => parentSegment;
+
+    public void SetHeight(float height)
+    {
+        transform.position = new Vector3(transform.position.x, height, transform.position.z);
+    }
+
+    public void SetLoot(GameObject loot)
+    {
+        if (loot == null)
+            return;
+
+        container.InstantiatePrefab(loot, lootParent);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,30 +36,17 @@ public class Branch : MonoBehaviour
             moveLevel.StopMove();
             smoothJump.StopJump();
             isPlayerStanded = true;
-            playerController.IsCanJump = true;
-            moveCamera.StartReturn();
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerController.IsCanJump = false;
-            moveCamera.StopMove();
         }
     }
 
     [Inject]
     private void Init(
-        PlayerController playerController,
         SmoothJump smoothJump,
         MoveLevel moveLevel,
-        MoveCamera moveCamera)
+        DiContainer container)
     {
-        this.playerController = playerController;
         this.smoothJump = smoothJump;
         this.moveLevel = moveLevel;
-        this.moveCamera = moveCamera;
+        this.container = container;
     }
 }

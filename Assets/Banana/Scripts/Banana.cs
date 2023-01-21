@@ -3,11 +3,13 @@ using Zenject;
 
 public class Banana : MonoBehaviour
 {
-    private BananaBalanceManager bananaBalanceManager;
+    private BananaBalance bananaBalanceManager;
+    private Monkey monkey;
+
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.TryGetComponent<Monkey>(out _))
         {
             PickUp();
             Destroy(gameObject);
@@ -16,12 +18,14 @@ public class Banana : MonoBehaviour
 
     private void PickUp()
     {
+        monkey.Yey();
         bananaBalanceManager.Add();
     }
 
     [Inject]
-    private void Init(BananaBalanceManager bananaBalanceManager)
+    private void Init(BananaBalance bananaBalanceManager, Monkey monkey)
     {
         this.bananaBalanceManager = bananaBalanceManager;
+        this.monkey = monkey;
     }
 }
