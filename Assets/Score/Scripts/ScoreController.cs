@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using Zenject;
 
-public class BestScoreController : MonoBehaviour
+public class ScoreController : MonoBehaviour
 {
     private Score score;
 
@@ -11,18 +11,18 @@ public class BestScoreController : MonoBehaviour
 
     private void UpdateText()
     {
-        scoreText.text = score.BestScoreValue.ToString();
+        scoreText.text = score.ScoreValue.ToString();
     }
 
     void Start()
     {
         UpdateText();
-        score.NewBestScoreAvailable += UpdateText;
+        score.NewScoreAvailable += UpdateText;
     }
 
-    private void OnDestroy()
+    void OnDestroy()
     {
-        score.NewBestScoreAvailable -= UpdateText;
+        score.NewScoreAvailable -= UpdateText;
     }
 
     [Inject]
