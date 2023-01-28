@@ -15,8 +15,8 @@ MonoBehaviour:
   m_TableCollectionName: Localization Assets
   m_TableCollectionNameGuidString: c4eccb10e9b4db2488facf3f7a8f8a7f
   m_Entries:
-  - m_Id: 357311700992
-    m_Key: Country Flag
+  - m_Id: 20001120924278784
+    m_Key: New Entry
     m_Metadata:
       m_Items: []
   m_Metadata:
@@ -35,7 +35,7 @@ MonoBehaviour:
       type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_Entries:
-        - m_KeyId: 357311700992
+        - m_KeyId: 20001120924278784
           m_TableCodes:
           - en
           - ru

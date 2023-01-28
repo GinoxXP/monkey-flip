@@ -17,8 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 83b76f6a9a094224395b7fd432816794
   m_SerializeEntries:
-  - m_GUID: 7eeaf321fbed7034a8ed206890e88f88
-    m_Address: united-kingdom
+  - m_GUID: 5e256503088711f4ea6f3a544f6419ce
+    m_Address: English
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en

@@ -17,8 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 37ffdf2065180224e912176a82ad1b23
   m_SerializeEntries:
-  - m_GUID: 4029695ef1bef0540b07fa697462c9ed
-    m_Address: russia
+  - m_GUID: d98c0d2705102f0478e8181f33e4e3be
+    m_Address: Russian
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ru
