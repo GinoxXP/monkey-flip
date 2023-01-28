@@ -5,9 +5,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class MusicButton : MonoBehaviour
 {
-    private const string VOLUME_PARAMETER = "Volume";
-    private const float DISABLE_MUSIC_VOLUME = -80;
-    private const float ENABLE_MUSIC_VOLUME = 0;
+    public const string VOLUME_PARAMETER = "Volume";
+    public const float DISABLE_VOLUME = -80;
+    public const float ENABLE_VOLUME = 0;
 
     private bool isOn = true;
 
@@ -28,9 +28,9 @@ public class MusicButton : MonoBehaviour
             PlayerPrefs.SetInt(KEY, isOn ? 1 : 0);
 
             if (isOn)
-                musicMixer.SetFloat(VOLUME_PARAMETER, ENABLE_MUSIC_VOLUME);
+                musicMixer.SetFloat(VOLUME_PARAMETER, ENABLE_VOLUME);
             else
-                musicMixer.SetFloat(VOLUME_PARAMETER, DISABLE_MUSIC_VOLUME);
+                musicMixer.SetFloat(VOLUME_PARAMETER, DISABLE_VOLUME);
         }
     }
 
