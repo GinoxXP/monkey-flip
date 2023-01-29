@@ -78,6 +78,10 @@ MonoBehaviour:
     m_Localized: "Kullan\u0131c\u0131 gizlendi"
     m_Metadata:
       m_Items: []
+  - m_Id: 20401338396254208
+    m_Localized: Bilgi
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
