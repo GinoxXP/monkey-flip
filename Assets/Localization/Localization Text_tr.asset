@@ -79,6 +79,18 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 20401338396254208
+    m_Localized: "D\xFCkkan"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20801225617121280
+    m_Localized: "D\u0131\u015F g\xF6r\xFCn\xFCmler"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20802883491274752
+    m_Localized: Envanter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20804085796904960
     m_Localized: Bilgi
     m_Metadata:
       m_Items: []
