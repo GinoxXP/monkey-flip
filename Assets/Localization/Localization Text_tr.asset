@@ -79,7 +79,35 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 20401338396254208
+    m_Localized: "D\xFCkkan"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20801225617121280
+    m_Localized: "D\u0131\u015F g\xF6r\xFCn\xFCmler"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20802883491274752
+    m_Localized: Envanter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20804085796904960
     m_Localized: Bilgi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21897987836682240
+    m_Localized: Muz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21898356784439296
+    m_Localized: "Donan\u0131ml\u0131"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21898798046191616
+    m_Localized: "Sat\u0131n almak"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21899117803151360
+    m_Localized: "Donatmak\r"
     m_Metadata:
       m_Items: []
   references:
